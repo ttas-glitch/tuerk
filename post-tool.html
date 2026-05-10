@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post-Tool - NahostFakten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--white:#fafafa;--gray-100:#f4f4f4;--gray-200:#e8e8e8;--gray-400:#999;--gray-600:#555;--border:#e2e2e2;--accent:#c0392b;--accent-light:#fdf0ef;--blue:#1a5fa8;--blue-light:#eef4fd;--green:#1a7a4a;--green-light:#edf7f1;--amber:#b7560a;--amber-light:#fef6ee;--radius:12px;--radius-lg:20px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Sora',sans-serif;background:var(--white);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,250,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-size:15px;font-weight:700;color:var(--black);text-decoration:none;}
+.nav-logo span{color:var(--accent);}
+.nav-back{font-size:13px;color:var(--gray-600);text-decoration:none;padding:6px 12px;border-radius:8px;border:1px solid var(--border);}
+.nav-back:hover{border-color:var(--black);color:var(--black);}
+.page-hero{padding:100px 24px 56px;max-width:980px;margin:0 auto;}
+.breadcrumb{font-size:12px;color:var(--gray-400);margin-bottom:16px;}
+.breadcrumb a{color:inherit;text-decoration:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:20px;background:var(--green-light);color:var(--green);border:1px solid rgba(26,122,74,0.2);}
+h1{font-family:'Fraunces',serif;font-size:clamp(30px,5vw,52px);line-height:1.08;margin-bottom:16px;}
+.claim{background:var(--gray-100);border-left:4px solid var(--green);padding:14px 18px;border-radius:0 10px 10px 0;font-size:15px;color:var(--gray-600);margin-bottom:18px;}
+.summary{font-size:17px;color:var(--gray-600);font-weight:300;max-width:760px;}
+.content{max-width:980px;margin:0 auto;padding:0 24px 80px;}
+.tool-grid{display:grid;grid-template-columns:320px minmax(0,1fr);gap:20px;align-items:start;}
+.panel{background:var(--gray-100);border-radius:var(--radius-lg);padding:22px;}
+.panel h2{font-family:'Fraunces',serif;font-size:24px;margin-bottom:10px;}
+.panel p{font-size:14px;color:var(--gray-600);}
+.control-group{margin-bottom:16px;}
+.control-group label{display:block;font-size:12px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;}
+select,.primary-btn,.ghost-btn{width:100%;border-radius:10px;font-family:inherit;font-size:14px;}
+select{padding:12px 14px;border:1px solid var(--border);background:var(--white);color:var(--black);}
+.primary-btn{padding:13px 16px;border:none;background:var(--black);color:var(--white);font-weight:600;cursor:pointer;transition:all .18s ease;}
+.primary-btn:hover{background:var(--accent);}
+.ghost-btn{padding:10px 14px;border:1px solid var(--border);background:var(--white);color:var(--black);cursor:pointer;}
+.ghost-btn:hover{border-color:var(--black);}
+.helper{font-size:13px;color:var(--gray-600);margin-top:8px;}
+.result-stack{display:grid;gap:16px;}
+.result-card{border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;background:var(--white);}
+.result-head{display:flex;justify-content:space-between;gap:12px;align-items:start;margin-bottom:10px;}
+.result-head h3{font-size:18px;}
+.copy-btn{flex:0 0 auto;padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:var(--white);font-size:12px;font-weight:600;cursor:pointer;}
+.copy-btn:hover{border-color:var(--black);}
+.kicker{font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;}
+.big-text{font-family:'Fraunces',serif;font-size:28px;line-height:1.15;}
+.body-text{font-size:14px;color:var(--gray-600);}
+.list-block{display:grid;gap:10px;}
+.list-item{padding:14px 16px;border-radius:12px;background:var(--gray-100);}
+.list-item strong{display:block;font-size:14px;margin-bottom:4px;}
+.list-item p{font-size:13px;color:var(--gray-600);}
+.meta-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:16px;}
+.meta-card{background:var(--gray-100);border-radius:12px;padding:16px;}
+.meta-card .label{font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;}
+.meta-card .value{font-size:14px;font-weight:600;}
+.source-list{display:flex;flex-wrap:wrap;gap:8px;}
+.source-pill{display:inline-block;padding:5px 12px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);text-decoration:none;font-size:12px;}
+.source-pill:hover{color:var(--black);}
+.note{background:var(--blue-light);border:1px solid rgba(26,95,168,0.12);border-radius:var(--radius);padding:16px;margin-top:16px;}
+.note strong{display:block;margin-bottom:4px;font-size:14px;color:var(--blue);}
+.note p{font-size:13px;color:var(--gray-600);}
+.nav-pages{display:flex;gap:12px;margin-top:36px;}
+.nav-page-btn{flex:1;display:block;padding:16px;border:1px solid var(--border);border-radius:var(--radius);text-decoration:none;color:var(--black);}
+.nav-page-btn .dir{font-size:11px;color:var(--gray-400);margin-bottom:4px;}
+.nav-page-btn .ptitle{font-size:14px;font-weight:600;}
+.nav-page-btn.next{text-align:right;}
+@media(max-width:860px){.tool-grid{grid-template-columns:1fr;}.meta-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Nahost<span>Fakten</span></a>
+  <a class="nav-back" href="debatten-guide.html">&larr; Zurück</a>
+</nav>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="index.html">NahostFakten</a> · <a href="debatten-guide.html">Guide</a> · Post-Tool</p>
+  <div class="badge">Posts aus stabilen Bausteinen</div>
+  <h1>Post-Tool</h1>
+  <div class="claim">Dieses Tool erfindet keine neue Recherche. Es baut Hooks, Slides, Captions und Kommentar-Antworten aus deinen vier stabilen Punkten und den vorhandenen Quellen.</div>
+  <p class="summary">So bekommst du schnell verwendbare Post-Texte, ohne bei jedem Video oder Carousel wieder bei null anzufangen.</p>
+</div>
+
+<div class="content">
+  <div class="tool-grid">
+    <div class="panel">
+      <h2>Generator</h2>
+      <p>Wähle Thema, Format, Ton und Länge. Das Tool zieht dann feste Argumentbausteine aus Punkt 1 bis 4 und formuliert daraus einen brauchbaren Post.</p>
+
+      <div class="control-group">
+        <label for="topic">Thema</label>
+        <select id="topic">
+          <option value="punkt1">Punkt 1 · 1949 / Militärbündnis</option>
+          <option value="punkt2">Punkt 2 · Rüstung / alte Systeme</option>
+          <option value="punkt3">Punkt 3 · Handel / Ceyhan / BTC</option>
+          <option value="punkt4">Punkt 4 · MIT / Mossad</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="format">Format</label>
+        <select id="format">
+          <option value="slides">TikTok Slides</option>
+          <option value="carousel">Instagram Carousel</option>
+          <option value="script">Kurzvideo-Skript</option>
+          <option value="comment">Kommentar-Antwort</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="tone">Ton</label>
+        <select id="tone">
+          <option value="sachlich">Sachlich</option>
+          <option value="hart">Hart</option>
+          <option value="debatte">Debatte</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="length">Länge</label>
+        <select id="length">
+          <option value="kurz">Kurz</option>
+          <option value="mittel" selected>Mittel</option>
+          <option value="lang">Lang</option>
+        </select>
+      </div>
+
+      <button class="primary-btn" id="generateBtn">Post erstellen</button>
+      <button class="ghost-btn" id="copyAllBtn" style="margin-top:10px;">Alles kopieren</button>
+
+      <div class="note">
+        <strong>Am stärksten bleibt das Tool, wenn du nicht überziehst.</strong>
+        <p>Es soll Texte aus stabilen Punkten bauen, nicht aggressive Totalbehauptungen ausspucken.</p>
+      </div>
+    </div>
+
+    <div class="result-stack">
+      <div class="meta-row">
+        <div class="meta-card">
+          <div class="label">Thema</div>
+          <div class="value" id="metaTopic">Punkt 1 · 1949 / Militärbündnis</div>
+        </div>
+        <div class="meta-card">
+          <div class="label">Format</div>
+          <div class="value" id="metaFormat">TikTok Slides</div>
+        </div>
+        <div class="meta-card">
+          <div class="label">Linie</div>
+          <div class="value" id="metaAngle">Präzise Widerlegung ohne Overclaiming</div>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-head">
+          <div>
+            <div class="kicker">Hook</div>
+            <h3>Erste Zeile</h3>
+          </div>
+          <button class="copy-btn" data-copy-target="hookText">Kopieren</button>
+        </div>
+        <div class="big-text" id="hookText"></div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-head">
+          <div>
+            <div class="kicker">Struktur</div>
+            <h3>Post-Text</h3>
+          </div>
+          <button class="copy-btn" data-copy-target="mainOutput">Kopieren</button>
+        </div>
+        <div class="list-block" id="mainOutput"></div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-head">
+          <div>
+            <div class="kicker">Caption</div>
+            <h3>Begleittext</h3>
+          </div>
+          <button class="copy-btn" data-copy-target="captionText">Kopieren</button>
+        </div>
+        <div class="body-text" id="captionText"></div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-head">
+          <div>
+            <div class="kicker">Kommentar</div>
+            <h3>Kurzantwort</h3>
+          </div>
+          <button class="copy-btn" data-copy-target="commentText">Kopieren</button>
+        </div>
+        <div class="body-text" id="commentText"></div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-head">
+          <div>
+            <div class="kicker">Quellen</div>
+            <h3>Klickbare Belege</h3>
+          </div>
+          <button class="copy-btn" data-copy-target="sourceCopyText">Kopieren</button>
+        </div>
+        <div class="source-list" id="sourceList"></div>
+        <div id="sourceCopyText" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-pages">
+    <a href="debatten-guide.html" class="nav-page-btn"><p class="dir">&larr; Zurück</p><p class="ptitle">Debatten-Guide</p></a>
+    <a href="zusatzinfos.html" class="nav-page-btn next"><p class="dir">Weiter &rarr;</p><p class="ptitle">Zusatzinfos</p></a>
+  </div>
+</div>
+
+<script>
+const POINTS = {
+  punkt1: {
+    title: "Punkt 1 · 1949 / Militärbündnis",
+    angle: "1949 = Anerkennung, nicht Militärpakt",
+    hook: {
+      sachlich: "1949 war Anerkennung, nicht das Startdatum eines offiziellen Militärbündnisses.",
+      hart: "Wer aus 1949 ein offizielles Militärbündnis macht, datiert fast fünf Jahrzehnte zu früh.",
+      debatte: "1949 ist Anerkennung. Militärpakt ist eine andere Behauptung."
+    },
+    claim: "Die Behauptung lautet: Türkei und Israel hätten schon seit 1949 offizielle Militärbündnisse.",
+    partial: "Teilweise real sind spätere geheime Kontakte und die deutliche Militärverdichtung der 1990er.",
+    counter: "Die belastbar formalisierte Militärnähe wird aber erst in den 1990ern sichtbar, besonders mit den Abkommen von 1996.",
+    debate: "Der saubere Konter ist: 1949 markiert Anerkennung, nicht Militärpakt. Spätere Kontakte ändern diese Datierung nicht.",
+    cta: "Mehr dazu auf Karte 1.",
+    page: "punkt1.html",
+    sources: [
+      { label: "Israelisches Generalkonsulat Istanbul", href: "https://embassies.gov.il/istanbul/en/the-consulate/bilateral-relations" },
+      { label: "Washington Institute 1997", href: "https://www.washingtoninstitute.org/policy-analysis/turkish-israeli-military-cooperation-assessment" },
+      { label: "Karte 1", href: "punkt1.html" }
+    ]
+  },
+  punkt2: {
+    title: "Punkt 2 · Rüstung / alte Systeme",
+    angle: "Altbestände sind kein Beleg für neue offizielle Nähe",
+    hook: {
+      sachlich: "Alte israelische Systeme im türkischen Bestand beweisen nicht automatisch neue Militärnähe unter Erdoğan.",
+      hart: "Alte Waffen im Bestand sind kein Freifahrtschein für die Behauptung einer laufenden Erdoğan-Israel-Militärallianz.",
+      debatte: "Bestand ist nicht dasselbe wie neue Zusammenarbeit."
+    },
+    claim: "Die Behauptung lautet: Israelische Waffen und Systeme seien selbst unter Erdoğan weiter ein Beleg für enge Militärnähe.",
+    partial: "Historische Beschaffung und Modernisierung israelischer Systeme sind real und gehören vor allem in die 1990er und frühen 2000er.",
+    counter: "Öffentlich belastbar ist aber nicht die Vorstellung neuer offizieller Verteidigungsabkommen nach 2010; Ankara erklärte 2014 das Gegenteil.",
+    debate: "Der stärkste Satz ist: Alte Systeme ja, neue offizielle Nähe nach 2010 öffentlich nicht belastbar.",
+    cta: "Mehr dazu auf Karte 2.",
+    page: "punkt2.html",
+    sources: [
+      { label: "MFA Türkiye 2014", href: "https://www.mfa.gov.tr/qa_21_-22-july-2014_-statement-of-the-spokesman-of-the-ministry-of-foreign-affairs-in-response-to-a-question-regarding-the-allegations-that-turkey-cooperates-with-israel-in-the-fields-of-energy-and-defense.en.mfa" },
+      { label: "Defense Industry Daily", href: "https://www.defenseindustrydaily.com/turkeys-700m-m60-upgrade-program-0179/" },
+      { label: "Karte 2", href: "punkt2.html" }
+    ]
+  },
+  punkt3: {
+    title: "Punkt 3 · Handel / Ceyhan / BTC",
+    angle: "Direkthandel gestoppt, Transitfragen komplizierter",
+    hook: {
+      sachlich: "Handel lief lange weiter, aber der direkte bilaterale Warenhandel wurde 2024 staatlich gestoppt.",
+      hart: "Wer heute noch so tut, als laufe einfach alles weiter, blendet den Handelsstopp von 2024 aus.",
+      debatte: "Direkthandel gestoppt ja, Ceyhan/BTC ist trotzdem ein komplizierterer Sonderfall."
+    },
+    claim: "Die Behauptung lautet: Handel, Energie und Ölströme liefen trotz politischer Krisen einfach weiter.",
+    partial: "Der Kern stimmt historisch: Handel lief lange weiter und genau deshalb ist Punkt 3 ernster als bloße Meme-Rhetorik.",
+    counter: "Zu grob wird es bei der Gegenwart und bei BTC/Ceyhan: Ab April/Mai 2024 verschärfte Ankara den Kurs real, während Energie-Transitfragen multilateraler und komplizierter blieben.",
+    debate: "Die beste Linie ist: Handelsstopp ja, null Berührung in jeder Lieferkette nein, BTC nicht wie normalen Warenhandel behandeln.",
+    cta: "Mehr dazu auf Karte 3.",
+    page: "punkt3.html",
+    sources: [
+      { label: "Reuters 9. April 2024", href: "https://www.investing.com/news/economy/turkey-imposes-export-restrictions-on-israel-until-gaza-ceasefire-3370571" },
+      { label: "Reuters 2. Mai 2024", href: "https://www.investing.com/news/world-news/turkey-halts-all-trade-with-israel-cites-worsening-palestinian-situation-3415911" },
+      { label: "Karte 3", href: "punkt3.html" }
+    ]
+  },
+  punkt4: {
+    title: "Punkt 4 · MIT / Mossad",
+    angle: "Historische Kooperation ja, laufende Partnerschaft zu grob",
+    hook: {
+      sachlich: "Die 1990er waren reale MIT-Mossad-Kooperation, aber daraus folgt keine fortlaufende Partnerschaft bis heute.",
+      hart: "Alte Geheimdienstnähe aus den 1990ern ist kein Beweis für eine laufende Partnerschaft im Jahr 2024.",
+      debatte: "Historische Kooperation ja, heutige Dauerpartnerschaft öffentlich nicht belastbar."
+    },
+    claim: "Die Behauptung lautet: MIT und Mossad kooperierten weiterhin, minimal, aber real.",
+    partial: "Historische Kooperation ist belegt, und 2022 gab es eine punktuelle Sicherheitskoordination gegen einen iranischen Anschlagsplan.",
+    counter: "Das ersetzt aber keinen Nachweis einer strukturellen Gegenwarts-Partnerschaft; die sichtbarsten neueren Fälle sind 2024 wieder Gegenspionage und Festnahmen in der Türkei.",
+    debate: "Der starke Satz ist: 2022 Sonderkoordination ja, 2024 wieder Mossad-Ermittlungen - das ist keine saubere Dauerallianz.",
+    cta: "Mehr dazu auf Karte 4.",
+    page: "punkt4.html",
+    sources: [
+      { label: "AP 6. Januar 2024", href: "https://apnews.com/article/35227a4766895710b5b385cc496dca25" },
+      { label: "AP 2. Februar 2024", href: "https://apnews.com/article/434a32d720948b6fe690439aad20608b" },
+      { label: "Karte 4", href: "punkt4.html" }
+    ]
+  }
+};
+
+const FORMAT_LABELS = {
+  slides: "TikTok Slides",
+  carousel: "Instagram Carousel",
+  script: "Kurzvideo-Skript",
+  comment: "Kommentar-Antwort"
+};
+
+function buildSlides(point, tone, length, format) {
+  const base = [
+    { title: "Hook", text: point.hook[tone] },
+    { title: "Behauptung", text: point.claim },
+    { title: "Was daran teilweise stimmt", text: point.partial },
+    { title: "Was daran zu grob ist", text: point.counter },
+    { title: "Der eigentliche Konter", text: point.debate },
+    { title: "CTA", text: point.cta }
+  ];
+
+  if (length === "kurz") return base.slice(0, format === "script" ? 4 : 4);
+  if (length === "lang") return base.concat([
+    { title: "Quellenhinweis", text: "Keine Fantasie-These, sondern mit offiziellen Stellen, Agenturen und Fachquellen belegbar." }
+  ]);
+  return base;
+}
+
+function buildScript(point, tone, length) {
+  const scenes = [
+    { title: "Szene 1", text: point.hook[tone] },
+    { title: "Szene 2", text: point.claim },
+    { title: "Szene 3", text: point.partial },
+    { title: "Szene 4", text: point.counter },
+    { title: "Schluss", text: point.debate + " " + point.cta }
+  ];
+  if (length === "kurz") return scenes.slice(0, 4);
+  if (length === "lang") {
+    scenes.splice(4, 0, { title: "Einordnung", text: "Die robuste Form bleibt: nicht alles leugnen, sondern sauber zwischen historischem Ballast und aktueller Gegenwart trennen." });
+  }
+  return scenes;
+}
+
+function buildComment(point, tone, length) {
+  const first = tone === "hart"
+    ? point.hook[tone]
+    : point.debate;
+  const second = length === "kurz"
+    ? point.counter
+    : point.partial + " " + point.counter;
+  const third = "Quelle: " + point.sources[0].label + " / " + point.sources[1].label + ".";
+  return [
+    { title: "Kurzantwort", text: first },
+    { title: "Nachschub", text: second },
+    { title: "Quelle", text: third }
+  ];
+}
+
+function buildCaption(point, tone, format, length) {
+  const prefix = tone === "sachlich"
+    ? "Kurz und sauber:"
+    : tone === "hart"
+      ? "Der Punkt wird fast immer zu grob erzählt:"
+      : "Für Debatten reicht oft schon diese Linie:";
+  const middle = format === "comment"
+    ? point.debate
+    : point.partial + " " + point.counter;
+  const suffix = length === "lang"
+    ? " Wer mehr will, bekommt die volle Quellenkette auf " + point.page + "."
+    : " Mehr dazu auf " + point.page + ".";
+  return prefix + " " + point.hook[tone] + " " + middle + suffix;
+}
+
+function renderOutput() {
+  const topic = document.getElementById("topic").value;
+  const format = document.getElementById("format").value;
+  const tone = document.getElementById("tone").value;
+  const length = document.getElementById("length").value;
+  const point = POINTS[topic];
+
+  document.getElementById("metaTopic").textContent = point.title;
+  document.getElementById("metaFormat").textContent = FORMAT_LABELS[format];
+  document.getElementById("metaAngle").textContent = point.angle;
+  document.getElementById("hookText").textContent = point.hook[tone];
+
+  let blocks = [];
+  if (format === "slides" || format === "carousel") {
+    blocks = buildSlides(point, tone, length, format);
+  } else if (format === "script") {
+    blocks = buildScript(point, tone, length);
+  } else {
+    blocks = buildComment(point, tone, length);
+  }
+
+  const mainOutput = document.getElementById("mainOutput");
+  mainOutput.innerHTML = "";
+  blocks.forEach((block, index) => {
+    const div = document.createElement("div");
+    div.className = "list-item";
+    const title = document.createElement("strong");
+    title.textContent = (format === "slides" || format === "carousel") ? `Slide ${index + 1} · ${block.title}` : block.title;
+    const text = document.createElement("p");
+    text.textContent = block.text;
+    div.appendChild(title);
+    div.appendChild(text);
+    mainOutput.appendChild(div);
+  });
+
+  document.getElementById("captionText").textContent = buildCaption(point, tone, format, length);
+  document.getElementById("commentText").textContent = point.debate + " " + point.counter;
+
+  const sourceList = document.getElementById("sourceList");
+  sourceList.innerHTML = "";
+  point.sources.forEach((source) => {
+    const link = document.createElement("a");
+    link.className = "source-pill";
+    link.href = source.href;
+    link.target = source.href.startsWith("http") ? "_blank" : "_self";
+    if (source.href.startsWith("http")) {
+      link.rel = "noreferrer";
+    }
+    link.textContent = source.label;
+    sourceList.appendChild(link);
+  });
+
+  document.getElementById("sourceCopyText").textContent = point.sources.map((source) => `${source.label}: ${source.href}`).join("\n");
+}
+
+function extractCopyText(targetId) {
+  const target = document.getElementById(targetId);
+  if (!target) return "";
+  if (targetId === "mainOutput") {
+    return Array.from(target.querySelectorAll(".list-item")).map((item) => {
+      const title = item.querySelector("strong")?.textContent || "";
+      const text = item.querySelector("p")?.textContent || "";
+      return `${title}\n${text}`;
+    }).join("\n\n");
+  }
+  return (target.textContent || "").trim();
+}
+
+async function copyTarget(targetId) {
+  const text = extractCopyText(targetId);
+  if (!text) return;
+  await navigator.clipboard.writeText(text);
+}
+
+async function copyAll() {
+  const chunks = [
+    "HOOK\n" + extractCopyText("hookText"),
+    "POST\n" + extractCopyText("mainOutput"),
+    "CAPTION\n" + extractCopyText("captionText"),
+    "KOMMENTAR\n" + extractCopyText("commentText"),
+    "QUELLEN\n" + extractCopyText("sourceCopyText")
+  ];
+  await navigator.clipboard.writeText(chunks.join("\n\n"));
+}
+
+document.getElementById("generateBtn").addEventListener("click", renderOutput);
+document.getElementById("copyAllBtn").addEventListener("click", copyAll);
+document.querySelectorAll(".copy-btn").forEach((button) => {
+  button.addEventListener("click", () => copyTarget(button.dataset.copyTarget));
+});
+
+renderOutput();
+</script>
+</body>
+</html>

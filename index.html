@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nahost Faktencheck - Die ganze Wahrheit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0a0a0a;
+  --white: #fafafa;
+  --gray-100: #f4f4f4;
+  --gray-200: #e8e8e8;
+  --gray-400: #999;
+  --gray-600: #555;
+  --gray-800: #222;
+  --accent: #c0392b;
+  --accent-light: #fdf0ef;
+  --accent-mid: #e74c3c;
+  --green: #1a7a4a;
+  --green-light: #edf7f1;
+  --amber: #b7560a;
+  --amber-light: #fef6ee;
+  --blue: #1a5fa8;
+  --blue-light: #eef4fd;
+  --border: #e2e2e2;
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(250,250,250,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--black);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-logo span {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 6px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-600);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+
+.nav-links a:hover {
+  background: var(--gray-100);
+  color: var(--black);
+}
+
+.lang-switch {
+  display: flex;
+  gap: 4px;
+}
+
+.lang-btn {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  color: var(--gray-600);
+  transition: all 0.15s;
+}
+
+.lang-btn.active {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+
+.hero {
+  padding: 120px 24px 80px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+  border: 1px solid rgba(192,57,43,0.15);
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--black);
+  margin-bottom: 20px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero p {
+  font-size: 18px;
+  color: var(--gray-600);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  font-weight: 300;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--black);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--black);
+  transform: translateY(-1px);
+}
+
+.viral-section,
+.quickcheck,
+.topics,
+.method {
+  max-width: 900px;
+  margin: 0 auto 80px;
+  padding: 0 24px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.viral-card {
+  background: var(--gray-100);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.viral-image-frame {
+  margin: 0;
+  max-width: 420px;
+}
+
+.viral-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 18%;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+  background: var(--gray-200);
+}
+
+.viral-image-caption {
+  font-size: 12px;
+  color: var(--gray-600);
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.post-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-600);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 10px;
+}
+
+.viral-verdict h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.15;
+}
+
+.viral-verdict-intro {
+  font-size: 15px;
+  color: var(--gray-600);
+  margin-bottom: 20px;
+}
+
+.verdict-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.verdict-item {
+  display: block;
+  font-size: 15px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+}
+
+.verdict-item.false { background: rgba(192,57,43,0.06); color: var(--accent); border-color: rgba(192,57,43,0.1); }
+.verdict-item.partial { background: rgba(183,86,10,0.06); color: var(--amber); border-color: rgba(183,86,10,0.1); }
+.verdict-item.true { background: rgba(26,122,74,0.06); color: var(--green); border-color: rgba(26,122,74,0.1); }
+
+.verdict-copy strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.verdict-copy span {
+  display: block;
+  line-height: 1.45;
+}
+
+.quickcheck h2,
+.topics h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.quickcheck .subtitle,
+.topics .subtitle {
+  color: var(--gray-600);
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
+.quickcheck-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.quickcheck-table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gray-400);
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.quickcheck-table td {
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.quickcheck-table tr:last-child td {
+  border-bottom: none;
+}
+
+.quickcheck-date {
+  white-space: nowrap;
+  font-size: 12px;
+  color: var(--gray-600);
+  font-weight: 600;
+}
+
+.quickcheck-link {
+  color: var(--black);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.topics .subtitle {
+  margin-bottom: 32px;
+}
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.topic-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  text-decoration: none;
+  color: var(--black);
+  transition: all 0.2s;
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.topic-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--border);
+  transition: background 0.2s;
+}
+
+.topic-card:hover {
+  border-color: var(--black);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.topic-card:hover::before {
+  background: var(--accent);
+}
+
+.topic-number {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.topic-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.topic-card p {
+  font-size: 13px;
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.topic-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.tag-false { background: var(--accent-light); color: var(--accent); }
+.tag-partial { background: var(--amber-light); color: var(--amber); }
+.tag-true { background: var(--green-light); color: var(--green); }
+.tag-info { background: var(--blue-light); color: var(--blue); }
+
+.stats-bar {
+  background: var(--black);
+  color: var(--white);
+  padding: 40px 24px;
+  margin-bottom: 80px;
+}
+
+.stats-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+
+.stat-item .num {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--white);
+  display: block;
+}
+
+.stat-item .label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+}
+
+.method-card {
+  background: var(--gray-100);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 32px;
+}
+
+.method-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.method-points {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.method-point {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.method-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--white);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  font-weight: 700;
+}
+
+.method-point-text h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.method-point-text p {
+  font-size: 13px;
+  color: var(--gray-600);
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+footer p {
+  font-size: 13px;
+  color: var(--gray-400);
+  margin-bottom: 8px;
+}
+
+footer a {
+  color: var(--gray-600);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--black);
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up:nth-child(1) { animation-delay: 0.1s; }
+.fade-up:nth-child(2) { animation-delay: 0.2s; }
+.fade-up:nth-child(3) { animation-delay: 0.3s; }
+.fade-up:nth-child(4) { animation-delay: 0.4s; }
+.fade-up:nth-child(5) { animation-delay: 0.5s; }
+.fade-up:nth-child(6) { animation-delay: 0.6s; }
+
+@media (max-width: 700px) {
+  .viral-card { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .method-card { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .quickcheck-table th:nth-child(3),
+  .quickcheck-table td:nth-child(3) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Nahost<span>Fakten</span></a>
+  <ul class="nav-links">
+    <li><a href="punkt1.html">Karte 1</a></li>
+    <li><a href="punkt2.html">Karte 2</a></li>
+    <li><a href="punkt3.html">Karte 3</a></li>
+    <li><a href="punkt4.html">Karte 4</a></li>
+    <li><a href="debatten-guide.html">Guide</a></li>
+    <li><a href="zusatzinfos.html">Zusatzinfos</a></li>
+  </ul>
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLang('de', this)">DE</button>
+    <button class="lang-btn" onclick="setLang('tr', this)">TR</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">Türkei-Fokus · 4 Faktenchecks</div>
+  <h1 class="fade-up">Was die Türkei<br>tatsächlich <em>getan</em> hat</h1>
+  <p class="fade-up">Diese Website ist kein allgemeiner Nahost-Blog, sondern ein Faktencheck für Türken, die ständig mit pauschalen Israel-Vergleichen konfrontiert werden. Der Kern bleibt das virale Sharepic mit seinen vier Behauptungen. Der Maßstab ist aber: Welche Schritte hat Ankara real unternommen, und wo sind die Vergleiche zu grob, zu alt oder schlicht falsch.</p>
+  <div class="hero-actions fade-up">
+    <a href="#hauptlinie" class="btn-primary">Zur Hauptlinie &rarr;</a>
+    <a href="debatten-guide.html" class="btn-secondary">Zum Guide</a>
+  </div>
+</section>
+
+<section class="viral-section">
+  <p class="section-label">Der Ausgangspost</p>
+  <div class="viral-card">
+    <figure class="viral-image-frame">
+      <img class="viral-image" src="EE668346-70E0-4313-B492-AC71E4A37774.jpeg" alt="Virales Sharepic mit vier Behauptungen über Türkei, Kurden und Israel">
+      <figcaption class="viral-image-caption">Originalbild aus dem gezeigten Post. Die Website zerlegt die vier Behauptungen darin einzeln.</figcaption>
+      <div class="post-meta">
+        <span class="post-pill">@saffouri</span>
+        <span class="post-pill">Ausgangspost</span>
+      </div>
+    </figure>
+    <div class="viral-verdict">
+      <h3>Die vier Urteile auf einen Blick</h3>
+      <p class="viral-verdict-intro">Der Post wirkt kompakt und eindeutig. Die Quellenlage ist es nicht. Genau deshalb trennt die Website bei jeder Karte zwischen historischem Kern, falscher Datierung und überzogener Gegenwartsbehauptung.</p>
+      <div class="verdict-items">
+        <div class="verdict-item false">
+          <div class="verdict-copy"><strong>Karte 1</strong><span>1949 war keine Militärallianz.</span></div>
+        </div>
+        <div class="verdict-item partial">
+          <div class="verdict-copy"><strong>Karte 2</strong><span>Historisch real, heute zu grob erzählt.</span></div>
+        </div>
+        <div class="verdict-item partial">
+          <div class="verdict-copy"><strong>Karte 3</strong><span>Im Kern richtig, bei Ceyhan/BTC vereinfacht.</span></div>
+        </div>
+        <div class="verdict-item false">
+          <div class="verdict-copy"><strong>Karte 4</strong><span>Öffentlich schwach belegt, eher Bruch als Nähe.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topics" id="hauptlinie">
+  <p class="section-label">Die Hauptlinie</p>
+  <h2>Punkt 1 bis 4 plus Guide</h2>
+  <p class="subtitle">Mehr braucht die Hauptnavigation nicht. Alles andere liegt bewusst im Zusatzbereich.</p>
+
+  <div class="topics-grid">
+    <a href="punkt1.html" class="topic-card fade-up">
+      <p class="topic-number">Karte 01</p>
+      <h3>Militärbündnisse seit 1949</h3>
+      <p>Die Timeline des alten Türkei-Israel-Arguments und warum das Sharepic fast fünf Jahrzehnte zu früh ansetzt.</p>
+      <span class="topic-tag tag-false">Falsch datiert</span>
+    </a>
+
+    <a href="punkt2.html" class="topic-card fade-up">
+      <p class="topic-number">Karte 02</p>
+      <h3>Rüstung</h3>
+      <p>Welche israelischen Systeme real waren, was aus den 1990ern und 2000ern stammt und was eben nicht neu belegt ist.</p>
+      <span class="topic-tag tag-partial">Alt, nicht neu</span>
+    </a>
+
+    <a href="punkt3.html" class="topic-card fade-up">
+      <p class="topic-number">Karte 03</p>
+      <h3>Handel & Energie</h3>
+      <p>Der stärkste Teil des Sharepics: wo der Kern stimmt, wo Ceyhan/BTC zu simpel erzählt werden und wie Ankara ab April/Mai 2024 den Kurs verschärfte.</p>
+      <span class="topic-tag tag-partial">Kern stimmt</span>
+    </a>
+
+    <a href="punkt4.html" class="topic-card fade-up">
+      <p class="topic-number">Karte 04</p>
+      <h3>MIT & Mossad</h3>
+      <p>Öffentlich sichtbare Bruchlinien, umstrittene Berichte und die Frage, ob diplomatische Normalisierung automatisch auch eine belegte Geheimdienstnähe bedeutet.</p>
+      <span class="topic-tag tag-false">Schwach belegt</span>
+    </a>
+
+    <a href="debatten-guide.html" class="topic-card fade-up">
+      <p class="topic-number">Guide</p>
+      <h3>Debatten-Guide</h3>
+      <p>Die kompakteste Version der Seite: sichere Formulierungen, riskante Behauptungen und die sauberste Linie für Diskussionen.</p>
+      <span class="topic-tag tag-info">Praktischer Leitfaden</span>
+    </a>
+  </div>
+</section>
+
+<section class="topics">
+  <p class="section-label">Zusatzbereich</p>
+  <h2>Weitere Seiten liegen gesammelt bei den Zusatzinfos</h2>
+  <p class="subtitle">Die Hauptseite bleibt bewusst knapp. Alles über Punkt 1 bis 4 und den Guide hinaus liegt auf einer separaten Sammelseite.</p>
+
+  <div class="topics-grid">
+    <a href="zusatzinfos.html" class="topic-card fade-up">
+      <p class="topic-number">Zusatzinfos</p>
+      <h3>Alle Nebenstränge gesammelt</h3>
+      <p>Türkei positiv, ICC/ICJ, arabische Staaten, Siedlungen, Nakba, Smotrich/Ben-Gvir, Doppelmoral-Rahmen, türkisches Kurzformat und Archivseiten liegen jetzt gebündelt an einem Ort.</p>
+      <span class="topic-tag tag-partial">Hintergrund & Konter</span>
+    </a>
+  </div>
+</section>
+
+<section class="method">
+  <div class="method-card">
+    <div>
+      <p class="section-label">Methodik</p>
+      <h3>Wie wir arbeiten</h3>
+    </div>
+    <div class="method-points">
+      <div class="method-point">
+        <div class="method-icon">Q</div>
+        <div class="method-point-text">
+          <h4>Belastbare Quellen</h4>
+          <p>Offizielle Stellen, Nachrichtenagenturen, Fachanalysen und Primärquellen. Wo etwas nur behauptet wird, steht das auch so da.</p>
+        </div>
+      </div>
+      <div class="method-point">
+        <div class="method-icon">T</div>
+        <div class="method-point-text">
+          <h4>Saubere Trennung</h4>
+          <p>Behauptung, Kontext und Bewertung werden getrennt. So sieht man, was belegt ist und was nur Deutung bleibt.</p>
+        </div>
+      </div>
+      <div class="method-point">
+        <div class="method-icon">L</div>
+        <div class="method-point-text">
+          <h4>Klickbare Belege</h4>
+          <p>Die wichtigsten Quellen sind direkt verlinkt, damit jede zentrale Aussage nachprüfbar bleibt.</p>
+        </div>
+      </div>
+      <div class="method-point">
+        <div class="method-icon">G</div>
+        <div class="method-point-text">
+          <h4>Debatten-Guide</h4>
+          <p>Eine kompakte Hilfsseite bündelt sichere Formulierungen, riskante Behauptungen und die stärksten Konter. <a class="quickcheck-link" href="debatten-guide.html">Zum Guide</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p>NahostFakten.de · Priorisierte Analyse zu Palästina, Besatzung und regionaler Politik</p>
+    <p>Quellen: ICC · ICJ · UN · Reuters · AP · GOV.UK · TİKA · MFA Türkiye · Peace Now · Britannica · weitere Primär- und Fachquellen</p>
+    <p><a class="quickcheck-link" href="zusatzinfos.html">Zu den Zusatzinfos</a></p>
+  </div>
+</footer>
+
+<script>
+function setLang(lang, button) {
+  document.querySelectorAll('.lang-btn').forEach((btn) => btn.classList.remove('active'));
+  if (button) {
+    button.classList.add('active');
+  }
+  if (lang === 'de') {
+    window.location.href = 'index.html';
+    return;
+  }
+  if (lang === 'tr') {
+    window.location.href = 'turkce-ozet.html';
+  }
+}
+</script>
+</body>
+</html>

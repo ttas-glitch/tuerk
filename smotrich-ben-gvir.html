@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smotrich & Ben-Gvir – NahostFakten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--white:#fafafa;--gray-100:#f4f4f4;--gray-400:#999;--gray-600:#555;--border:#e2e2e2;--accent:#c0392b;--accent-light:#fdf0ef;--amber:#b7560a;--amber-light:#fef6ee;--green:#1a7a4a;--green-light:#edf7f1;--radius:12px;--radius-lg:20px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Sora',sans-serif;background:var(--white);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,250,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo,.nav-back{color:var(--black);text-decoration:none}.nav-logo{font-size:15px;font-weight:700}.nav-logo span{color:var(--accent)}.nav-back{font-size:13px;color:var(--gray-600);padding:6px 12px;border:1px solid var(--border);border-radius:8px}.nav-back:hover{border-color:var(--black);color:var(--black)}
+.page-hero{padding:100px 24px 56px;max-width:840px;margin:0 auto;}
+.breadcrumb{font-size:12px;color:var(--gray-400);margin-bottom:16px}.breadcrumb a{color:inherit;text-decoration:none}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:20px;background:var(--accent-light);color:var(--accent);border:1px solid rgba(192,57,43,.18)}
+h1{font-family:'Fraunces',serif;font-size:clamp(30px,5vw,50px);line-height:1.1;margin-bottom:16px}
+.claim{background:var(--gray-100);border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 10px 10px 0;font-size:15px;color:var(--gray-600);margin-bottom:18px}
+.summary{font-size:17px;color:var(--gray-600);font-weight:300}
+.content{max-width:840px;margin:0 auto;padding:0 24px 80px}
+hr{border:none;border-top:1px solid var(--border);margin:42px 0}
+.section-h2{font-family:'Fraunces',serif;font-size:26px;margin-bottom:10px}
+.section-sub{font-size:14px;color:var(--gray-600);margin-bottom:24px}
+.fact-box{border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:16px}
+.fact-box h3{font-size:18px;margin-bottom:10px}
+.fact-box p{font-size:14px;color:var(--gray-600);margin-bottom:8px}
+.source{font-size:11px;color:var(--gray-400)}
+.fact-tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-top:8px;background:var(--amber-light);color:var(--amber)}
+.tag-red{background:var(--accent-light);color:var(--accent)}
+.tag-green{background:var(--green-light);color:var(--green)}
+.note{background:var(--gray-100);border-radius:var(--radius-lg);padding:26px;margin:30px 0}
+.note h3{font-size:18px;margin-bottom:10px}
+.note p{font-size:14px;color:var(--gray-600)}
+.verdict-final{background:var(--black);color:var(--white);border-radius:var(--radius-lg);padding:30px;margin:42px 0}
+.verdict-final h3{font-family:'Fraunces',serif;font-size:22px;margin-bottom:12px}
+.verdict-final p{font-size:15px;color:rgba(255,255,255,.75)}
+.sources-box{border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.sources-box h4{font-size:13px;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
+.sources-list{display:flex;flex-wrap:wrap;gap:8px}
+.source-pill{font-size:12px;background:var(--gray-100);padding:4px 12px;border-radius:20px;color:var(--gray-600);text-decoration:none}
+.source-link{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.source-pill:hover,.source-link:hover{color:var(--black)}
+.nav-pages{display:flex;gap:12px;margin-top:44px}
+.nav-page-btn{flex:1;display:block;padding:16px;border:1px solid var(--border);border-radius:var(--radius);text-decoration:none;color:var(--black)}
+.nav-page-btn .dir{font-size:11px;color:var(--gray-400);margin-bottom:4px}.nav-page-btn .ptitle{font-size:14px;font-weight:600}.nav-page-btn.next{text-align:right}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Nahost<span>Fakten</span></a>
+  <a class="nav-back" href="index.html">← Zurück</a>
+</nav>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="index.html">NahostFakten</a> · Priorität 01</p>
+  <div class="badge">Aktuellster Machtfaktor</div>
+  <h1>Smotrich & Ben-Gvir</h1>
+  <div class="claim">Der stärkste Konter zum ursprünglichen Sharepic ist nicht historische Türkei-Israel-Kooperation, sondern die aktuelle Politik im israelischen Kabinett.</div>
+  <p class="summary">Wer Palästina heute unter Druck setzt, sitzt nicht in einer 1990er Timeline, sondern in der Gegenwart: mit Annexionsplänen, Siedlungsausbau, Vertreibungsrhetorik und gezielten Provokationen.</p>
+</div>
+
+<div class="content">
+  <h2 class="section-h2">Warum dieses Kapitel zuerst kommt</h2>
+  <p class="section-sub">Das Originalbild lenkt in die Vergangenheit. Diese Seite zieht den Blick in die Gegenwart.</p>
+
+  <div class="fact-box">
+    <h3>Fakt 1: Smotrich spricht offen über Annexion</h3>
+    <p>Bezalel Smotrich sagte im September 2025, dass Karten für eine Annexion von Westbank-Gebieten ausgearbeitet würden. Reuters berichtete, sein Modell ziele auf „maximales Territorium“ bei „minimaler palästinensischer Bevölkerung“.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://www.investing.com/news/world-news/israels-smotrich-says-he-is-drawing-up-west-bank-annexation-maps-4221744" target="_blank" rel="noreferrer">Reuters, 3. September 2025</a></p>
+    <span class="fact-tag tag-red">Offene Annexionspolitik</span>
+  </div>
+
+  <div class="fact-box">
+    <h3>Fakt 2: Fünf westliche Staaten sanktionierten beide Minister</h3>
+    <p>Am 10. Juni 2025 verhängten Großbritannien, Australien, Kanada, Neuseeland und Norwegen Sanktionen gegen Itamar Ben-Gvir und Bezalel Smotrich. Die Begründung: wiederholte Anstiftung zu Gewalt gegen Palästinenser im Westjordanland.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://www.gov.uk/government/news/uk-and-partners-unite-to-sanction-ministers-inciting-west-bank-violence" target="_blank" rel="noreferrer">GOV.UK, 10. Juni 2025</a> · <a class="source-link" href="https://www.canada.ca/en/global-affairs/news/2025/06/joint-statement-by-the-foreign-ministers-of-australia-canada-new-zealand-norway-and-the-united-kingdom-on-measures-targeting-itamar-ben-gvir-and-be.html" target="_blank" rel="noreferrer">Kanada – gemeinsame Erklärung</a></p>
+    <span class="fact-tag tag-red">Keine Randfiguren mehr</span>
+  </div>
+
+  <div class="fact-box">
+    <h3>Fakt 3: Ben-Gvir verschärft bewusst religiöse und politische Spannungen</h3>
+    <p>Im August 2025 erklärte Ben-Gvir nach einem Besuch auf dem Al-Aqsa-Gelände, er habe dort gebetet. Damit stellte er das fragile Status-quo-Regime an einem der sensibelsten Orte der Region erneut offen infrage.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://www.investing.com/news/world-news/israels-bengvir-says-he-prayed-at-alaqsa-mosque-compound-4171655" target="_blank" rel="noreferrer">Reuters, 3. August 2025</a></p>
+    <span class="fact-tag">Gezielte Eskalation</span>
+  </div>
+
+  <div class="note">
+    <h3>Der eigentliche Gegenpunkt zum Sharepic</h3>
+    <p>Wer heute über Palästina spricht, muss die aktuelle Machtarchitektur benennen: Siedlungsminister, Annexionsagenda, Gewaltanreize und Kabinettsschutz. Eine alte Türkei-Israel-Geschichte wirkt daneben wie Ablenkung vom gegenwärtigen Zentrum der Bedrohung.</p>
+  </div>
+
+  <div class="verdict-final">
+    <h3>Fazit</h3>
+    <p>Wenn du das Originalbild kontern willst, ist das hier der stärkste Einstieg: Nicht Ankara von gestern, sondern die israelische Regierungsachse von heute verschiebt die Lage vor Ort. Smotrich und Ben-Gvir sind deshalb kein Nebenthema, sondern der aktuelle Kern des Problems.</p>
+  </div>
+
+  <div class="sources-box">
+    <h4>Verwendete Quellen</h4>
+    <div class="sources-list">
+      <a class="source-pill" href="https://www.investing.com/news/world-news/israels-smotrich-says-he-is-drawing-up-west-bank-annexation-maps-4221744" target="_blank" rel="noreferrer">Reuters – Smotrich / Annexion</a>
+      <a class="source-pill" href="https://www.gov.uk/government/news/uk-and-partners-unite-to-sanction-ministers-inciting-west-bank-violence" target="_blank" rel="noreferrer">GOV.UK – Sanktionen</a>
+      <a class="source-pill" href="https://www.canada.ca/en/global-affairs/news/2025/06/joint-statement-by-the-foreign-ministers-of-australia-canada-new-zealand-norway-and-the-united-kingdom-on-measures-targeting-itamar-ben-gvir-and-be.html" target="_blank" rel="noreferrer">Kanada – gemeinsame Erklärung</a>
+      <a class="source-pill" href="https://www.investing.com/news/world-news/israels-bengvir-says-he-prayed-at-alaqsa-mosque-compound-4171655" target="_blank" rel="noreferrer">Reuters – Ben-Gvir / Al-Aqsa</a>
+    </div>
+  </div>
+
+  <div class="nav-pages">
+    <a href="index.html" class="nav-page-btn"><p class="dir">← Zurück</p><p class="ptitle">Startseite</p></a>
+    <a href="siedlungen.html" class="nav-page-btn next"><p class="dir">Weiter →</p><p class="ptitle">Siedlungspolitik</p></a>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zusatzinfos - NahostFakten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--white:#fafafa;--gray-100:#f4f4f4;--gray-400:#999;--gray-600:#555;--border:#e2e2e2;--accent:#c0392b;--accent-light:#fdf0ef;--blue:#1a5fa8;--blue-light:#eef4fd;--green:#1a7a4a;--green-light:#edf7f1;--amber:#b7560a;--amber-light:#fef6ee;--radius:12px;--radius-lg:20px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Sora',sans-serif;background:var(--white);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,250,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-size:15px;font-weight:700;color:var(--black);text-decoration:none;}
+.nav-logo span{color:var(--accent);}
+.nav-back{font-size:13px;color:var(--gray-600);text-decoration:none;padding:6px 12px;border-radius:8px;border:1px solid var(--border);}
+.nav-back:hover{border-color:var(--black);color:var(--black);}
+.page-hero{padding:100px 24px 56px;max-width:920px;margin:0 auto;}
+.breadcrumb{font-size:12px;color:var(--gray-400);margin-bottom:16px;}
+.breadcrumb a{color:inherit;text-decoration:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:20px;background:var(--blue-light);color:var(--blue);border:1px solid rgba(26,95,168,0.18);}
+h1{font-family:'Fraunces',serif;font-size:clamp(30px,5vw,52px);line-height:1.1;margin-bottom:16px;}
+.claim{background:var(--gray-100);border-left:4px solid var(--blue);padding:14px 18px;border-radius:0 10px 10px 0;font-size:15px;color:var(--gray-600);margin-bottom:18px;}
+.summary{font-size:17px;color:var(--gray-600);font-weight:300;}
+.content{max-width:920px;margin:0 auto;padding:0 24px 80px;}
+.section{margin-bottom:56px;}
+.section-label{font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;}
+.section h2{font-family:'Fraunces',serif;font-size:26px;margin-bottom:10px;}
+.section p.subtitle{font-size:14px;color:var(--gray-600);margin-bottom:22px;}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+.card{display:block;text-decoration:none;color:var(--black);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;background:var(--white);transition:all 0.18s ease;}
+.card:hover{border-color:var(--black);transform:translateY(-2px);}
+.card .number{font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;}
+.card h3{font-size:18px;margin-bottom:8px;}
+.card p{font-size:14px;color:var(--gray-600);margin-bottom:10px;}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;}
+.tag-green{background:var(--green-light);color:var(--green);}
+.tag-blue{background:var(--blue-light);color:var(--blue);}
+.tag-amber{background:var(--amber-light);color:var(--amber);}
+.tag-red{background:var(--accent-light);color:var(--accent);}
+.note{background:var(--gray-100);border-radius:var(--radius-lg);padding:24px;margin-bottom:36px;}
+.note h3{font-size:18px;margin-bottom:10px;}
+.note p{font-size:14px;color:var(--gray-600);}
+.todo-list{display:grid;gap:10px;margin-top:14px;}
+.todo-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px 16px;}
+.todo-item strong{display:block;font-size:14px;margin-bottom:4px;}
+.todo-item p{font-size:13px;color:var(--gray-600);margin:0;}
+@media(max-width:760px){.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Nahost<span>Fakten</span></a>
+  <a class="nav-back" href="index.html">&larr; Zurück</a>
+</nav>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="index.html">NahostFakten</a> · Zusatzinfos</p>
+  <div class="badge">Nicht Teil der Hauptlinie</div>
+  <h1>Zusatzinfos</h1>
+  <div class="claim">Hier liegen alle Seiten, die den Kern ergänzen, aber nicht mehr Teil der Hauptnavigation sind. Die Hauptlinie bleibt: Punkt 1 bis 4 plus Debatten-Guide.</div>
+  <p class="summary">So bleibt die Startseite klar, während Hintergrund, Konter, Recht, Vergleichsrahmen und Archivseiten weiterhin zugänglich bleiben.</p>
+</div>
+
+<div class="content">
+  <div class="note">
+    <h3>Wie du diese Seiten nutzen solltest</h3>
+    <p>Erst die vier Karten und den Guide. Danach erst Zusatzinfos. So bleibt die Argumentation fokussiert und du verzettelst dich nicht in Nebensträngen.</p>
+  </div>
+
+  <div class="note">
+    <h3>Offene To-dos für Zusatzinfos</h3>
+    <p>Diese Themen sind vorgemerkt, aber bewusst noch nicht Teil der aktiven Seitenstruktur.</p>
+    <div class="todo-list">
+      <div class="todo-item">
+        <strong>Staat vs. Volk vs. Sprache</strong>
+        <p>Die Behauptung "Türkei gibt es erst seit 100 Jahren" als Kategorienfehler sauber zerlegen.</p>
+      </div>
+      <div class="todo-item">
+        <strong>Kurden, PKK, Ethnie, Staat</strong>
+        <p>Saubere Trennung zwischen ethnischer Gruppe, bewaffneter Organisation und staatlicher Ebene.</p>
+      </div>
+      <div class="todo-item">
+        <strong>DNA-Mythos defensiv behandeln</strong>
+        <p>Abwertende Sprüche wie "Türken haben keine DNA" oder "sind Mongolen" nicht emotional, sondern methodisch zerlegen.</p>
+      </div>
+      <div class="todo-item">
+        <strong>Türkische Geschichte in Anatolien kurz und belastbar</strong>
+        <p>Migration, Sprache, Reichsgeschichte und Republik ohne nationalistisches Overclaiming zusammenfassen.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <p class="section-label">Werkzeug</p>
+    <h2>Hilfen zum Veröffentlichen</h2>
+    <p class="subtitle">Nicht neue Recherche, sondern saubere Ausgabe aus deinen stabilen Punkten.</p>
+    <div class="grid">
+      <a href="post-tool.html" class="card">
+        <p class="number">Tool 01</p>
+        <h3>Post-Tool</h3>
+        <p>Erstellt Hooks, Slides, Captions und Kommentar-Antworten aus Punkt 1 bis 4.</p>
+        <span class="tag tag-green">Generator</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Zusatzkonter</p>
+    <h2>Türkei, Recht und regionaler Rahmen</h2>
+    <p class="subtitle">Diese Seiten stützen deine Linie, wenn nach Punkt 1 bis 4 weitere Einordnung nötig ist.</p>
+    <div class="grid">
+      <a href="turkei-palaestina.html" class="card">
+        <p class="number">Zusatz 01</p>
+        <h3>Türkei positiv</h3>
+        <p>Dokumentierte Schritte der Türkei: Handel, Diplomatie, ICJ-Intervention, Hilfe und Druckmittel.</p>
+        <span class="tag tag-green">Dokumentierte Maßnahmen</span>
+      </a>
+      <a href="icc-icj.html" class="card">
+        <p class="number">Zusatz 02</p>
+        <h3>ICC / ICJ</h3>
+        <p>Rechtlicher Rahmen, Haftbefehl, Durchsetzungslücke und internationale Maßstäbe.</p>
+        <span class="tag tag-blue">Rechtlicher Rahmen</span>
+      </a>
+      <a href="arabische-staaten.html" class="card">
+        <p class="number">Zusatz 03</p>
+        <h3>Arabische Staaten & Palästina</h3>
+        <p>Vergleichsrahmen für Doppelmoral, regionale Interessen und selektive Empörung.</p>
+        <span class="tag tag-amber">Vergleichsrahmen</span>
+      </a>
+      <a href="doppelmoral.html" class="card">
+        <p class="number">Zusatz 04</p>
+        <h3>Doppelmoral-Rahmen</h3>
+        <p>Weitere Akteure unter demselben Maßstab wie beim viralen Bild.</p>
+        <span class="tag tag-amber">Hintergrund</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Weitere Themen</p>
+    <h2>Vertiefung und Einordnung</h2>
+    <p class="subtitle">Diese Seiten liefern mehr Kontext, sind aber bewusst aus der Hauptroute herausgenommen.</p>
+    <div class="grid">
+      <a href="smotrich-ben-gvir.html" class="card">
+        <p class="number">Vertiefung 01</p>
+        <h3>Smotrich & Ben-Gvir</h3>
+        <p>Aktuelle israelische Regierungsfiguren, Eskalationslinien und politische Einordnung.</p>
+        <span class="tag tag-red">Aktuelle Politik</span>
+      </a>
+      <a href="siedlungen.html" class="card">
+        <p class="number">Vertiefung 02</p>
+        <h3>Siedlungspolitik</h3>
+        <p>Zahlen, Tempo, ICJ-Rahmen und warum Landnahme das Strukturthema bleibt.</p>
+        <span class="tag tag-red">Strukturthema</span>
+      </a>
+      <a href="nakba.html" class="card">
+        <p class="number">Vertiefung 03</p>
+        <h3>Nakba</h3>
+        <p>1948 als historischer Ausgangspunkt: Vertreibung, Flucht und das offene Flüchtlingsproblem.</p>
+        <span class="tag tag-red">Historischer Rahmen</span>
+      </a>
+      <a href="turkce-ozet.html" class="card">
+        <p class="number">Vertiefung 04</p>
+        <h3>Türkçe Özet</h3>
+        <p>Kurzes türkisches Format für schnelle Weitergabe oder kompakten Überblick.</p>
+        <span class="tag tag-blue">Kurzformat</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Archiv</p>
+    <h2>Bewusst zurückgenommen</h2>
+    <p class="subtitle">Diese Seite ist nicht mehr Teil der aktiven Argumentationslinie.</p>
+    <div class="grid">
+      <a href="hamas.html" class="card">
+        <p class="number">Archiv 01</p>
+        <h3>Hamas</h3>
+        <p>Archivierter Themenblock, bewusst aus der Hauptdebatte herausgenommen.</p>
+        <span class="tag tag-amber">Archiviert</span>
+      </a>
+    </div>
+  </section>
+</div>
+</body>
+</html>

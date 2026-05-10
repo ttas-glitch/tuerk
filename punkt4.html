@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Punkt 4: MIT & Mossad - NahostFakten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--white:#fafafa;--gray-100:#f4f4f4;--gray-400:#999;--gray-600:#555;--border:#e2e2e2;--accent:#c0392b;--accent-light:#fdf0ef;--green:#1a7a4a;--green-light:#edf7f1;--amber:#b7560a;--amber-light:#fef6ee;--blue:#1a5fa8;--blue-light:#eef4fd;--radius:12px;--radius-lg:20px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Sora',sans-serif;background:var(--white);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,250,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-size:15px;font-weight:700;color:var(--black);text-decoration:none;}
+.nav-logo span{color:var(--accent);}
+.nav-back{font-size:13px;color:var(--gray-600);text-decoration:none;padding:6px 12px;border-radius:8px;border:1px solid var(--border);}
+.nav-back:hover{border-color:var(--black);color:var(--black);}
+.page-hero{padding:100px 24px 60px;max-width:800px;margin:0 auto;}
+.breadcrumb{font-size:12px;color:var(--gray-400);margin-bottom:16px;}
+.breadcrumb a{color:var(--gray-400);text-decoration:none;}
+.verdict-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:20px;background:var(--amber-light);color:var(--amber);border:1px solid rgba(183,86,10,0.2);}
+.page-hero h1{font-family:'Fraunces',serif;font-size:clamp(28px,5vw,48px);font-weight:700;line-height:1.15;margin-bottom:16px;}
+.claim{background:var(--gray-100);border-left:4px solid var(--amber);padding:14px 20px;border-radius:0 10px 10px 0;font-size:15px;color:var(--gray-600);font-style:italic;margin-bottom:20px;}
+.summary{font-size:17px;color:var(--gray-600);font-weight:300;}
+.content{max-width:800px;margin:0 auto;padding:0 24px 80px;}
+hr{border:none;border-top:1px solid var(--border);margin:48px 0;}
+.section-h2{font-family:'Fraunces',serif;font-size:26px;font-weight:700;margin-bottom:8px;}
+.section-sub{font-size:14px;color:var(--gray-600);margin-bottom:28px;}
+.signal-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0;}
+.signal-card{background:var(--gray-100);border-radius:var(--radius);padding:16px;text-align:center;}
+.signal-card .year{font-size:12px;font-weight:700;color:var(--gray-400);margin-bottom:6px;}
+.signal-card .num{font-family:'Fraunces',serif;font-size:24px;font-weight:700;color:var(--black);}
+.signal-card .lbl{font-size:11px;color:var(--gray-600);margin-top:4px;line-height:1.4;}
+.signal-card.highlight{background:var(--accent-light);border:1px solid rgba(192,57,43,0.15);}
+.signal-card.highlight .num,.signal-card.highlight .year,.signal-card.highlight .lbl{color:var(--accent);}
+.timeline{position:relative;padding-left:32px;margin:8px 0 44px;}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border);}
+.tl-item{position:relative;padding-bottom:24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-32px;top:4px;width:16px;height:16px;border-radius:50%;border:2px solid var(--white);background:var(--gray-400);box-shadow:0 0 0 2px var(--gray-400);}
+.tl-dot.green{background:var(--green);box-shadow:0 0 0 2px var(--green);}
+.tl-dot.amber{background:var(--amber);box-shadow:0 0 0 2px var(--amber);}
+.tl-dot.red{background:var(--accent);box-shadow:0 0 0 2px var(--accent);}
+.tl-year{font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;}
+.tl-title{font-size:17px;font-weight:700;margin-bottom:8px;}
+.tl-text{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:8px;}
+.tl-source{font-size:11px;color:var(--gray-400);}
+.fact-box{border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:16px;}
+.fact-box h3{font-size:17px;font-weight:700;margin-bottom:10px;}
+.fact-box p{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:8px;}
+.fact-box .source{font-size:11px;color:var(--gray-400);}
+.fact-tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-top:8px;}
+.tag-true{background:var(--green-light);color:var(--green);}
+.tag-partial{background:var(--amber-light);color:var(--amber);}
+.tag-caution{background:var(--blue-light);color:var(--blue);}
+.hebel-box{background:var(--gray-100);border-radius:var(--radius-lg);padding:28px;margin:32px 0;}
+.hebel-label{font-size:11px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.hebel-label::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--amber);}
+.hebel-box h3{font-size:17px;font-weight:700;margin-bottom:10px;}
+.hebel-box p{font-size:14px;color:var(--gray-600);line-height:1.7;}
+.verdict-final{background:var(--black);color:var(--white);border-radius:var(--radius-lg);padding:32px;margin:48px 0;}
+.verdict-final h3{font-family:'Fraunces',serif;font-size:22px;margin-bottom:12px;}
+.verdict-final p{font-size:15px;color:rgba(255,255,255,0.76);line-height:1.7;}
+.sources-box{border:1px solid var(--border);border-radius:var(--radius);padding:20px;}
+.sources-box h4{font-size:13px;font-weight:700;margin-bottom:12px;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.05em;}
+.sources-list{display:flex;flex-wrap:wrap;gap:8px;}
+.source-pill{font-size:12px;background:var(--gray-100);padding:4px 12px;border-radius:20px;color:var(--gray-600);}
+.source-link{color:inherit;text-decoration:underline;text-underline-offset:2px;}
+a.source-pill{text-decoration:none;display:inline-block;}
+a.source-pill:hover,.source-link:hover{color:var(--black);}
+.nav-pages{display:flex;gap:12px;margin-top:48px;}
+.nav-page-btn{flex:1;display:block;padding:16px;border-radius:var(--radius);border:1px solid var(--border);text-decoration:none;color:var(--black);transition:all 0.2s;}
+.nav-page-btn:hover{border-color:var(--black);}
+.nav-page-btn .dir{font-size:11px;color:var(--gray-400);margin-bottom:4px;}
+.nav-page-btn .ptitle{font-size:14px;font-weight:600;}
+.nav-page-btn.next{text-align:right;}
+@media(max-width:600px){.signal-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Nahost<span>Fakten</span></a>
+  <a class="nav-back" href="index.html">&larr; Zurück</a>
+</nav>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="index.html">NahostFakten</a> · Punkt 04</p>
+  <div class="verdict-badge">Historisch real, als laufende Gegenwartsbehauptung zu grob</div>
+  <h1>"MIT & Mossad kooperieren weiterhin - minimal, aber real"</h1>
+  <div class="claim">"Geheimdienstkontakte - MIT & Mossad kooperieren weiterhin - minimal, aber real"</div>
+  <p class="summary">Der sauberste Konter ist hier nicht Totalverneinung. Historische MIT-Mossad-Kooperation in den 1990ern ist belegt. Für eine fortlaufende Partnerschaft seit 2010 gibt es öffentlich aber keine belastbare Belegkette. Sichtbar sind eher Bruch, punktuelle Sonderkoordination und später wieder Gegenspionagefälle.</p>
+</div>
+
+<div class="content">
+  <div class="signal-row">
+    <div class="signal-card">
+      <p class="year">1990er</p>
+      <p class="num">Strategische Kooperation</p>
+      <p class="lbl">militärisch und nachrichtendienstlich dokumentiert</p>
+    </div>
+    <div class="signal-card">
+      <p class="year">23.06.2022</p>
+      <p class="num">Iran-Plot</p>
+      <p class="lbl">punktuelle Sicherheitskoordination statt Bündnisbeweis</p>
+    </div>
+    <div class="signal-card highlight">
+      <p class="year">Jan-Feb 2024</p>
+      <p class="num">34 + 7</p>
+      <p class="lbl">neue Mossad-Ermittlungen und Festnahmen in der Türkei</p>
+    </div>
+  </div>
+
+  <h2 class="section-h2">Der Zeitstrahl</h2>
+  <p class="section-sub">So wird Punkt 4 als Verlauf lesbar: echte Nähe, späterer Bruch, begrenzte Sonderkoordination, dann wieder Gegenspionage.</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot green"></div>
+      <p class="tl-year">1990er</p>
+      <h3 class="tl-title">Hochphase der strategischen Partnerschaft</h3>
+      <p class="tl-text">In den 1990ern erreichten die türkisch-israelischen Beziehungen ihre sicherheits- und militärpolitische Hochphase. Genau in diese Periode fällt die belastbar belegte MIT-Mossad-Nähe.</p>
+      <p class="tl-source">Quelle: <a class="source-link" href="https://www.tandfonline.com/doi/full/10.1080/13537121.2023.2295602" target="_blank" rel="noreferrer">Israel Affairs 2024</a> · <a class="source-link" href="https://www.washingtoninstitute.org/policy-analysis/turkish-israeli-military-cooperation-assessment" target="_blank" rel="noreferrer">Washington Institute 1997</a></p>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot red"></div>
+      <p class="tl-year">2010 bis 2014</p>
+      <h3 class="tl-title">Mavi Marmara und offizieller Bruch</h3>
+      <p class="tl-text">Nach Mavi Marmara verschlechterten sich die Beziehungen massiv. Ankara erklärte später offiziell, dass seit 2010 in den relevanten Sicherheits- und Verteidigungsfeldern keine neuen offiziellen Abkommen geschlossen wurden.</p>
+      <p class="tl-source">Quelle: <a class="source-link" href="https://www.mfa.gov.tr/qa_21_-22-july-2014_-statement-of-the-spokesman-of-the-ministry-of-foreign-affairs-in-response-to-a-question-regarding-the-allegations-that-turkey-cooperates-with-israel-in-the-fields-of-energy-and-defense.en.mfa" target="_blank" rel="noreferrer">Türkisches Außenministerium 2014</a></p>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot amber"></div>
+      <p class="tl-year">2016 und 2022</p>
+      <h3 class="tl-title">Diplomatische Erholung, aber kein Bündnisbeweis</h3>
+      <p class="tl-text">2016 und 2022 wurden die diplomatischen Beziehungen teilweise bzw. vollständig normalisiert. 2022 kam zusätzlich eine punktuelle Sicherheitskoordination gegen einen iranischen Anschlagsplan in Istanbul hinzu.</p>
+      <p class="tl-source">Quelle: <a class="source-link" href="https://english.alarabiya.net/News/middle-east/2016/06/27/Israel-Turkey-agree-to-normalize-ties-Senior-Israeli-official" target="_blank" rel="noreferrer">Reuters 2016</a> · <a class="source-link" href="https://www.euronews.com/2022/08/18/us-israel-turkey" target="_blank" rel="noreferrer">Reuters 2022</a> · <a class="source-link" href="https://www.aljazeera.com/news/2022/6/23/turkey-foiled-iranian-plot-to-kill-israelis-in-istanbul-fm" target="_blank" rel="noreferrer">Al Jazeera / News Agencies 2022</a></p>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot red"></div>
+      <p class="tl-year">Januar bis Februar 2024</p>
+      <h3 class="tl-title">Neue Gegenspionagefälle auf türkischem Boden</h3>
+      <p class="tl-text">Anfang 2024 folgten erst 34 Festnahmen in einer Mossad-Ermittlung und kurz darauf ein weiterer Fall mit sieben Verdächtigen. Öffentlich sichtbar war damit wieder eher Misstrauen als Partnerschaft.</p>
+      <p class="tl-source">Quelle: <a class="source-link" href="https://apnews.com/article/35227a4766895710b5b385cc496dca25" target="_blank" rel="noreferrer">AP 06.01.2024</a> · <a class="source-link" href="https://apnews.com/article/434a32d720948b6fe690439aad20608b" target="_blank" rel="noreferrer">AP 02.02.2024</a></p>
+    </div>
+  </div>
+
+  <h2 class="section-h2">A. Was historisch wirklich belegt ist</h2>
+  <p class="section-sub">Diesen Teil sollte die Seite nicht kleinreden. Sonst wird Punkt 4 unnötig angreifbar.</p>
+
+  <div class="fact-box">
+    <h3>Claim 1: In den 1990ern war die MIT-Mossad-Nähe real</h3>
+    <p>Mit der strategischen Partnerschaft der 1990er erreichte auch die Sicherheits- und Geheimdienstebene eine dokumentierte Hochphase. Fachliteratur beschreibt für diese Jahre robuste militärische Zusammenarbeit und Intelligence-Kooperation. Genau deshalb sollte man heute nicht behaupten, es habe nie echte Nähe gegeben.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://www.tandfonline.com/doi/full/10.1080/13537121.2023.2295602" target="_blank" rel="noreferrer">Israel Affairs 2024 - Turkish-Israeli relations: the golden years, 1991-2000</a> · <a class="source-link" href="https://www.washingtoninstitute.org/policy-analysis/turkish-israeli-military-cooperation-assessment" target="_blank" rel="noreferrer">Washington Institute 1997</a></p>
+    <span class="fact-tag tag-true">Belastbar</span>
+  </div>
+
+  <div class="fact-box">
+    <h3>Claim 2: Der Bruch nach 2010 ist ebenfalls offiziell dokumentiert</h3>
+    <p>Nach Mavi Marmara erklärte das türkische Außenministerium später, die militärischen Beziehungen seien suspendiert worden und seit 2010 seien in diesen Bereichen keine neuen offiziellen Abkommen geschlossen worden. Das ist zwar kein direkter Geheimdienstbeweis, aber ein harter staatlicher Bruchindikator.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://www.mfa.gov.tr/qa_21_-22-july-2014_-statement-of-the-spokesman-of-the-ministry-of-foreign-affairs-in-response-to-a-question-regarding-the-allegations-that-turkey-cooperates-with-israel-in-the-fields-of-energy-and-defense.en.mfa" target="_blank" rel="noreferrer">Türkisches Außenministerium, 22.07.2014</a> · <a class="source-link" href="https://www.tandfonline.com/doi/full/10.1080/13537121.2024.2295604" target="_blank" rel="noreferrer">Israel Affairs 2024 - Cooperation and conflict since the 1990s</a></p>
+    <span class="fact-tag tag-true">Belastbar</span>
+  </div>
+
+  <hr>
+
+  <h2 class="section-h2">B. Wo Punkt 4 schnell overclaimed wird</h2>
+  <p class="section-sub">Genau hier wird das Sharepic schwach: Es tut so, als beweise jede Form von Kontakt automatisch eine fortlaufende Partnerschaft.</p>
+
+  <div class="fact-box">
+    <h3>Claim 3: 2022 gab es eine punktuelle Sicherheitskoordination gegen Iran</h3>
+    <p>Im Juni 2022 dankte Israels Außenminister Yair Lapid der Türkei dafür, bei der Vereitelung eines iranischen Anschlags auf Israelis in Istanbul geholfen zu haben. Das ist der stärkste Einwand gegen eine absolute Null-These: Es gab öffentlich sichtbare Sicherheitskoordination. Aber genau deshalb sollte Punkt 4 präzise formuliert werden.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://www.aljazeera.com/news/2022/6/23/turkey-foiled-iranian-plot-to-kill-israelis-in-istanbul-fm" target="_blank" rel="noreferrer">Al Jazeera / Reuters-Bildmaterial / News Agencies, 23.06.2022</a> · <a class="source-link" href="https://www.aa.com.tr/en/turkiye/captured-iranian-suspects-scouted-istanbul-followed-israeli-tourists/2652453" target="_blank" rel="noreferrer">Anadolu, 03.08.2022</a></p>
+    <span class="fact-tag tag-partial">Teilweise relevant</span>
+  </div>
+
+  <div class="fact-box">
+    <h3>Claim 4: Diese Episode beweist aber keine dauerhafte MIT-Mossad-Partnerschaft</h3>
+    <p>Die 2022er Koordination lief in einem sehr engen Kontext: Schutz von Menschen auf türkischem Boden gegen einen iranischen Anschlagsplan. Dazu kamen 2016 und 2022 diplomatische Normalisierungsschritte. All das zeigt, dass "seit 2010 war alles komplett tot" zu grob wäre. Es ersetzt aber keinen belastbaren Nachweis einer laufenden, strukturellen MIT-Mossad-Kooperation.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://www.euronews.com/2022/08/18/us-israel-turkey" target="_blank" rel="noreferrer">Reuters via Euronews, 18.08.2022</a> · <a class="source-link" href="https://english.alarabiya.net/News/middle-east/2016/06/27/Israel-Turkey-agree-to-normalize-ties-Senior-Israeli-official" target="_blank" rel="noreferrer">Reuters via Al Arabiya, 27.06.2016</a></p>
+    <span class="fact-tag tag-caution">Wichtige Einordnung</span>
+  </div>
+
+  <hr>
+
+  <h2 class="section-h2">C. Was die neuere öffentliche Aktenlage eher zeigt</h2>
+  <p class="section-sub">Wer "kooperieren weiterhin" behauptet, muss auch erklären, warum die sichtbarsten neueren Fälle wieder Gegenspionage und Festnahmen sind.</p>
+
+  <div class="fact-box">
+    <h3>Claim 5: Anfang 2024 wurden 34 Verdächtige in einer Mossad-Ermittlung festgenommen</h3>
+    <p>AP und Reuters berichteten Anfang Januar 2024 über groß angelegte Festnahmen in der Türkei. Den Verdächtigen wurde vorgeworfen, im Auftrag israelischer Nachrichtendienste Aufklärung, Verfolgung, Angriffe und Entführungen gegen Ausländer in der Türkei vorbereitet zu haben. Das ist öffentlich deutlich näher an Gegenspionage als an Partnerschaft.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://apnews.com/article/35227a4766895710b5b385cc496dca25" target="_blank" rel="noreferrer">AP, 06.01.2024</a> · <a class="source-link" href="https://www.1lurer.am/en/2024/01/03/Turkey-detains-34-people-suspected-of-ties-to-Israel-s-Mossad/1055653" target="_blank" rel="noreferrer">Reuters-Mirror, 03.01.2024</a></p>
+    <span class="fact-tag tag-true">Belastbar</span>
+  </div>
+
+  <div class="fact-box">
+    <h3>Claim 6: Im Februar 2024 folgte ein weiterer Fall mit sieben Festnahmen</h3>
+    <p>AP meldete Anfang Februar 2024 erneut eine gemeinsame Operation mit MIT, diesmal gegen Personen, die Informationen an Mossad weitergegeben haben sollen. Auch hier gilt: Das sind Vorwürfe und Ermittlungen, keine geheimdienstliche Transparenz. Aber als öffentliche Spur spricht das klar eher für Misstrauen und Gegenmaßnahmen als für ein eingespieltes Kooperationsverhältnis.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://apnews.com/article/434a32d720948b6fe690439aad20608b" target="_blank" rel="noreferrer">AP, 02.02.2024</a> · <a class="source-link" href="https://www.aa.com.tr/en/middle-east/turkish-court-remands-7-suspects-detained-for-selling-information-to-israeli-spy-agency/3128666" target="_blank" rel="noreferrer">Anadolu, 05.02.2024</a></p>
+    <span class="fact-tag tag-true">Belastbar</span>
+  </div>
+
+  <div class="fact-box">
+    <h3>Claim 7: Auch die Forschung beschreibt das Verhältnis eher als "cold peace" denn als laufende Allianz</h3>
+    <p>Ein zusätzlicher Hebel pro Türkei ist die externe Einordnung: Fachliteratur beschreibt den alten strategischen Bau der 1990er als kollabiert und das spätere Verhältnis als von Antagonismus und Vertrauensverlust geprägt. Das stützt genau die Linie, dass man alte Hochphasen nicht einfach in die Gegenwart durchziehen kann.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://research.itu.edu.tr/en/publications/the-downfall-of-turkishisraeli-relations-a-cold-peace-between-for/" target="_blank" rel="noreferrer">Istanbul Technical University / Israel Affairs 2020</a> · <a class="source-link" href="https://www.brookings.edu/articles/the-beginning-of-a-turkish-israeli-rapprochement/" target="_blank" rel="noreferrer">Brookings</a></p>
+    <span class="fact-tag tag-caution">Starke externe Einordnung</span>
+  </div>
+
+  <div class="hebel-box">
+    <div class="hebel-label">Pro Türkei</div>
+    <h3>Der souveräne Staat ist der eigentliche Hebel</h3>
+    <p>Die stärkste pro-türkische Lesart ist: Ankara handelt nicht wie ein stiller israelischer Partner, sondern wie ein Staat, der fremde Operationen auf seinem Boden nach eigenen Interessen kontrolliert. 2022 ließ die Türkei keinen iranischen Anschlagsplan in Istanbul durch. 2024 ließ sie mutmaßliche israelische Spionagestrukturen nicht gewähren. Genau diese Abfolge lässt die Türkei eher wie einen eigenständigen Machtpol aussehen als wie einen versteckten Mitläufer.</p>
+  </div>
+
+  <div class="hebel-box">
+    <div class="hebel-label">Der Hebel</div>
+    <h3>Die robusteste Formulierung für Debatten</h3>
+    <p>Am stärksten ist nicht "MIT und Mossad haben seit 2010 garantiert gar keinen Kontakt mehr". Am stärksten ist: Historische Kooperation ist belegt. Punktuelle Sicherheitskoordination 2022 ist ebenfalls öffentlich sichtbar. Aber daraus folgt noch keine fortlaufende Partnerschaft. Für genau diese Gegenwartsbehauptung fehlt öffentlich eine belastbare Belegkette, während die sichtbarsten neueren Fälle wieder Bruch- und Gegenspionagesignale liefern.</p>
+  </div>
+
+  <div class="hebel-box">
+    <div class="hebel-label">Nicht überziehen</div>
+    <h3>Was du nicht sagen solltest</h3>
+    <p>Nicht sinnvoll sind absolute Sätze wie "alles ist erfunden" oder "es gab nie wieder irgendetwas". Gerade Punkt 4 wird stärker, wenn du die 1990er und die 2022er Iran-Episode offen zugibst und dann sauber trennst zwischen punktueller Koordination und dauerhafter Partnerschaft.</p>
+  </div>
+
+  <div class="verdict-final">
+    <h3>Fazit zu Punkt 4</h3>
+    <p>Das Sharepic ist hier nicht komplett frei erfunden, aber zu grob. Historische MIT-Mossad-Kooperation ist belegt. Auch 2022 gab es eine öffentlich sichtbare Sicherheitskoordination gegen einen iranischen Anschlagsplan. Daraus lässt sich jedoch keine fortlaufende, strukturelle Partnerschaft "weiterhin - minimal, aber real" ableiten. Pro Türkei spricht gerade die Gesamtlinie: Ankara wirkt in den besser belegten neueren Fällen nicht wie ein stiller Partner Israels, sondern wie ein Staat, der auf eigenem Boden nach eigener Logik zwischen Diplomatie, Sicherheitsinteresse und Gegenspionage unterscheidet.</p>
+  </div>
+
+  <div class="hebel-box">
+    <div class="hebel-label">Debatten-Kurzform</div>
+    <h3>Drei Sätze, die sitzen</h3>
+    <p>"Die 1990er waren reale Kooperation - aber daraus wird keine Dauerpartnerschaft bis heute."</p>
+    <p>"2022 gab es punktuelle Sicherheitskoordination gegen Iran, 2024 dann wieder Mossad-Ermittlungen und Festnahmen in der Türkei."</p>
+    <p>"Das sieht nicht nach stiller israelischer Nähe aus, sondern nach einem Staat, der auf eigenem Boden selbst entscheidet, wen er gewähren lässt und wen nicht."</p>
+  </div>
+
+  <div class="sources-box">
+    <h4>Verwendete Quellen</h4>
+    <div class="sources-list">
+      <a class="source-pill" href="https://www.tandfonline.com/doi/full/10.1080/13537121.2023.2295602" target="_blank" rel="noreferrer">Israel Affairs 2024 - Golden years 1991-2000</a>
+      <a class="source-pill" href="https://www.tandfonline.com/doi/full/10.1080/13537121.2024.2295604" target="_blank" rel="noreferrer">Israel Affairs 2024 - Cooperation and conflict</a>
+      <a class="source-pill" href="https://research.itu.edu.tr/en/publications/the-downfall-of-turkishisraeli-relations-a-cold-peace-between-for/" target="_blank" rel="noreferrer">Israel Affairs 2020 / ITU - Cold peace</a>
+      <a class="source-pill" href="https://www.washingtoninstitute.org/policy-analysis/turkish-israeli-military-cooperation-assessment" target="_blank" rel="noreferrer">Washington Institute 1997</a>
+      <a class="source-pill" href="https://www.brookings.edu/articles/the-beginning-of-a-turkish-israeli-rapprochement/" target="_blank" rel="noreferrer">Brookings</a>
+      <a class="source-pill" href="https://www.mfa.gov.tr/qa_21_-22-july-2014_-statement-of-the-spokesman-of-the-ministry-of-foreign-affairs-in-response-to-a-question-regarding-the-allegations-that-turkey-cooperates-with-israel-in-the-fields-of-energy-and-defense.en.mfa" target="_blank" rel="noreferrer">Türkisches Außenministerium 2014</a>
+      <a class="source-pill" href="https://www.aljazeera.com/news/2022/6/23/turkey-foiled-iranian-plot-to-kill-israelis-in-istanbul-fm" target="_blank" rel="noreferrer">Al Jazeera / News Agencies 2022</a>
+      <a class="source-pill" href="https://www.aa.com.tr/en/turkiye/captured-iranian-suspects-scouted-istanbul-followed-israeli-tourists/2652453" target="_blank" rel="noreferrer">Anadolu 2022</a>
+      <a class="source-pill" href="https://english.alarabiya.net/News/middle-east/2016/06/27/Israel-Turkey-agree-to-normalize-ties-Senior-Israeli-official" target="_blank" rel="noreferrer">Reuters 2016</a>
+      <a class="source-pill" href="https://www.euronews.com/2022/08/18/us-israel-turkey" target="_blank" rel="noreferrer">Reuters 2022</a>
+      <a class="source-pill" href="https://apnews.com/article/35227a4766895710b5b385cc496dca25" target="_blank" rel="noreferrer">AP 06.01.2024</a>
+      <a class="source-pill" href="https://www.1lurer.am/en/2024/01/03/Turkey-detains-34-people-suspected-of-ties-to-Israel-s-Mossad/1055653" target="_blank" rel="noreferrer">Reuters 03.01.2024</a>
+      <a class="source-pill" href="https://apnews.com/article/434a32d720948b6fe690439aad20608b" target="_blank" rel="noreferrer">AP 02.02.2024</a>
+      <a class="source-pill" href="https://www.aa.com.tr/en/middle-east/turkish-court-remands-7-suspects-detained-for-selling-information-to-israeli-spy-agency/3128666" target="_blank" rel="noreferrer">Anadolu 05.02.2024</a>
+    </div>
+  </div>
+
+  <div class="nav-pages">
+    <a href="punkt3.html" class="nav-page-btn"><p class="dir">&larr; Zurück</p><p class="ptitle">Punkt 03: Handel</p></a>
+    <a href="turkei-palaestina.html" class="nav-page-btn next"><p class="dir">Weiter &rarr;</p><p class="ptitle">Türkei &amp; Palästina</p></a>
+  </div>
+</div>
+</body>
+</html>

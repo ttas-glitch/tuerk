@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Punkt 2: Israelische Waffen - NahostFakten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root { --black:#0a0a0a;--white:#fafafa;--gray-100:#f4f4f4;--gray-400:#999;--gray-600:#555;--border:#e2e2e2;--accent:#c0392b;--accent-light:#fdf0ef;--green:#1a7a4a;--green-light:#edf7f1;--amber:#b7560a;--amber-light:#fef6ee;--blue:#1a5fa8;--blue-light:#eef4fd;--radius:12px;--radius-lg:20px; }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Sora',sans-serif;background:var(--white);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,250,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-size:15px;font-weight:700;color:var(--black);text-decoration:none;}.nav-logo span{color:var(--accent);}
+.nav-back{font-size:13px;color:var(--gray-600);text-decoration:none;padding:6px 12px;border-radius:8px;border:1px solid var(--border);}
+.nav-back:hover{border-color:var(--black);color:var(--black);}
+.page-hero{padding:100px 24px 60px;max-width:800px;margin:0 auto;}
+.breadcrumb{font-size:12px;color:var(--gray-400);margin-bottom:16px;}
+.breadcrumb a{color:var(--gray-400);text-decoration:none;}
+.verdict-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:20px;background:var(--amber-light);color:var(--amber);border:1px solid rgba(183,86,10,0.2);}
+.page-hero h1{font-family:'Fraunces',serif;font-size:clamp(28px,5vw,48px);font-weight:700;line-height:1.15;margin-bottom:16px;}
+.claim{background:var(--gray-100);border-left:4px solid var(--amber);padding:14px 20px;border-radius:0 10px 10px 0;font-size:15px;color:var(--gray-600);font-style:italic;margin-bottom:20px;}
+.summary{font-size:17px;color:var(--gray-600);font-weight:300;}
+.content{max-width:800px;margin:0 auto;padding:0 24px 80px;}
+hr{border:none;border-top:1px solid var(--border);margin:48px 0;}
+.section-h2{font-family:'Fraunces',serif;font-size:26px;font-weight:700;margin-bottom:8px;}
+.section-sub{font-size:14px;color:var(--gray-600);margin-bottom:28px;}
+.total-bar{background:var(--black);color:var(--white);border-radius:var(--radius-lg);padding:28px;margin:32px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center;}
+.total-bar .num{font-family:'Fraunces',serif;font-size:32px;font-weight:700;display:block;}
+.total-bar .lbl{font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;}
+.deal-card{border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:16px;}
+.deal-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;gap:16px;}
+.deal-name{font-size:19px;font-weight:700;}
+.deal-sub{font-size:13px;color:var(--gray-600);margin-top:3px;}
+.deal-amount{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--amber);white-space:nowrap;}
+.deal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+.deal-stat{background:var(--gray-100);border-radius:var(--radius);padding:12px;text-align:center;}
+.deal-stat .num{font-size:15px;font-weight:700;display:block;}
+.deal-stat .lbl{font-size:11px;color:var(--gray-600);margin-top:2px;}
+.deal-text{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:8px;}
+.deal-source{font-size:11px;color:var(--gray-400);}
+.deal-tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-top:8px;}
+.tag-ended{background:var(--green-light);color:var(--green);}
+.tag-partial{background:var(--amber-light);color:var(--amber);}
+.heuchelei-box{background:var(--gray-100);border-radius:var(--radius-lg);padding:28px;margin:32px 0;}
+.heuchelei-label{font-size:11px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.heuchelei-label::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--amber);}
+.heuchelei-box h3{font-size:17px;font-weight:700;margin-bottom:10px;}
+.heuchelei-box p{font-size:14px;color:var(--gray-600);line-height:1.7;}
+.verdict-final{background:var(--black);color:var(--white);border-radius:var(--radius-lg);padding:32px;margin:48px 0;}
+.verdict-final h3{font-family:'Fraunces',serif;font-size:22px;margin-bottom:12px;}
+.verdict-final p{font-size:15px;color:rgba(255,255,255,0.7);line-height:1.7;}
+.sources-box{border:1px solid var(--border);border-radius:var(--radius);padding:20px;}
+.sources-box h4{font-size:13px;font-weight:700;margin-bottom:12px;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.05em;}
+.sources-list{display:flex;flex-wrap:wrap;gap:8px;}
+.source-pill{font-size:12px;background:var(--gray-100);padding:4px 12px;border-radius:20px;color:var(--gray-600);}
+.source-link{color:inherit;text-decoration:underline;text-underline-offset:2px;}
+a.source-pill{text-decoration:none;display:inline-block;}
+a.source-pill:hover,.source-link:hover{color:var(--black);}
+.nav-pages{display:flex;gap:12px;margin-top:48px;}
+.nav-page-btn{flex:1;display:block;padding:16px;border-radius:var(--radius);border:1px solid var(--border);text-decoration:none;color:var(--black);transition:all 0.2s;}
+.nav-page-btn:hover{border-color:var(--black);}
+.nav-page-btn .dir{font-size:11px;color:var(--gray-400);margin-bottom:4px;}
+.nav-page-btn .ptitle{font-size:14px;font-weight:600;}
+.nav-page-btn.next{text-align:right;}
+@media(max-width:600px){.deal-grid{grid-template-columns:1fr 1fr;}.total-bar{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Nahost<span>Fakten</span></a>
+  <a class="nav-back" href="index.html">← Zurück</a>
+</nav>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="index.html">NahostFakten</a> · Punkt 02</p>
+  <div class="verdict-badge">Teilweise real - aber Altbestand ist nicht neue Militärnähe unter Erdoğan</div>
+  <h1>"Israelische Waffen & Systeme - selbst unter Erdoğan"</h1>
+  <div class="claim">"Türkische Militärtechnik - israelische Waffen & Systeme weiter im Einsatz, selbst unter Erdoğan"</div>
+  <p class="summary">Israelische Militärtechnik im türkischen Bestand ist historisch real. Der Vorwurf wird aber zu grob, wenn alte Großdeals und Altbestände als Beleg für laufende neue Militärnähe unter Erdoğan benutzt werden. Der größte Panzerdeal wurde vor seiner Amtszeit geschlossen; der Heron-Deal zeigt Beschaffung, aber auch Verzögerungen und Streit; und seit 2010 erklärt Ankara, dass keine neuen offiziellen Verteidigungsabkommen mit Israel geschlossen wurden.</p>
+</div>
+
+<div class="content">
+  <div class="total-bar">
+    <div><span class="num">688 Mio. $</span><span class="lbl">M60T-Deal vor Erdoğans Amtsantritt</span></div>
+    <div><span class="num">183 Mio. $</span><span class="lbl">Heron-Vertrag 2005 mit Problemen</span></div>
+    <div><span class="num">0</span><span class="lbl">Neue offizielle Abkommen seit 2010</span></div>
+  </div>
+
+  <h2 class="section-h2">Die belastbaren Programme</h2>
+  <p class="section-sub">Die starke Linie ist nicht, frühere Beschaffung zu leugnen, sondern sauber zu trennen: alter Deal, alter Bestand, neuer Deal, offizielle Gegenwartspolitik.</p>
+
+  <div class="deal-card">
+    <div class="deal-header">
+      <div><p class="deal-name">M60T "Sabra" Kampfpanzer</p><p class="deal-sub">Panzermodernisierung · Israel Military Industries</p></div>
+      <span class="deal-amount">688 Mio. $</span>
+    </div>
+    <div class="deal-grid">
+      <div class="deal-stat"><span class="num">170</span><span class="lbl">Modernisierte Panzer</span></div>
+      <div class="deal-stat"><span class="num">29.03.2002</span><span class="lbl">Vertrag geschlossen</span></div>
+      <div class="deal-stat"><span class="num">14.03.2003</span><span class="lbl">Erdoğan wird Premier</span></div>
+    </div>
+    <p class="deal-text">Das ist der stärkste Einzelpunkt gegen die Sharepic-Rahmung. Der größte bekannte israelisch-türkische Panzerdeal wurde vor Erdoğans Amtsantritt geschlossen. Wer heute mit M60T gegen Erdoğan argumentiert, benutzt einen Altvertrag der Vorgängerzeit als Gegenwartsbeweis.</p>
+    <p class="deal-source">Quellen: <a class="source-link" href="https://www.defenseindustrydaily.com/Israeli-Turkish-Relations-Straining-Defense-Ties-05893/" target="_blank" rel="noreferrer">Defense Industry Daily</a> · <a class="source-link" href="https://armstransfers.sipri.org/ArmsTransfer/" target="_blank" rel="noreferrer">SIPRI Arms Transfers Database</a></p>
+    <span class="deal-tag tag-ended">Der größte Deal war nicht Erdoğans Deal</span>
+  </div>
+
+  <div class="deal-card">
+    <div class="deal-header">
+      <div><p class="deal-name">F-4E "Terminator 2020"</p><p class="deal-sub">Kampfflugzeug-Modernisierung · Israel Aerospace Industries</p></div>
+      <span class="deal-amount">ca. 600-700 Mio. $</span>
+    </div>
+    <div class="deal-grid">
+      <div class="deal-stat"><span class="num">54</span><span class="lbl">Modernisierte Jets</span></div>
+      <div class="deal-stat"><span class="num">1995-1997</span><span class="lbl">Altprogramm der 1990er</span></div>
+      <div class="deal-stat"><span class="num">2006</span><span class="lbl">Weiteres Upgrade später gestrichen</span></div>
+    </div>
+    <p class="deal-text">Auch das F-4-Programm gehört zur älteren Militärkooperation der 1990er und frühen 2000er. Es ist gerade kein sauberer Beleg für eine neu gestartete Erdoğan-Ära-Kooperation. Selbst spätere Überlegungen zu weiteren Upgrades wurden nicht zu einer neuen dauerhaften Linie ausgebaut.</p>
+    <p class="deal-source">Quellen: <a class="source-link" href="https://www.defenseindustrydaily.com/Israeli-Turkish-Relations-Straining-Defense-Ties-05893/" target="_blank" rel="noreferrer">Defense Industry Daily</a> · <a class="source-link" href="https://www.flightglobal.com/israel-and-turkey-near-completion-of-phantom-talks/15454.article" target="_blank" rel="noreferrer">FlightGlobal, 1995</a> · <a class="source-link" href="https://www.ynetnews.com/business/article/3288072" target="_blank" rel="noreferrer">Ynet, 2006</a></p>
+    <span class="deal-tag tag-ended">Ältere Kooperation, nicht neuer Erdoğan-Startpunkt</span>
+  </div>
+
+  <div class="deal-card">
+    <div class="deal-header">
+      <div><p class="deal-name">Heron-Aufklärungsdrohnen</p><p class="deal-sub">UAV-Beschaffung · IAI / Elbit</p></div>
+      <span class="deal-amount">183 Mio. $</span>
+    </div>
+    <div class="deal-grid">
+      <div class="deal-stat"><span class="num">10</span><span class="lbl">Geplante UAVs</span></div>
+      <div class="deal-stat"><span class="num">2005</span><span class="lbl">Vertrag</span></div>
+      <div class="deal-stat"><span class="num">2010</span><span class="lbl">Lieferung und Streitphase</span></div>
+    </div>
+    <p class="deal-text">Der Heron-Deal belegt frühere Beschaffung unter Erdoğan, aber gerade keine reibungslose Dauerpartnerschaft. Jamestown und Hürriyet dokumentieren Verzögerungen, Integrationsprobleme mit türkischen Systemen und die Stagnation der Verteidigungsbeziehungen nach 2010. Dieses Beispiel beweist also frühere Kooperation, aber auch Bruch, Streit und politische Abkühlung.</p>
+    <p class="deal-source">Quellen: <a class="source-link" href="https://jamestown.org/turkeys-military-procurement-dilemma-with-israel/" target="_blank" rel="noreferrer">Jamestown - Turkey's Military Procurement Dilemma with Israel</a> · <a class="source-link" href="https://www.hurriyetdailynews.com/turkey-wont-return-heron-uavs-to-israel-33852" target="_blank" rel="noreferrer">Hürriyet Daily News, 2012</a></p>
+    <span class="deal-tag tag-partial">Beschaffung ja - störungsfreie Dauerkooperation nein</span>
+  </div>
+
+  <hr>
+
+  <div class="deal-card" style="border-color:var(--green);border-width:2px;">
+    <p class="deal-name" style="color:var(--green);">Keine neuen offiziellen Verteidigungsabkommen seit 2010</p>
+    <p style="font-size:13px;color:var(--gray-400);margin:6px 0 16px;">Offizielle Linie des türkischen Außenministeriums</p>
+    <p class="deal-text">Das ist der stärkste Einzelbeleg für Punkt 2. Das türkische Außenministerium erklärte am 22. Juli 2014 ausdrücklich, dass die militärischen Beziehungen nach 2010 suspendiert wurden und in diesen Bereichen, einschließlich Verteidigungsindustrie, keine neuen offiziellen Abkommen geschlossen worden seien.</p>
+    <p class="deal-source">Quelle: <a class="source-link" href="https://www.mfa.gov.tr/qa_21_-22-july-2014_-statement-of-the-spokesman-of-the-ministry-of-foreign-affairs-in-response-to-a-question-regarding-the-allegations-that-turkey-cooperates-with-israel-in-the-fields-of-energy-and-defense.en.mfa" target="_blank" rel="noreferrer">Türkisches Außenministerium, 22. Juli 2014</a></p>
+    <span class="deal-tag tag-ended">Belastbar: keine neuen offiziellen Abkommen seit 2010</span>
+  </div>
+
+  <div class="heuchelei-box">
+    <p class="heuchelei-label">Was das Sharepic vermischt</p>
+    <h3>Altbestand ist nicht dasselbe wie neue Militärnähe</h3>
+    <p><strong>1. Historische Beschaffung ist real.</strong> Israelische Technik im türkischen Bestand ist kein erfundener Punkt.</p>
+    <br>
+    <p><strong>2. Die stärksten Programme gehören in die 1990er und frühen 2000er.</strong> Genau deshalb ist "selbst unter Erdoğan" als Schlagwort zu grob.</p>
+    <br>
+    <p><strong>3. Seit 2010 ist die offizielle Lage härter.</strong> Ankara verweist auf suspendierte Militärbeziehungen und keine neuen offiziellen Verteidigungsabkommen.</p>
+  </div>
+
+  <div class="heuchelei-box">
+    <p class="heuchelei-label">Debatten-Linie</p>
+    <h3>Wenn jemand sagt: "Aber israelische Systeme liefen doch unter Erdoğan"</h3>
+    <p>Die stärkste Antwort ist keine Totalverneinung, sondern Trennung der Ebenen:</p>
+    <br>
+    <p>"Ja, alte israelische Systeme im Bestand sind real. Aber der größte Panzerdeal wurde vor Erdoğans Amtsantritt geschlossen. Das F-4-Programm gehört zur älteren Militärkooperation. Der Heron-Deal zeigt zwar Beschaffung unter Erdoğan, aber auch Streit und spätere Abkühlung. Seit 2010 weist Ankara keine neuen offiziellen Verteidigungsabkommen mehr aus."</p>
+  </div>
+
+  <div class="heuchelei-box">
+    <p class="heuchelei-label">Politische Gegenlinie</p>
+    <h3>Ankara war auch in den 2010ern nicht einfach still</h3>
+    <p>Selbst während noch alte Systeme im Bestand liefen, fuhr Ankara offiziell eine harte Linie gegen israelische Siedlungspolitik. Das türkische Außenministerium verurteilte 2014 wiederholt neue Tender und Bauaktivitäten in illegalen Siedlungen. Wer nur auf alte Waffenprogramme zeigt, blendet diese offizielle politische Linie aus.</p>
+    <br>
+    <p style="font-size:12px;color:var(--gray-400);">Quellen: <a class="source-link" href="https://www.mfa.gov.tr/no_-8_-11-january-2014_-press-release-on-israel_s-announcement-of-new-tenders-for-illegal-settlements_.en.mfa" target="_blank" rel="noreferrer">MFA, 11.01.2014</a> · <a class="source-link" href="https://www.mfa.gov.tr/no_-354_-13-november-2014-press-release-regarding-israel_s-aggressive-acts-in-jerusalem-and-its-illegal-settlement-activities.en.mfa" target="_blank" rel="noreferrer">MFA, 13.11.2014</a> · <a class="source-link" href="https://www.mfa.gov.tr/no_-359_-20-november-2014_-press-release-regarding-israel_s-illegal-settlement-activities.en.mfa" target="_blank" rel="noreferrer">MFA, 20.11.2014</a></p>
+  </div>
+
+  <div class="heuchelei-box">
+    <p class="heuchelei-label">Methodische Vorsicht</p>
+    <h3>Bei Waffenbeziehungen sind Totalbehauptungen riskant</h3>
+    <p>SIPRI weist darauf hin, dass Staaten sehr unterschiedlich über Waffenexporte berichten und manche Länder keine klassischen nationalen Exportberichte veröffentlichen. Gerade deshalb sollte man bei Punkt 2 keine absoluten Totalbehauptungen aufstellen, sondern zwischen belegten Altprogrammen, offiziellen Abkommen und unklarer Restverflechtung sauber unterscheiden.</p>
+    <br>
+    <p style="font-size:12px;color:var(--gray-400);">Quellen: <a class="source-link" href="https://www.sipri.org/node/423" target="_blank" rel="noreferrer">SIPRI - National reports on arms exports</a> · <a class="source-link" href="https://www.sipri.org/databases/armstransfers/sources-and-methods" target="_blank" rel="noreferrer">SIPRI - Sources and methods</a></p>
+  </div>
+
+  <div class="verdict-final">
+    <h3>Fazit zu Punkt 2</h3>
+    <p>Israelische Militärtechnik im türkischen Bestand ist historisch belegt. Die enge formalisierte Militärkooperation gehört aber vor allem in die 1990er und frühen 2000er. Seit 2010 verweist Ankara auf ausgesetzte Militärbeziehungen und keine neuen offiziellen Verteidigungsabkommen; zugleich ist die Exporttransparenz in diesem Bereich begrenzt. Wer daraus eine lineare aktuelle "Türkei = israelfreundlich"-Erzählung macht, verkürzt die Quellenlage.</p>
+  </div>
+
+  <div class="sources-box">
+    <h4>Verwendete Quellen</h4>
+    <div class="sources-list">
+      <a class="source-pill" href="https://www.mfa.gov.tr/qa_21_-22-july-2014_-statement-of-the-spokesman-of-the-ministry-of-foreign-affairs-in-response-to-a-question-regarding-the-allegations-that-turkey-cooperates-with-israel-in-the-fields-of-energy-and-defense.en.mfa" target="_blank" rel="noreferrer">Türkisches Außenministerium 2014</a>
+      <a class="source-pill" href="https://www.defenseindustrydaily.com/Israeli-Turkish-Relations-Straining-Defense-Ties-05893/" target="_blank" rel="noreferrer">Defense Industry Daily</a>
+      <a class="source-pill" href="https://armstransfers.sipri.org/ArmsTransfer/" target="_blank" rel="noreferrer">SIPRI Arms Transfers Database</a>
+      <a class="source-pill" href="https://jamestown.org/turkeys-military-procurement-dilemma-with-israel/" target="_blank" rel="noreferrer">Jamestown - Procurement dilemma</a>
+      <a class="source-pill" href="https://www.hurriyetdailynews.com/turkey-wont-return-heron-uavs-to-israel-33852" target="_blank" rel="noreferrer">Hürriyet Daily News 2012</a>
+      <a class="source-pill" href="https://www.flightglobal.com/israel-and-turkey-near-completion-of-phantom-talks/15454.article" target="_blank" rel="noreferrer">FlightGlobal 1995</a>
+      <a class="source-pill" href="https://www.ynetnews.com/business/article/3288072" target="_blank" rel="noreferrer">Ynet 2006</a>
+      <a class="source-pill" href="https://www.mfa.gov.tr/no_-8_-11-january-2014_-press-release-on-israel_s-announcement-of-new-tenders-for-illegal-settlements_.en.mfa" target="_blank" rel="noreferrer">MFA 11.01.2014</a>
+      <a class="source-pill" href="https://www.mfa.gov.tr/no_-354_-13-november-2014-press-release-regarding-israel_s-aggressive-acts-in-jerusalem-and-its-illegal-settlement-activities.en.mfa" target="_blank" rel="noreferrer">MFA 13.11.2014</a>
+      <a class="source-pill" href="https://www.mfa.gov.tr/no_-359_-20-november-2014_-press-release-regarding-israel_s-illegal-settlement-activities.en.mfa" target="_blank" rel="noreferrer">MFA 20.11.2014</a>
+      <a class="source-pill" href="https://www.sipri.org/node/423" target="_blank" rel="noreferrer">SIPRI transparency</a>
+      <a class="source-pill" href="https://www.sipri.org/databases/armstransfers/sources-and-methods" target="_blank" rel="noreferrer">SIPRI methods</a>
+    </div>
+  </div>
+
+  <div class="nav-pages">
+    <a href="punkt1.html" class="nav-page-btn"><p class="dir">← Zurück</p><p class="ptitle">Punkt 01: Militärbündnis</p></a>
+    <a href="punkt3.html" class="nav-page-btn next"><p class="dir">Weiter →</p><p class="ptitle">Punkt 03: Handel & Energie</p></a>
+  </div>
+</div>
+</body>
+</html>

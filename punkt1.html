@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Punkt 1: Militärbündnisse seit 1949 - NahostFakten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #201e1e; --white: #fafafa; --gray-100: #f4f4f4; --gray-200: #e8e8e8;
+  --gray-400: #999; --gray-600: #555; --border: #e2e2e2;
+  --accent: #c0392b; --accent-light: #fdf0ef; --green: #1a7a4a; --green-light: #edf7f1;
+  --amber: #b7560a; --amber-light: #fef6ee; --blue: #1a5fa8; --blue-light: #eef4fd;
+  --radius: 12px; --radius-lg: 20px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Sora', sans-serif; background: var(--white); color: var(--black); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,250,250,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-size: 15px; font-weight: 700; color: var(--black); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-back { font-size: 13px; color: var(--gray-600); text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); transition: all 0.15s; }
+.nav-back:hover { border-color: var(--black); color: var(--black); }
+
+.page-hero { padding: 100px 24px 60px; max-width: 800px; margin: 0 auto; }
+.breadcrumb { font-size: 12px; color: var(--gray-400); margin-bottom: 16px; }
+.breadcrumb a { color: var(--gray-400); text-decoration: none; }
+.breadcrumb a:hover { color: var(--black); }
+
+.verdict-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 20px; }
+.verdict-false { background: var(--accent-light); color: var(--accent); border: 1px solid rgba(192,57,43,0.2); }
+
+.page-hero h1 { font-family: 'Fraunces', serif; font-size: clamp(28px, 5vw, 48px); font-weight: 700; line-height: 1.15; margin-bottom: 16px; }
+.page-hero .claim { background: var(--gray-100); border-left: 4px solid var(--accent); padding: 14px 20px; border-radius: 0 10px 10px 0; font-size: 15px; color: var(--gray-600); font-style: italic; margin-bottom: 20px; }
+.page-hero .summary { font-size: 17px; color: var(--gray-600); font-weight: 300; }
+
+.content { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+
+.timeline { position: relative; padding-left: 40px; }
+.timeline::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+
+.tl-item { position: relative; margin-bottom: 40px; }
+.tl-dot { position: absolute; left: -34px; top: 4px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--white); box-shadow: 0 0 0 2px var(--border); }
+.tl-dot.red { background: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+.tl-dot.amber { background: var(--amber); box-shadow: 0 0 0 2px var(--amber); }
+.tl-dot.green { background: var(--green); box-shadow: 0 0 0 2px var(--green); }
+.tl-dot.blue { background: var(--blue); box-shadow: 0 0 0 2px var(--blue); }
+.tl-dot.gray { background: var(--gray-400); box-shadow: 0 0 0 2px var(--gray-400); }
+
+.tl-year { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+.tl-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.tl-text { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin-bottom: 10px; }
+.tl-source { font-size: 11px; color: var(--gray-400); }
+.tl-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin-top: 8px; }
+.tag-false { background: var(--accent-light); color: var(--accent); }
+.tag-partial { background: var(--amber-light); color: var(--amber); }
+.tag-true { background: var(--green-light); color: var(--green); }
+
+.section-divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+.section-h2 { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 700; margin-bottom: 24px; }
+
+.heuchelei-box { background: var(--gray-100); border-radius: var(--radius-lg); padding: 28px; margin: 32px 0; }
+.heuchelei-label { font-size: 11px; font-weight: 700; color: var(--amber); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.heuchelei-label::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--amber); }
+.heuchelei-box h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+.heuchelei-box p { font-size: 14px; color: var(--gray-600); line-height: 1.7; }
+
+.facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+.fact-card { background: var(--gray-100); border-radius: var(--radius); padding: 18px; text-align: center; }
+.fact-num { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; display: block; }
+.fact-label { font-size: 12px; color: var(--gray-600); margin-top: 4px; }
+
+.verdict-final { background: var(--black); color: var(--white); border-radius: var(--radius-lg); padding: 32px; margin: 48px 0; }
+.verdict-final h3 { font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 12px; }
+.verdict-final p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.7; }
+
+.sources-box { border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.sources-box h4 { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.05em; }
+.sources-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.source-pill { font-size: 12px; background: var(--gray-100); padding: 4px 12px; border-radius: 20px; color: var(--gray-600); }
+.source-link { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+a.source-pill { text-decoration: none; display: inline-block; }
+a.source-pill:hover, .source-link:hover { color: var(--black); }
+
+.nav-pages { display: flex; gap: 12px; margin-top: 48px; }
+.nav-page-btn { flex: 1; display: block; padding: 16px; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--black); transition: all 0.2s; }
+.nav-page-btn:hover { border-color: var(--black); }
+.nav-page-btn .dir { font-size: 11px; color: var(--gray-400); margin-bottom: 4px; }
+.nav-page-btn .ptitle { font-size: 14px; font-weight: 600; }
+.nav-page-btn.next { text-align: right; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Nahost<span>Fakten</span></a>
+  <a class="nav-back" href="index.html">← Zurück zur Übersicht</a>
+</nav>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="index.html">NahostFakten</a> · Punkt 01</p>
+  <div class="verdict-badge verdict-false">✗ Falsch datiert - 1949 war Anerkennung, kein offizielles Militärbündnis</div>
+  <h1>"Offizielle Militärbündnisse seit 1949"</h1>
+  <div class="claim">"Türkei ↔ Israel (offiziell) - Offizielle Militärbündnisse seit 1949, Waffendeals, Geheimdienst, Übungen"</div>
+  <p class="summary">Die Kernbehauptung ist zu grob. 1949 markiert die diplomatische Anerkennung Israels durch die Türkei, nicht den Beginn eines offiziellen Militärbündnisses. Verdeckte strategische Kontakte gab es später, aber belastbar formalisierte Militärkooperation wird erst in den 1990ern sichtbar, besonders mit den Verteidigungsabkommen von 1996.</p>
+</div>
+
+<div class="content">
+
+  <div class="facts-grid">
+    <div class="fact-card"><span class="fact-num">1949</span><span class="fact-label">Anerkennung - kein Militärpakt</span></div>
+    <div class="fact-card"><span class="fact-num">1958</span><span class="fact-label">Geheimes Arrangement - nicht öffentliches Bündnis</span></div>
+    <div class="fact-card"><span class="fact-num">1996</span><span class="fact-label">Formale Verteidigungsabkommen</span></div>
+    <div class="fact-card"><span class="fact-num">2022</span><span class="fact-label">Volle Diplomatie - kein Beweis für Militärallianz</span></div>
+  </div>
+
+  <hr class="section-divider">
+  <h2 class="section-h2">Die belastbare Timeline</h2>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot blue"></div>
+      <p class="tl-year">März 1949</p>
+      <h3 class="tl-title">Anerkennung - aber kein Militärbündnis</h3>
+      <p class="tl-text">Die Türkei erkannte Israel im März 1949 an. Das ist der belastbare Startpunkt der diplomatischen Beziehung. Daraus folgt aber weder ein Militärpakt noch eine durchgehende militärische Allianz seit diesem Jahr.</p>
+      <p class="tl-source">Quelle: <a class="source-link" href="https://embassies.gov.il/istanbul/en/the-consulate/bilateral-relations" target="_blank" rel="noreferrer">Israelisches Generalkonsulat Istanbul - Bilateral relations</a></p>
+      <span class="tl-tag tag-false">1949 = Anerkennung, nicht Militärbündnis</span>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot gray"></div>
+      <p class="tl-year">1950 bis 1990</p>
+      <h3 class="tl-title">Beziehungen vorhanden - aber lange nicht hochstufig</h3>
+      <p class="tl-text">Selbst die offizielle bilaterale Chronik zeigt keine dauerhaft enge Hochphase seit 1949. Die israelische Mission in der Türkei wurde bis 1990 nicht von einem Botschafter, sondern von einem Geschäftsträger geleitet. 1980 wurde auf Botschafterebene hochgestuft, danach wieder zurückgestuft.</p>
+      <p class="tl-source">Quelle: <a class="source-link" href="https://embassies.gov.il/istanbul/en/the-consulate/bilateral-relations" target="_blank" rel="noreferrer">Israelisches Generalkonsulat Istanbul - Bilateral relations</a></p>
+      <span class="tl-tag tag-partial">Vor 1990 keine dauerhaft hochstufige Beziehung</span>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot amber"></div>
+      <p class="tl-year">August 1958</p>
+      <h3 class="tl-title">Geheime strategische Kontakte - nicht offizieller Bündnisstart</h3>
+      <p class="tl-text">Die 1958er Schiene ist der stärkste Einwand gegen eine zu simple Gegenbehauptung. Ja, es gab verdeckte strategische Kontakte. Aber genau das hilft dem Sharepic nur begrenzt: Ein geheimes Arrangement ist nicht dasselbe wie ein öffentliches offizielles Militärbündnis seit 1949.</p>
+      <p class="tl-source">Quelle: <a class="source-link" href="https://www.foreignaffairs.com/articles/turkey/2015-05-07/tridents-forgotten-legacy" target="_blank" rel="noreferrer">Foreign Affairs - Trident's Forgotten Legacy</a> · <a class="source-link" href="https://www.tandfonline.com/doi/full/10.1080/00263206.2017.1313239" target="_blank" rel="noreferrer">Middle Eastern Studies - Turkey's approach towards Israel in the 1950s</a></p>
+      <span class="tl-tag tag-partial">Geheime Nähe ja - offizielles Bündnis nein</span>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot green"></div>
+      <p class="tl-year">1996</p>
+      <h3 class="tl-title">Hier beginnt die belastbar formalisierte Militärkooperation</h3>
+      <p class="tl-text">Wenn man von formalisierter Militärkooperation spricht, liegt der belastbare Schlüsselmoment in den 1990ern. The Washington Institute datiert die militärische Kooperation ausdrücklich auf die zwei Verteidigungsabkommen von Februar und August 1996.</p>
+      <p class="tl-source">Quelle: <a class="source-link" href="https://www.washingtoninstitute.org/policy-analysis/turkish-israeli-military-cooperation-assessment" target="_blank" rel="noreferrer">The Washington Institute, 24. Juli 1997 - Turkish-Israeli Military Cooperation: An Assessment</a></p>
+      <span class="tl-tag tag-true">Formalisierte Militärnähe - aber erst 1996</span>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot red"></div>
+      <p class="tl-year">2010 / 2014</p>
+      <h3 class="tl-title">Bruchpunkt nach Mavi Marmara</h3>
+      <p class="tl-text">Nach Mavi Marmara wurden die militärischen Beziehungen suspendiert. 2014 erklärte das türkische Außenministerium ausdrücklich, seit 2010 seien in den Bereichen Energie und Verteidigung keine neuen offiziellen Abkommen geschlossen worden. Auch das spricht gegen die Vorstellung einer ununterbrochenen offiziellen Militärlinie seit 1949.</p>
+      <p class="tl-source">Quelle: <a class="source-link" href="https://www.mfa.gov.tr/qa_21_-22-july-2014_-statement-of-the-spokesman-of-the-ministry-of-foreign-affairs-in-response-to-a-question-regarding-the-allegations-that-turkey-cooperates-with-israel-in-the-fields-of-energy-and-defense.en.mfa" target="_blank" rel="noreferrer">Türkisches Außenministerium, 22. Juli 2014</a></p>
+      <span class="tl-tag tag-false">Seit 2010 keine neuen offiziellen Verteidigungsabkommen belegt</span>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot blue"></div>
+      <p class="tl-year">August 2022</p>
+      <h3 class="tl-title">Volle diplomatische Beziehungen - aber keine Rückdatierung</h3>
+      <p class="tl-text">2022 wurden volle diplomatische Beziehungen und die Rückkehr von Botschaftern wiederhergestellt. Das ist wichtig, aber es beweist keine konstante Militärallianz seit 1949. Es zeigt nur eine neue diplomatische Phase.</p>
+      <p class="tl-source">Quelle: <a class="source-link" href="https://www.euronews.com/2022/08/18/us-israel-turkey" target="_blank" rel="noreferrer">Reuters / Euronews, 18. August 2022 - restore full diplomatic relations</a></p>
+      <span class="tl-tag tag-partial">Diplomatie ist nicht Militärpakt</span>
+    </div>
+
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="heuchelei-box">
+    <p class="heuchelei-label">Begriffe sauber halten</p>
+    <h3>Anerkennung, geheime Kontakte und formale Militärkooperation sind drei verschiedene Ebenen</h3>
+    <p>Genau hier arbeitet das Sharepic unsauber. 1949 ist Anerkennung. 1958 steht für verdeckte strategische Kontakte. 1996 steht für formalisierte Verteidigungsabkommen. Wer daraus "offizielle Militärbündnisse seit 1949" macht, wirft mehrere Kategorien zusammen.</p>
+    <br>
+    <p>Die saubere Widerlegung lautet deshalb nicht "es gab nie Nähe", sondern: Es gab unterschiedliche Phasen von Anerkennung, schwankenden Beziehungen, geheimen Kontakten und späterer formalisierter Kooperation. Die Datierung "seit 1949 offizielles Militärbündnis" bleibt trotzdem falsch.</p>
+  </div>
+
+  <div class="heuchelei-box">
+    <p class="heuchelei-label">Maximal sichere Formulierung</p>
+    <h3>Die stärkste Version für Debatten</h3>
+    <p>1949 ist Anerkennung, nicht Militärpakt. Geheime Kontakte später ändern daran nichts. Belastbar formalisierte Militärnähe wird erst in den 1990ern sichtbar, besonders mit den Verteidigungsabkommen von 1996.</p>
+  </div>
+
+  <div class="heuchelei-box">
+    <p class="heuchelei-label">Ehrliche Einordnung</p>
+    <h3>Was Kritiker hier zurecht anführen können</h3>
+    <p>Zu grob wäre die Gegenbehauptung, zwischen Türkei und Israel habe es vor den 1990ern praktisch gar keine strategische Nähe gegeben. Es gab verdeckte Kontakte und später auch erneute diplomatische Normalisierung. Aber genau deshalb ist Präzision der stärkere Weg: Nähe in Teilphasen ja, durchgehendes offizielles Militärbündnis seit 1949 nein.</p>
+  </div>
+
+  <div class="heuchelei-box">
+    <p class="heuchelei-label">Begriffe trennen</p>
+    <h3>Die PKK-Frage ist nicht dasselbe wie Staat-zu-Staat-Beziehungen</h3>
+    <p>Wenn in Debatten plötzlich die PKK oder "die Kurden" hineingezogen werden, sollte man den Themenwechsel stoppen. Für Punkt 1 geht es um die belastbare Einordnung von Türkei-Israel-Beziehungen zwischen Staaten. Die PKK ist eine Organisation, Kurden sind eine Ethnie. Beides zu vermischen macht die Diskussion unsauber.</p>
+    <br>
+    <p style="font-size:12px; color:var(--gray-400);">Quellen: <a class="source-link" href="https://www.bundesregierung.de/breg-de/service/newsletter-und-abos/bulletin/verbot-der-arbeiterpartei-kurdistans-in-deutschland-790068" target="_blank" rel="noreferrer">Bundesregierung - PKK-Verbot 1993</a> · <a class="source-link" href="https://www.consilium.europa.eu/en/press/press-releases/2023/02/24/sanctions-targeting-terrorism-council-renews-eu-terrorist-list/" target="_blank" rel="noreferrer">Rat der EU - EU terrorist list renewed 2023</a> · <a class="source-link" href="https://2017-2021.state.gov/reports/country-reports-on-terrorism-2019/" target="_blank" rel="noreferrer">U.S. State Department - PKK as FTO</a></p>
+  </div>
+
+  <div class="verdict-final">
+    <h3>Fazit zu Punkt 1</h3>
+    <p>"Militärbündnisse seit 1949" ist als Datierung nicht haltbar. 1949 markiert die Anerkennung Israels durch die Türkei. Spätere geheime Kontakte ändern daran nichts. Die belastbar sichtbare formalisierte Militärkooperation verdichtet sich erst in den 1990ern, besonders 1996. 2022 zeigt eine neue diplomatische Phase, aber keine rückwirkende Bestätigung einer durchgehenden Militärallianz seit 1949.</p>
+  </div>
+
+  <div class="sources-box">
+    <h4>Verwendete Quellen</h4>
+    <div class="sources-list">
+      <a class="source-pill" href="https://embassies.gov.il/istanbul/en/the-consulate/bilateral-relations" target="_blank" rel="noreferrer">Israelisches Generalkonsulat Istanbul</a>
+      <a class="source-pill" href="https://www.washingtoninstitute.org/policy-analysis/turkish-israeli-military-cooperation-assessment" target="_blank" rel="noreferrer">Washington Institute 1997</a>
+      <a class="source-pill" href="https://www.foreignaffairs.com/articles/turkey/2015-05-07/tridents-forgotten-legacy" target="_blank" rel="noreferrer">Foreign Affairs - Trident's Forgotten Legacy</a>
+      <a class="source-pill" href="https://www.tandfonline.com/doi/full/10.1080/00263206.2017.1313239" target="_blank" rel="noreferrer">Middle Eastern Studies 2017</a>
+      <a class="source-pill" href="https://www.mfa.gov.tr/qa_21_-22-july-2014_-statement-of-the-spokesman-of-the-ministry-of-foreign-affairs-in-response-to-a-question-regarding-the-allegations-that-turkey-cooperates-with-israel-in-the-fields-of-energy-and-defense.en.mfa" target="_blank" rel="noreferrer">Türkisches Außenministerium 2014</a>
+      <a class="source-pill" href="https://www.euronews.com/2022/08/18/us-israel-turkey" target="_blank" rel="noreferrer">Reuters / Euronews 2022</a>
+      <a class="source-pill" href="https://www.bundesregierung.de/breg-de/service/newsletter-und-abos/bulletin/verbot-der-arbeiterpartei-kurdistans-in-deutschland-790068" target="_blank" rel="noreferrer">Bundesregierung - PKK-Verbot</a>
+      <a class="source-pill" href="https://www.consilium.europa.eu/en/press/press-releases/2023/02/24/sanctions-targeting-terrorism-council-renews-eu-terrorist-list/" target="_blank" rel="noreferrer">Rat der EU - Terrorliste</a>
+      <a class="source-pill" href="https://2017-2021.state.gov/reports/country-reports-on-terrorism-2019/" target="_blank" rel="noreferrer">U.S. State Department - PKK</a>
+    </div>
+  </div>
+
+  <div class="nav-pages">
+    <a href="index.html" class="nav-page-btn">
+      <p class="dir">← Zurück</p>
+      <p class="ptitle">Zur Übersicht</p>
+    </a>
+    <a href="punkt2.html" class="nav-page-btn next">
+      <p class="dir">Weiter →</p>
+      <p class="ptitle">Punkt 02: Waffendeals</p>
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>
