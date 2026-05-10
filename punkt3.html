@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<script src="/auth.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Punkt 3: Handel & Energie - NahostFakten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--white:#fafafa;--gray-100:#f4f4f4;--gray-400:#999;--gray-600:#555;--border:#e2e2e2;--accent:#c0392b;--accent-light:#fdf0ef;--green:#1a7a4a;--green-light:#edf7f1;--amber:#b7560a;--amber-light:#fef6ee;--blue:#1a5fa8;--blue-light:#eef4fd;--radius:12px;--radius-lg:20px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Sora',sans-serif;background:var(--white);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,250,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-size:15px;font-weight:700;color:var(--black);text-decoration:none;}.nav-logo span{color:var(--accent);}
+.nav-back{font-size:13px;color:var(--gray-600);text-decoration:none;padding:6px 12px;border-radius:8px;border:1px solid var(--border);}
+.nav-back:hover{border-color:var(--black);color:var(--black);}
+.page-hero{padding:100px 24px 60px;max-width:800px;margin:0 auto;}
+.breadcrumb{font-size:12px;color:var(--gray-400);margin-bottom:16px;}
+.breadcrumb a{color:var(--gray-400);text-decoration:none;}
+.verdict-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:20px;background:var(--amber-light);color:var(--amber);border:1px solid rgba(183,86,10,0.2);}
+.page-hero h1{font-family:'Fraunces',serif;font-size:clamp(28px,5vw,48px);font-weight:700;line-height:1.15;margin-bottom:16px;}
+.claim{background:var(--gray-100);border-left:4px solid var(--amber);padding:14px 20px;border-radius:0 10px 10px 0;font-size:15px;color:var(--gray-600);font-style:italic;margin-bottom:20px;}
+.summary{font-size:17px;color:var(--gray-600);font-weight:300;}
+.content{max-width:800px;margin:0 auto;padding:0 24px 80px;}
+hr{border:none;border-top:1px solid var(--border);margin:48px 0;}
+.section-h2{font-family:'Fraunces',serif;font-size:26px;font-weight:700;margin-bottom:8px;}
+.section-sub{font-size:14px;color:var(--gray-600);margin-bottom:28px;}
+
+.trade-timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:28px 0;}
+.trade-point{background:var(--gray-100);border-radius:var(--radius);padding:16px;text-align:center;}
+.trade-point .year{font-size:13px;font-weight:700;color:var(--gray-400);margin-bottom:6px;}
+.trade-point .vol{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--black);}
+.trade-point .ctx{font-size:11px;color:var(--gray-600);margin-top:4px;line-height:1.4;}
+.trade-point.highlight{background:var(--accent-light);border:1px solid rgba(192,57,43,0.15);}
+.trade-point.highlight .vol{color:var(--accent);}
+
+.fact-box{border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:16px;}
+.fact-box h3{font-size:17px;font-weight:700;margin-bottom:10px;}
+.fact-box p{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:8px;}
+.fact-box .source{font-size:11px;color:var(--gray-400);}
+.fact-tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-top:8px;}
+.tag-true{background:var(--green-light);color:var(--green);}
+.tag-partial{background:var(--amber-light);color:var(--amber);}
+
+.btc-card{background:var(--gray-100);border-radius:var(--radius-lg);padding:28px;margin:28px 0;}
+.btc-header{font-size:19px;font-weight:700;margin-bottom:8px;}
+.btc-sub{font-size:13px;color:var(--gray-600);margin-bottom:20px;}
+.btc-note{font-size:13px;color:var(--gray-600);line-height:1.7;margin-top:16px;padding:14px;background:var(--white);border-radius:var(--radius);border:1px solid var(--border);}
+
+.heuchelei-box{background:var(--gray-100);border-radius:var(--radius-lg);padding:28px;margin:32px 0;}
+.heuchelei-label{font-size:11px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.heuchelei-label::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--amber);}
+.heuchelei-box h3{font-size:17px;font-weight:700;margin-bottom:10px;}
+.heuchelei-box p{font-size:14px;color:var(--gray-600);line-height:1.7;}
+
+.verdict-final{background:var(--black);color:var(--white);border-radius:var(--radius-lg);padding:32px;margin:48px 0;}
+.verdict-final h3{font-family:'Fraunces',serif;font-size:22px;margin-bottom:12px;}
+.verdict-final p{font-size:15px;color:rgba(255,255,255,0.7);line-height:1.7;}
+
+.sources-box{border:1px solid var(--border);border-radius:var(--radius);padding:20px;}
+.sources-box h4{font-size:13px;font-weight:700;margin-bottom:12px;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.05em;}
+.sources-list{display:flex;flex-wrap:wrap;gap:8px;}
+.source-pill{font-size:12px;background:var(--gray-100);padding:4px 12px;border-radius:20px;color:var(--gray-600);}
+.source-link{color:inherit;text-decoration:underline;text-underline-offset:2px;}
+a.source-pill{text-decoration:none;display:inline-block;}
+a.source-pill:hover,.source-link:hover{color:var(--black);}
+
+.nav-pages{display:flex;gap:12px;margin-top:48px;}
+.nav-page-btn{flex:1;display:block;padding:16px;border-radius:var(--radius);border:1px solid var(--border);text-decoration:none;color:var(--black);transition:all 0.2s;}
+.nav-page-btn:hover{border-color:var(--black);}
+.nav-page-btn .dir{font-size:11px;color:var(--gray-400);margin-bottom:4px;}
+.nav-page-btn .ptitle{font-size:14px;font-weight:600;}
+.nav-page-btn.next{text-align:right;}
+
+@media(max-width:600px){.trade-timeline{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Nahost<span>Fakten</span></a>
+  <a class="nav-back" href="index.html">← Zurück</a>
+</nav>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="index.html">NahostFakten</a> · Punkt 03</p>
+  <div class="verdict-badge">Der stärkste Punkt des Sharepics - aber nur, wenn man Handel und Transit nicht verwechselt</div>
+  <h1>"Handel & Energie - trotz Gaza-Kriegen"</h1>
+  <div class="claim">"Waren- und Ölströme liefen trotz Gaza-Kriegen - strategische Abhängigkeit"</div>
+  <p class="summary">Punkt 3 ist der komplizierteste Teil des Sharepics. Der belastbare Kern ist der frühere Handel - aber seit 2024 ist die Gegenwartsbehauptung zu grob. Gleichzeitig darf man Energie- und Transitfragen wie BTC/Ceyhan nicht so simpel behandeln wie normalen bilateralen Warenhandel.</p>
+</div>
+
+<div class="content">
+
+  <div class="trade-timeline">
+    <div class="trade-point"><p class="year">2023</p><p class="vol">6,8 Mrd. $</p><p class="ctx">Bilateraler Handel vor dem Stopp</p></div>
+    <div class="trade-point highlight"><p class="year">09.04.2024</p><p class="vol">54 Gruppen</p><p class="ctx">Erste Exportbeschränkungen</p></div>
+    <div class="trade-point highlight"><p class="year">02.05.2024</p><p class="vol">Stopp</p><p class="ctx">Direkter bilateraler Warenhandel beendet</p></div>
+    <div class="trade-point highlight"><p class="year">29.08.2025</p><p class="vol">Häfen & Luft</p><p class="ctx">Zusätzliche Restriktionen</p></div>
+  </div>
+
+  <h2 class="section-h2">A. Was belastbar ist</h2>
+  <p class="section-sub">Das ist der Teil, bei dem die Türkei tatsächlich mit harten, dokumentierten Maßnahmen argumentieren kann.</p>
+
+  <div class="fact-box">
+    <h3>Claim 1: Der direkte bilaterale Warenhandel wurde am 2. Mai 2024 gestoppt</h3>
+    <p>Das ist der härteste belastbare Punkt. Reuters berichtete, dass die Türkei alle Export- und Importtransaktionen mit Israel stoppte. Reuters nannte für 2023 ein bilaterales Handelsvolumen von 6,8 Milliarden US-Dollar. Damit wurde aus jahrelanger Kritik erstmals ein realer staatlicher Einschnitt.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://www.investing.com/news/world-news/turkey-halts-all-trade-with-israel-cites-worsening-palestinian-situation-3415911" target="_blank" rel="noreferrer">Reuters, 2. Mai 2024</a></p>
+    <span class="fact-tag tag-true">Belastbar</span>
+  </div>
+
+  <div class="fact-box">
+    <h3>Claim 1b: Der Kurs wurde schon vor dem Vollstopp verschärft</h3>
+    <p>Schon am 9. April 2024 verhängte Ankara Exportbeschränkungen für 54 Produktgruppen. Das ist wichtig, weil es zeigt, dass der Handelsstopp nicht aus dem Nichts kam, sondern Teil einer eskalierenden Linie war.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://www.investing.com/news/economy/turkey-imposes-export-restrictions-on-israel-until-gaza-ceasefire-3370571" target="_blank" rel="noreferrer">Reuters, 9. April 2024</a></p>
+    <span class="fact-tag tag-true">Belastbar</span>
+  </div>
+
+  <div class="fact-box">
+    <h3>Claim 5: 2025 wurden die Restriktionen auf Häfen und Luftverkehr ausgeweitet</h3>
+    <p>Reuters meldete am 29. August 2025, dass Ankara israelische Schiffe von türkischen Häfen ausschließt, türkischen Schiffen israelische Häfen verbietet und zusätzliche Beschränkungen für bestimmte Flüge bzw. Luftfracht anwendet. Damit blieb es nicht beim reinen Warenstopp von 2024.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://www.investing.com/news/world-news/turkey-says-it-bars-israeli-ships-from-its-ports-restricting-airspace-4216903" target="_blank" rel="noreferrer">Reuters, 29. August 2025</a></p>
+    <span class="fact-tag tag-true">Belastbar</span>
+  </div>
+
+  <div class="fact-box">
+    <h3>Zusatzhebel: Ankara verweigerte Herzog 2024 den Überflug</h3>
+    <p>Ein politisch nützlicher Zusatzpunkt: Im November 2024 verweigerte die Türkei dem israelischen Präsidenten Isaac Herzog die Nutzung ihres Luftraums für den Flug zur COP29 nach Baku. Das beweist keine Totaltrennung aller Kontakte, zeigt aber klar, dass Ankara auch auf symbolisch-diplomatischer Ebene nicht einfach passiv blieb.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://www.aa.com.tr/en/middle-east/turkiye-denies-israeli-president-herzogs-airspace-request/3396272" target="_blank" rel="noreferrer">Anadolu Agency, 17. November 2024</a></p>
+    <span class="fact-tag tag-true">Zusätzlicher politischer Hebel</span>
+  </div>
+
+  <hr>
+
+  <h2 class="section-h2">B. Was methodisch kompliziert ist</h2>
+  <p class="section-sub">Hier kippen Debatten schnell in Übertreibung. Gerade deshalb musst du sauberer formulieren als ein Sharepic.</p>
+
+  <div class="fact-box">
+    <h3>Claim 2: Der Stopp des Direkthandels heißt nicht automatisch Nullkontakt in jeder Lieferkette weltweit</h3>
+    <p>Belastbar ist der Stopp des direkten bilateralen Handels. Daraus folgt aber nicht automatisch, dass jede indirekte wirtschaftliche Spur, jeder Drittstaatentransit oder jede globale Lieferkettenberührung sofort verschwindet. Wer hier zu stark formuliert, macht sich angreifbar.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://www.investing.com/news/world-news/turkey-halts-all-trade-with-israel-cites-worsening-palestinian-situation-3415911" target="_blank" rel="noreferrer">Reuters, 2. Mai 2024</a></p>
+    <span class="fact-tag tag-partial">Methodisch wichtig</span>
+  </div>
+
+  <div class="fact-box">
+    <h3>Claim 3: Beim BTC-/Ceyhan-Ölpunkt ist die Lage umstritten und operativ kompliziert</h3>
+    <p>Die harte, saubere Linie lautet nicht "alles Lüge" und auch nicht "Verrat bewiesen". Es gab öffentliche Vorwürfe, dass Öl über Ceyhan letztlich Israel erreiche. Gleichzeitig erklärte das türkische Energieministerium im November 2024, solche Behauptungen seien unbegründet; BOTAŞ International habe keine Rolle beim Kauf oder Verkauf des Öls, und Lieferungen mit Israel als Ziel hätten nicht stattgefunden.</p>
+    <p class="source">Quelle: <a class="source-link" href="https://www.aa.com.tr/en/middle-east/turkiye-denies-claims-of-oil-shipments-to-israel/3390601" target="_blank" rel="noreferrer">Anadolu Agency, 11. November 2024</a></p>
+    <span class="fact-tag tag-partial">Offizielle Dementis gegen öffentliche Vorwürfe</span>
+  </div>
+
+  <div class="fact-box">
+    <h3>Claim 4: Ceyhan ist ein regionaler Energieknoten, kein normaler bilateraler Containerhandel</h3>
+    <p>Reuters berichtete 2025 mehrfach über BTC-Exporte aus Aserbaidschan und Kasachstan über Ceyhan. Das unterstreicht den zentralen Punkt: BTC ist ein international eingebetteter Transitkorridor mit mehreren Produzenten, Partnern und Zielmärkten. Deshalb darf man Energie-Transit nicht so simpel lesen wie gewöhnlichen bilateralen Warenhandel.</p>
+    <p class="source">Quellen: <a class="source-link" href="https://www.tradingview.com/news/reuters.com%2C2025%3Anewsml_L2N3V40CE%3A0-kazakhstan-resumes-oil-exports-via-baku-tbilisi-ceyhan-pipeline/" target="_blank" rel="noreferrer">Reuters, 17. September 2025</a> · <a class="source-link" href="https://www.tradingview.com/news/reuters.com%2C2025%3Anewsml_L5N3VV0KM%3A0-azerbaijan-kazakhstan-consider-raising-oil-transit-via-btc-to-7-million-tons-by-2027-minister-says/" target="_blank" rel="noreferrer">Reuters, 15. Oktober 2025</a></p>
+    <span class="fact-tag tag-partial">Belastbar, aber kontextabhängig</span>
+  </div>
+
+  <div class="btc-card">
+    <p class="btc-header">BTC / Ceyhan - warum dieser Punkt komplexer ist als ein Meme</p>
+    <p class="btc-sub">Pipeline, Terminal und Transit sind nicht dasselbe wie ein normaler bilateraler Exportcontainer.</p>
+    <div class="btc-note">
+      <strong>Die saubere Lesart:</strong> Bei BTC/Ceyhan geht es um einen internationalen Energiekorridor, Betreiberstrukturen, Transitabkommen und wechselnde Exportströme aus mehreren Staaten. Daraus folgt nicht automatisch, dass jeder Vorgang am Terminal als einfacher Beweis für pro-israelische Regierungspolitik Ankaras taugt.
+    </div>
+    <div class="btc-note" style="margin-top:12px;">
+      <strong>Die ehrliche Gegenposition:</strong> Öffentliche Vorwürfe zu Ceyhan sollte man nicht wegwischen. Aber ohne saubere Trennung zwischen Transit, Eigentum, Verkaufsrolle und Zielhafen wird aus einem komplizierten Energiethema sehr schnell ein unsauberes TikTok-Argument.
+    </div>
+    <div class="btc-note" style="margin-top:12px;">
+      <strong>Zusätzlicher Entlastungshebel:</strong> Die türkische Seite verwies beim Dementi nicht nur politisch auf Gaza, sondern auch auf die Struktur des Systems: BOTAŞ International verwalte den türkischen Abschnitt des BTC-Korridors unter internationalen Vereinbarungen, habe aber keine Verkaufsrolle beim Öl selbst. Das entlastet Ankara nicht vollständig, macht den Punkt aber juristisch und operativ deutlich komplizierter als einfache Verratsparolen.
+    </div>
+  </div>
+
+  <div class="heuchelei-box">
+    <p class="heuchelei-label">Praktische Durchsetzung</p>
+    <h3>2025 wurden die Hafenkontrollen offenbar faktisch nachgeschärft</h3>
+    <p>Reuters berichtete im August 2025, dass türkische Hafenbehörden von Schiffsagenten informell schriftliche Erklärungen verlangten, wonach Schiffe nicht mit Israel verbunden seien und keine bestimmte militärische oder gefährliche Fracht nach Israel transportierten. Auch wenn keine offizielle Rundverfügung veröffentlicht wurde, ist das ein zusätzlicher Hebel: Ankara verschärfte nicht nur die Sprache, sondern offenbar auch die praktische Kontrolle.</p>
+    <br>
+    <p style="font-size:12px;color:var(--gray-400);">Quelle: <a class="source-link" href="https://www.ajot.com/news/turkish-ports-asking-ships-to-declare-they-are-not-linked-to-israel-shipping-sources-say" target="_blank" rel="noreferrer">Reuters / AJOT, 21. August 2025</a></p>
+  </div>
+
+  <hr>
+
+  <h2 class="section-h2">C. Was man nicht zu stark formulieren sollte</h2>
+  <p class="section-sub">Gerade Punkt 3 wird stärker, wenn du nicht überziehst.</p>
+
+  <div class="heuchelei-box">
+    <p class="heuchelei-label">Nicht zu stark</p>
+    <h3>"Alle wirtschaftlichen Verbindungen waren sofort auf null"</h3>
+    <p>Zu stark. Belastbar ist der Stopp des direkten bilateralen Warenhandels. Daraus folgt nicht automatisch, dass jede globale, indirekte oder transitbezogene Berührung in Echtzeit verschwindet.</p>
+  </div>
+
+  <div class="heuchelei-box">
+    <p class="heuchelei-label">Nicht zu stark</p>
+    <h3>"BTC/Ceyhan beweist eindeutig Verrat"</h3>
+    <p>Zu simpel. Gerade beim Öl- und Transitpunkt stehen öffentliche Vorwürfe offiziellen Dementis und einer technisch-juristisch komplexen Lage gegenüber. Wer hier absolute Gewissheit behauptet, lädt Widerspruch ein.</p>
+  </div>
+
+  <div class="heuchelei-box">
+    <p class="heuchelei-label">Nicht zu stark</p>
+    <h3>"Die Türkei ist komplett sauber"</h3>
+    <p>Auch das wäre falsch. Der Handel lief viele Jahre weiter. Die bessere Linie ist nicht Reinwaschen, sondern Einordnen: Handelsstopp ja, verschärfte Restriktionen ja, Energie- und Transitfrage komplizierter, Hauptschuld-Erzählung zu simpel.</p>
+  </div>
+
+  <div class="heuchelei-box">
+    <p class="heuchelei-label">Debatten-Linie</p>
+    <h3>Die sauberste Formulierung für Diskussionen</h3>
+    <p>"Der stärkste belastbare Punkt ist der staatliche Stopp des direkten bilateralen Warenhandels am 2. Mai 2024. Die Energie- und Transitfrage ist komplizierter: Ceyhan/BTC ist ein international eingebetteter Korridor, und öffentlichen Vorwürfen stehen offizielle Dementis gegenüber. Wer daraus eine einfache Geschichte macht - entweder 'Türkei komplett sauber' oder 'Türkei der eigentliche Buhmann' - vereinfacht die Quellenlage zu stark."</p>
+  </div>
+
+  <div class="verdict-final">
+    <h3>Fazit zu Punkt 3</h3>
+    <p>Der stärkste belastbare Punkt ist der staatliche Stopp des direkten bilateralen Warenhandels am 2. Mai 2024. Seit 2025 kamen Hafen- und Luftrestriktionen hinzu. Zugleich sollte man bei Energie- und Transitfragen präziser sein: Ceyhan/BTC ist ein international eingebetteter Korridor, und öffentliche Vorwürfe über Ölflüsse nach Israel stehen offiziellen Dementis gegenüber. Wer daraus eine einfache Erzählung macht - entweder "Türkei ist komplett sauber" oder "Türkei ist der eigentliche Buhmann" - vereinfacht die Quellenlage zu stark.</p>
+  </div>
+
+  <div class="sources-box">
+    <h4>Verwendete Quellen</h4>
+    <div class="sources-list">
+      <a class="source-pill" href="https://www.investing.com/news/world-news/turkey-halts-all-trade-with-israel-cites-worsening-palestinian-situation-3415911" target="_blank" rel="noreferrer">Reuters - Handelsstopp 02.05.2024</a>
+      <a class="source-pill" href="https://www.investing.com/news/economy/turkey-imposes-export-restrictions-on-israel-until-gaza-ceasefire-3370571" target="_blank" rel="noreferrer">Reuters - Exportbeschränkungen 09.04.2024</a>
+      <a class="source-pill" href="https://www.investing.com/news/world-news/turkey-says-it-bars-israeli-ships-from-its-ports-restricting-airspace-4216903" target="_blank" rel="noreferrer">Reuters - Häfen & Luft 29.08.2025</a>
+      <a class="source-pill" href="https://www.aa.com.tr/en/middle-east/turkiye-denies-claims-of-oil-shipments-to-israel/3390601" target="_blank" rel="noreferrer">AA - Dementi Ceyhan 11.11.2024</a>
+      <a class="source-pill" href="https://www.tradingview.com/news/reuters.com%2C2025%3Anewsml_L2N3V40CE%3A0-kazakhstan-resumes-oil-exports-via-baku-tbilisi-ceyhan-pipeline/" target="_blank" rel="noreferrer">Reuters - Kasachstan via BTC 17.09.2025</a>
+      <a class="source-pill" href="https://www.tradingview.com/news/reuters.com%2C2025%3Anewsml_L5N3VV0KM%3A0-azerbaijan-kazakhstan-consider-raising-oil-transit-via-btc-to-7-million-tons-by-2027-minister-says/" target="_blank" rel="noreferrer">Reuters - Aserbaidschan/Kasachstan via BTC 15.10.2025</a>
+    </div>
+  </div>
+
+  <div class="nav-pages">
+    <a href="punkt2.html" class="nav-page-btn"><p class="dir">← Zurück</p><p class="ptitle">Punkt 02: Waffendeals</p></a>
+    <a href="punkt4.html" class="nav-page-btn next"><p class="dir">Weiter →</p><p class="ptitle">Punkt 04: MIT & Mossad</p></a>
+  </div>
+
+</div>
+</body>
+</html>

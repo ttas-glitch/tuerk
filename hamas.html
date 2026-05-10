@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<script src="/auth.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archiviert - NahostFakten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--white:#fafafa;--gray-100:#f4f4f4;--gray-400:#999;--gray-600:#555;--border:#e2e2e2;--accent:#c0392b;--accent-light:#fdf0ef;--blue:#1a5fa8;--blue-light:#eef4fd;--radius:12px;--radius-lg:20px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Sora',sans-serif;background:var(--white);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,250,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-size:15px;font-weight:700;color:var(--black);text-decoration:none;}
+.nav-logo span{color:var(--accent);}
+.nav-back{font-size:13px;color:var(--gray-600);text-decoration:none;padding:6px 12px;border-radius:8px;border:1px solid var(--border);}
+.nav-back:hover{border-color:var(--black);color:var(--black);}
+.page{max-width:780px;margin:0 auto;padding:120px 24px 80px;}
+.breadcrumb{font-size:12px;color:var(--gray-400);margin-bottom:16px;}
+.breadcrumb a{color:inherit;text-decoration:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:20px;background:var(--blue-light);color:var(--blue);border:1px solid rgba(26,95,168,0.18);}
+h1{font-family:'Fraunces',serif;font-size:clamp(30px,5vw,48px);line-height:1.1;margin-bottom:16px;}
+.lead{font-size:17px;color:var(--gray-600);font-weight:300;margin-bottom:28px;}
+.card{border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;background:var(--gray-100);}
+.card h2{font-size:18px;margin-bottom:10px;}
+.card p{font-size:14px;color:var(--gray-600);margin-bottom:10px;}
+.actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;}
+.btn{display:inline-block;padding:12px 16px;border-radius:8px;border:1px solid var(--border);text-decoration:none;color:var(--black);background:var(--white);}
+.btn:hover{border-color:var(--black);}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Nahost<span>Fakten</span></a>
+  <a class="nav-back" href="index.html">&larr; Zurück</a>
+</nav>
+
+<main class="page">
+  <p class="breadcrumb"><a href="index.html">NahostFakten</a> · Archiv</p>
+  <div class="badge">Nicht mehr Teil der Hauptlinie</div>
+  <h1>Diese Seite wurde archiviert</h1>
+  <p class="lead">Der Fokus der Website liegt jetzt bewusst auf Türkei-bezogenen Faktenchecks und nicht auf einer offenen Hamas-Gaza-Israel-Debatte.</p>
+
+  <section class="card">
+    <h2>Warum archiviert?</h2>
+    <p>Dieser Themenblock zieht Debatten schnell in eine emotionale Grundsatzdiskussion, obwohl die eigentliche Website die vier Behauptungen über die Türkei sauber einordnen soll.</p>
+    <p>Die Hauptnavigation führt deshalb jetzt auf die Türkei-zentrierten Seiten weiter.</p>
+  </section>
+
+  <div class="actions">
+    <a class="btn" href="index.html">Zur Startseite</a>
+    <a class="btn" href="turkei-palaestina.html">Weiter zu Türkei &amp; Palästina</a>
+    <a class="btn" href="debatten-guide.html">Zum Debatten-Guide</a>
+  </div>
+</main>
+</body>
+</html>

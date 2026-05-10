@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<script src="/auth.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Die echte Doppelmoral – NahostFakten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0a0a0a; --white: #fafafa; --gray-100: #f4f4f4;
+  --gray-400: #999; --gray-600: #555; --border: #e2e2e2;
+  --accent: #c0392b; --accent-light: #fdf0ef;
+  --green: #1a7a4a; --green-light: #edf7f1;
+  --amber: #b7560a; --amber-light: #fef6ee;
+  --blue: #1a5fa8; --blue-light: #eef4fd;
+  --radius: 12px; --radius-lg: 20px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Sora', sans-serif; background: var(--white); color: var(--black); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,250,250,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-size: 15px; font-weight: 700; color: var(--black); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-back { font-size: 13px; color: var(--gray-600); text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); transition: all 0.15s; }
+.nav-back:hover { border-color: var(--black); color: var(--black); }
+
+.page-hero { padding: 100px 24px 60px; max-width: 800px; margin: 0 auto; }
+.breadcrumb { font-size: 12px; color: var(--gray-400); margin-bottom: 16px; }
+.breadcrumb a { color: var(--gray-400); text-decoration: none; }
+
+.verdict-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 20px; background: var(--accent-light); color: var(--accent); border: 1px solid rgba(192,57,43,0.2); }
+
+.page-hero h1 { font-family: 'Fraunces', serif; font-size: clamp(28px, 5vw, 48px); font-weight: 700; line-height: 1.15; margin-bottom: 16px; }
+.page-hero .summary { font-size: 17px; color: var(--gray-600); font-weight: 300; }
+
+.content { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+
+.actor-card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; margin-bottom: 20px; position: relative; overflow: hidden; }
+.actor-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+.actor-card.red::before { background: var(--accent); }
+.actor-card.amber::before { background: var(--amber); }
+.actor-card.blue::before { background: var(--blue); }
+
+.actor-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; gap: 16px; }
+.actor-name { font-size: 20px; font-weight: 700; }
+.actor-sub { font-size: 13px; color: var(--gray-600); margin-top: 2px; }
+.actor-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
+.tag-says { background: var(--green-light); color: var(--green); }
+.tag-does { background: var(--accent-light); color: var(--accent); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.col-box { background: var(--gray-100); border-radius: var(--radius); padding: 16px; }
+.col-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; color: var(--gray-400); }
+.col-content { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+
+.verdict-text { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin-bottom: 8px; }
+.source-line { font-size: 11px; color: var(--gray-400); }
+
+.section-divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+.section-h2 { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 700; margin-bottom: 24px; }
+
+.comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+.comparison-table th { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-400); padding: 12px 16px; text-align: left; border-bottom: 2px solid var(--border); }
+.comparison-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 14px; vertical-align: top; }
+.comparison-table tr:last-child td { border-bottom: none; }
+.comparison-table tr:hover td { background: var(--gray-100); }
+.highlight-row td { background: var(--green-light) !important; }
+.highlight-row td:first-child { font-weight: 700; color: var(--green); }
+
+.status-pill { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+.status-active { background: var(--accent-light); color: var(--accent); }
+.status-stopped { background: var(--green-light); color: var(--green); }
+.status-hidden { background: var(--amber-light); color: var(--amber); }
+
+.verdict-final { background: var(--black); color: var(--white); border-radius: var(--radius-lg); padding: 32px; margin: 48px 0; }
+.verdict-final h3 { font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 12px; }
+.verdict-final p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.7; }
+
+.sources-box { border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.sources-box h4 { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.05em; }
+.sources-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.source-pill { font-size: 12px; background: var(--gray-100); padding: 4px 12px; border-radius: 20px; color: var(--gray-600); }
+.source-link { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+a.source-pill { text-decoration: none; display: inline-block; }
+a.source-pill:hover, .source-link:hover { color: var(--black); }
+
+@media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } .comparison-table { font-size: 12px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Nahost<span>Fakten</span></a>
+  <a class="nav-back" href="index.html">← Zurück zur Übersicht</a>
+</nav>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="index.html">NahostFakten</a> · Kapitel 06</p>
+  <div class="verdict-badge">⚠ Die eigentliche Doppelmoral</div>
+  <h1>Wer kooperiert wirklich mit Israel – während er Palästina vorschiebt?</h1>
+  <p class="summary">Das Originalbild zeigt auf die Türkei. Aber die eigentliche Doppelmoral liegt auch bei anderen Akteuren: bei der palästinensischen Führung, bei Katar, bei Saudi-Arabien – und bei Netanjahu, der Qatari-Geldtransfers nach Gaza zuließ.</p>
+</div>
+
+<div class="content">
+
+  <div class="actor-card red">
+    <div class="actor-header">
+      <div>
+        <p class="actor-name">Palästinensische Autonomiebehörde (PA)</p>
+        <p class="actor-sub">Regiert das Westjordanland · Fatah-geführt</p>
+      </div>
+      <span class="actor-tag tag-does">Kooperiert täglich</span>
+    </div>
+    <div class="two-col">
+      <div class="col-box">
+        <p class="col-label">Was sie sagt</p>
+        <p class="col-content">Widerstand gegen Israel. Für einen palästinensischen Staat. Gegen Besatzung.</p>
+      </div>
+      <div class="col-box">
+        <p class="col-label">Was sie tut</p>
+        <p class="col-content">Kooperiert täglich mit israelischen Sicherheitskräften. Gibt Informationen über Hamas-Mitglieder weiter, die zu deren Verhaftung führen.</p>
+      </div>
+    </div>
+    <p class="verdict-text">Die von der Fatah dominierte PA nutzt das System immer wieder, um Informationen über oppositionelle Politiker – oftmals jene der Hamas – an Israel weiterzugeben, was häufig zu deren Festnahmen durch israelische Sicherheitskräfte führt. In der palästinensischen Gesellschaft wird die PA deshalb zunehmend als Kollaborateurin wahrgenommen.</p>
+    <p class="source-line">Quelle: <a class="source-link" href="https://www.kas.de/de/laenderberichte/detail/-/content/ein-sicherheitsapparat-ohne-gewaltmonopol" target="_blank" rel="noreferrer">Konrad-Adenauer-Stiftung – Sicherheitsapparat ohne Gewaltmonopol (2021)</a></p>
+  </div>
+
+  <div class="actor-card amber">
+    <div class="actor-header">
+      <div>
+        <p class="actor-name">Katar</p>
+        <p class="actor-sub">Größter Hamas-Sponsor · Vermittler zwischen allen Seiten</p>
+      </div>
+      <span class="actor-tag tag-does">Spielt beide Seiten</span>
+    </div>
+    <div class="two-col">
+      <div class="col-box">
+        <p class="col-label">Was Katar sagt</p>
+        <p class="col-content">Solidarität mit Palästina. Finanzierung von Hamas als „Widerstandsbewegung". Gaza-Unterstützung.</p>
+      </div>
+      <div class="col-box">
+        <p class="col-label">Was Katar tut</p>
+        <p class="col-content">Ließ in den 1990ern eine israelische Handelsvertretung in Doha zu. Koordiniert mit Israel den Wiederaufbau. Vermittelt Geiseldeals.</p>
+      </div>
+    </div>
+    <p class="verdict-text">Katar ist der wichtigste Geldgeber der Hamas – und gleichzeitig unverzichtbarer Vermittler für Israel. Nach dem Gaza-Krieg 2014 kamen sowohl Israel als auch Katar zum Schluss, dass ein Wiederaufbau nötig ist. Katar finanzierte diesen entscheidend mit. Hamas-Führer wohnen in Doha-Fünfsternehotels – Katar bleibt Gesprächspartner Israels.</p>
+    <p class="source-line">Quelle: <a class="source-link" href="https://www.cbsnews.com/news/qatar-closes-israeli-trade-mission/" target="_blank" rel="noreferrer">CBS/AP – Israeli trade mission in Doha</a></p>
+  </div>
+
+  <div class="actor-card amber">
+    <div class="actor-header">
+      <div>
+        <p class="actor-name">Netanjahu – die pikanteste Ironie</p>
+        <p class="actor-sub">Israelischer Premierminister · Erzfeind der Hamas?</p>
+      </div>
+      <span class="actor-tag tag-does">Ermöglichte Qatari-Transfers</span>
+    </div>
+    <div class="two-col">
+      <div class="col-box">
+        <p class="col-label">Offizielle Linie</p>
+        <p class="col-content">Hamas bekämpfen. Terror eliminieren. Gaza stabilisieren.</p>
+      </div>
+      <div class="col-box">
+        <p class="col-label">Was er tat</p>
+        <p class="col-content">Genehmigte ab 2018 wiederholt Qatari-Bargeldtransfers nach Gaza – offiziell zur Stabilisierung der Lage.</p>
+      </div>
+    </div>
+    <p class="verdict-text">Belastbar dokumentiert ist, dass Netanjahu Qatari-Bargeldtransfers nach Gaza zuließ und diese Politik verteidigte. Die politische Bewertung dahinter bleibt umstritten, widerspricht aber klar der Vorstellung eines durchgehend kompromisslosen Anti-Hamas-Kurses.</p>
+    <p class="source-line">Quelle: <a class="source-link" href="https://www.jta.org/2018/11/09/israel/israel-oks-qatari-15m-cash-suitcases-gaza-amid-terrorist-escalation" target="_blank" rel="noreferrer">JTA – Qatari cash transfer, 9. November 2018</a></p>
+  </div>
+
+  <div class="actor-card blue">
+    <div class="actor-header">
+      <div>
+        <p class="actor-name">Saudi-Arabien</p>
+        <p class="actor-sub">Jahrzehntelang Israels lautester Feind</p>
+      </div>
+      <span class="actor-tag tag-does">Heimliche Kooperation</span>
+    </div>
+    <div class="two-col">
+      <div class="col-box">
+        <p class="col-label">Öffentlich</p>
+        <p class="col-content">Palästina-Solidarität. Keine Normalisierung ohne palästinensischen Staat. Jahrzehntelange anti-israelische Rhetorik.</p>
+      </div>
+      <div class="col-box">
+        <p class="col-label">Hinter den Kulissen</p>
+        <p class="col-content">Geheimdienstlicher Austausch seit Jahren. Gemeinsame Marineübungen mit Israel. Öffnung des Luftraums für israelische Flüge (2022).</p>
+      </div>
+    </div>
+    <p class="verdict-text">Der geheimdienstliche und diplomatische Austausch zwischen Israel und Saudi-Arabien ist angesichts ähnlicher Bedrohungswahrnehmungen – insbesondere hinsichtlich der nuklearen Bedrohung durch den Iran – seit Jahren viel enger als öffentlich anerkannt wird. Saudi-Arabien und Oman nahmen sogar gemeinsam mit Israel an einer US-geführten Marineübung teil.</p>
+    <p class="source-line">Quelle: <a class="source-link" href="https://www.kas.de/de/laenderberichte/detail/-/content/saudi-arabien-nach-iran-nun-israel" target="_blank" rel="noreferrer">Konrad-Adenauer-Stiftung – Saudi-Arabien: Nach Iran nun Israel? (2023)</a> · <a class="source-link" href="https://kelo.com/2022/02/02/israel-participates-in-huge-u-s-mideast-naval-exercise-alongside-saudi-oman/" target="_blank" rel="noreferrer">Reuters – Marineübung 2022</a> · <a class="source-link" href="https://www.khaleejtimes.com/world/gulf/saudi-arabia-to-open-airspace-to-all-airlines-including-from-israel" target="_blank" rel="noreferrer">Reuters – Luftraumöffnung 2022</a></p>
+  </div>
+
+  <hr class="section-divider">
+  <h2 class="section-h2">Der direkte Vergleich</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Akteur</th>
+        <th>Öffentliche Position</th>
+        <th>Tatsächliche Kooperation</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Türkei</strong></td>
+        <td>Gegen Israel, für Palästina</td>
+        <td>Rüstung bis 2010, Handel bis 2024</td>
+        <td><span class="status-pill status-stopped">Beendet 2024</span></td>
+      </tr>
+      <tr>
+        <td><strong>PA (Palästina)</strong></td>
+        <td>Widerstand gegen Israel</td>
+        <td>Tägliche Sicherheitskooperation</td>
+        <td><span class="status-pill status-active">Läuft noch</span></td>
+      </tr>
+      <tr>
+        <td><strong>Katar</strong></td>
+        <td>Hamas-Unterstützer</td>
+        <td>Vermittler, Handelsvertretung</td>
+        <td><span class="status-pill status-active">Läuft noch</span></td>
+      </tr>
+      <tr>
+        <td><strong>Saudi-Arabien</strong></td>
+        <td>Pro-Palästina Rhetorik</td>
+        <td>Geheimdienstkooperation</td>
+        <td><span class="status-pill status-hidden">Im Verborgenen</span></td>
+      </tr>
+      <tr>
+        <td><strong>VAE / Bahrain</strong></td>
+        <td>Früher pro-Palästina</td>
+        <td>Abraham-Abkommen 2020</td>
+        <td><span class="status-pill status-active">Offiziell normalisiert</span></td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>Türkei (heute)</strong></td>
+        <td>Gegen Israel</td>
+        <td>Handelsstopp 2024, Häfen/Luftraum 2025, wiederholte Vorwürfe gegen Mossad-Netzwerke</td>
+        <td><span class="status-pill status-stopped">Konsequentester Bruch</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="verdict-final">
+    <h3>Das große Fazit</h3>
+    <p>Das Originalbild zeigt auf die Türkei und nennt sie Heuchler. Aber die eigentlichen Widersprüche liegen breiter: bei der PA mit täglicher Sicherheitskooperation, bei Katar als Hamas-Sponsor und Vermittler, bei Saudi-Arabien mit stiller Annäherung und bei Netanjahu, der Qatari-Geldtransfers nach Gaza zuließ. Ankara ging mit Handelsstopp und späteren Transportbeschränkungen deutlich weiter als viele andere Staaten.</p>
+  </div>
+
+  <div class="sources-box">
+    <h4>Verwendete Quellen</h4>
+    <div class="sources-list">
+      <a class="source-pill" href="https://www.kas.de/de/laenderberichte/detail/-/content/ein-sicherheitsapparat-ohne-gewaltmonopol" target="_blank" rel="noreferrer">KAS – PA</a>
+      <a class="source-pill" href="https://www.cbsnews.com/news/qatar-closes-israeli-trade-mission/" target="_blank" rel="noreferrer">CBS/AP – Qatar</a>
+      <a class="source-pill" href="https://www.jta.org/2018/11/09/israel/israel-oks-qatari-15m-cash-suitcases-gaza-amid-terrorist-escalation" target="_blank" rel="noreferrer">JTA – Netanjahu/Qatar</a>
+      <a class="source-pill" href="https://www.kas.de/de/laenderberichte/detail/-/content/saudi-arabien-nach-iran-nun-israel" target="_blank" rel="noreferrer">KAS – Saudi-Arabien</a>
+      <a class="source-pill" href="https://www.khaleejtimes.com/world/gulf/saudi-arabia-to-open-airspace-to-all-airlines-including-from-israel" target="_blank" rel="noreferrer">Reuters – Saudi-Luftraum</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
