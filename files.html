@@ -403,16 +403,15 @@ body {
 </div>
 
 <script>
-const STORAGE_KEY = 'uploaded_files';
+const WORKER_URL = 'https://tuerk-uploads.YOUR_SUBDOMAIN.workers.dev';
 let currentFilter = 'all';
 let viewMode = 'grid';
+let cachedFiles = [];
 
-function load() {
-  return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-}
-
-function save(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+async function load() {
+  const res = await fetch(`${WORKER_URL}/`);
+  if (!res.ok) throw new Error('Failed to load files');
+  return res.json();
 }
 
 function formatBytes(b) {
@@ -447,20 +446,35 @@ function typeLabel(type) {
   return ext ? ext.split('.').pop().toUpperCase() : 'Datei';
 }
 
-function deleteFile(id) {
-  let data = load().filter(f => f.id !== id);
-  save(data);
-  render();
+async function deleteFile(key) {
+  await fetch(`${WORKER_URL}/${encodeURIComponent(key)}`, { method: 'DELETE' });
+  await render();
 }
 
-function render() {
-  const all = load();
+async function render() {
+  const container = document.getElementById('container');
+  container.innerHTML = `<div class="empty-state"><p style="color:var(--gray-400)">Laden…</p></div>`;
+
+  try {
+    cachedFiles = await load();
+  } catch (e) {
+    container.innerHTML = `<div class="empty-state"><p>Fehler beim Laden. Worker URL prüfen.</p></div>`;
+    return;
+  }
+
+  const all = cachedFiles.map(f => ({
+    key: f.key,
+    name: f.key,
+    size: f.size,
+    type: f.contentType,
+    date: f.uploaded,
+    url: `${WORKER_URL}/${encodeURIComponent(f.key)}`
+  }));
+
   const filtered = currentFilter === 'all' ? all : all.filter(f => getCategory(f.type) === currentFilter);
 
   document.getElementById('toolbarCount').textContent =
     filtered.length + ' Datei' + (filtered.length !== 1 ? 'en' : '');
-
-  const container = document.getElementById('container');
 
   if (all.length === 0) {
     container.innerHTML = `
@@ -480,48 +494,42 @@ function render() {
     return;
   }
 
+  const thumbFor = f => f.type.startsWith('image/')
+    ? `<img src="${f.url}" alt="${f.name}" loading="lazy">`
+    : `${fileIcon(f.type)}<span class="type-badge">${typeLabel(f.type)}</span>`;
+
+  const deleteBtn = key => `
+    <button class="btn-delete" data-key="${key}" title="Löschen">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+        <path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/>
+      </svg>
+    </button>`;
+
   if (viewMode === 'grid') {
-    container.innerHTML = `<div class="file-grid">${filtered.map(f => `
-      <div class="file-card" style="animation-delay:${filtered.indexOf(f) * 0.04}s">
-        <div class="file-card-thumb">
-          ${f.dataUrl
-            ? `<img src="${f.dataUrl}" alt="${f.name}">`
-            : `${fileIcon(f.type)}<span class="type-badge">${typeLabel(f.type)}</span>`}
-        </div>
+    container.innerHTML = `<div class="file-grid">${filtered.map((f, i) => `
+      <div class="file-card" style="animation-delay:${i * 0.04}s">
+        <div class="file-card-thumb">${thumbFor(f)}</div>
         <div class="file-card-body">
           <div class="file-card-name" title="${f.name}">${f.name}</div>
           <div class="file-card-meta">${formatBytes(f.size)} · ${formatDate(f.date)}</div>
         </div>
-        <div class="file-card-footer">
-          <button class="btn-delete" data-id="${f.id}" title="Löschen">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
-              <path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/>
-            </svg>
-          </button>
-        </div>
+        <div class="file-card-footer">${deleteBtn(f.key)}</div>
       </div>`).join('')}</div>`;
   } else {
     container.innerHTML = `<div class="file-list-view">${filtered.map((f, i) => `
       <div class="file-row" style="animation-delay:${i * 0.03}s">
-        <div class="file-row-thumb">
-          ${f.dataUrl ? `<img src="${f.dataUrl}" alt="${f.name}">` : fileIcon(f.type)}
-        </div>
+        <div class="file-row-thumb">${f.type.startsWith('image/') ? `<img src="${f.url}" alt="${f.name}" loading="lazy">` : fileIcon(f.type)}</div>
         <div class="file-row-info">
           <div class="file-row-name" title="${f.name}">${f.name}</div>
           <div class="file-row-meta">${formatBytes(f.size)} · ${formatDate(f.date)}</div>
         </div>
-        <button class="btn-delete" data-id="${f.id}" title="Löschen">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
-            <path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/>
-          </svg>
-        </button>
+        ${deleteBtn(f.key)}
       </div>`).join('')}</div>`;
   }
 
   container.querySelectorAll('.btn-delete').forEach(btn => {
-    btn.addEventListener('click', () => deleteFile(btn.dataset.id));
+    btn.addEventListener('click', () => deleteFile(btn.dataset.key));
   });
 }
 
@@ -550,11 +558,13 @@ document.getElementById('viewList').addEventListener('click', () => {
 });
 
 // Clear all
-document.getElementById('btnClearAll').addEventListener('click', () => {
-  if (load().length === 0) return;
+document.getElementById('btnClearAll').addEventListener('click', async () => {
+  if (!cachedFiles.length) return;
   if (confirm('Alle gespeicherten Dateien löschen?')) {
-    localStorage.removeItem(STORAGE_KEY);
-    render();
+    await Promise.all(cachedFiles.map(f =>
+      fetch(`${WORKER_URL}/${encodeURIComponent(f.key)}`, { method: 'DELETE' })
+    ));
+    await render();
   }
 });
 

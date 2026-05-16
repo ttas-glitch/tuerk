@@ -481,63 +481,53 @@ fileInput.addEventListener('change', () => { addFiles([...fileInput.files]); fil
 // Clear all
 btnClear.addEventListener('click', () => { files = []; render(); });
 
-function saveToStorage(entry) {
-  const isImage = entry.file.type.startsWith('image/');
-  const doSave = (dataUrl) => {
-    const saved = JSON.parse(localStorage.getItem('uploaded_files') || '[]');
-    saved.unshift({
-      id: entry.id,
-      name: entry.file.name,
-      size: entry.file.size,
-      type: entry.file.type,
-      date: new Date().toISOString(),
-      dataUrl: dataUrl || null
+const WORKER_URL = 'https://tuerk-uploads.YOUR_SUBDOMAIN.workers.dev';
+
+async function uploadToR2(entry) {
+  const xhr = new XMLHttpRequest();
+  const encodedName = encodeURIComponent(entry.file.name);
+
+  return new Promise((resolve, reject) => {
+    xhr.upload.addEventListener('progress', e => {
+      if (e.lengthComputable) {
+        entry.progress = Math.round((e.loaded / e.total) * 95);
+        const bar = fileList.querySelector(`[data-id="${entry.id}"] .file-progress-bar`);
+        if (bar) bar.style.width = entry.progress + '%';
+      }
     });
-    try {
-      localStorage.setItem('uploaded_files', JSON.stringify(saved));
-    } catch (e) {
-      // localStorage quota exceeded — save without dataUrl
-      saved[0].dataUrl = null;
-      try { localStorage.setItem('uploaded_files', JSON.stringify(saved)); } catch (_) {}
-    }
-  };
-  if (isImage) {
-    const reader = new FileReader();
-    reader.onload = e => doSave(e.target.result);
-    reader.readAsDataURL(entry.file);
-  } else {
-    doSave(null);
-  }
+
+    xhr.addEventListener('load', () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        entry.progress = 100;
+        entry.status = 'done';
+        resolve();
+      } else {
+        entry.status = 'error';
+        reject(new Error(`HTTP ${xhr.status}`));
+      }
+      render();
+    });
+
+    xhr.addEventListener('error', () => {
+      entry.status = 'error';
+      render();
+      reject(new Error('Network error'));
+    });
+
+    xhr.open('POST', `${WORKER_URL}/${encodedName}`);
+    xhr.setRequestHeader('Content-Type', entry.file.type || 'application/octet-stream');
+    xhr.send(entry.file);
+  });
 }
 
-// Simulated upload
-btnUpload.addEventListener('click', () => {
+btnUpload.addEventListener('click', async () => {
   const pending = files.filter(f => f.status === 'idle' || f.status === 'error');
   if (!pending.length) return;
 
   pending.forEach(entry => { entry.status = 'uploading'; entry.progress = 0; });
   render();
 
-  pending.forEach(entry => {
-    let p = 0;
-    const tick = setInterval(() => {
-      p += Math.random() * 18 + 4;
-      entry.progress = Math.min(p, 98);
-
-      const bar = fileList.querySelector(`[data-id="${entry.id}"] .file-progress-bar`);
-      if (bar) bar.style.width = entry.progress + '%';
-
-      if (p >= 98) {
-        clearInterval(tick);
-        setTimeout(() => {
-          entry.progress = 100;
-          entry.status = 'done';
-          saveToStorage(entry);
-          render();
-        }, 300 + Math.random() * 400);
-      }
-    }, 120 + Math.random() * 80);
-  });
+  await Promise.allSettled(pending.map(entry => uploadToR2(entry)));
 });
 </script>
 </body>
