@@ -481,11 +481,17 @@ fileInput.addEventListener('change', () => { addFiles([...fileInput.files]); fil
 // Clear all
 btnClear.addEventListener('click', () => { files = []; render(); });
 
-const WORKER_URL = 'https://tuerk-uploads.YOUR_SUBDOMAIN.workers.dev';
+const CLOUD_NAME = 'dbug0pjk0';
+const UPLOAD_PRESET = 'tuerk-uploads';
+const CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`;
 
-async function uploadToR2(entry) {
+async function uploadToCloudinary(entry) {
+  const formData = new FormData();
+  formData.append('file', entry.file);
+  formData.append('upload_preset', UPLOAD_PRESET);
+  formData.append('public_id', entry.file.name.replace(/\.[^.]+$/, ''));
+
   const xhr = new XMLHttpRequest();
-  const encodedName = encodeURIComponent(entry.file.name);
 
   return new Promise((resolve, reject) => {
     xhr.upload.addEventListener('progress', e => {
@@ -500,7 +506,7 @@ async function uploadToR2(entry) {
       if (xhr.status >= 200 && xhr.status < 300) {
         entry.progress = 100;
         entry.status = 'done';
-        resolve();
+        resolve(JSON.parse(xhr.responseText));
       } else {
         entry.status = 'error';
         reject(new Error(`HTTP ${xhr.status}`));
@@ -514,9 +520,8 @@ async function uploadToR2(entry) {
       reject(new Error('Network error'));
     });
 
-    xhr.open('POST', `${WORKER_URL}/${encodedName}`);
-    xhr.setRequestHeader('Content-Type', entry.file.type || 'application/octet-stream');
-    xhr.send(entry.file);
+    xhr.open('POST', CLOUDINARY_URL);
+    xhr.send(formData);
   });
 }
 
@@ -527,7 +532,7 @@ btnUpload.addEventListener('click', async () => {
   pending.forEach(entry => { entry.status = 'uploading'; entry.progress = 0; });
   render();
 
-  await Promise.allSettled(pending.map(entry => uploadToR2(entry)));
+  await Promise.allSettled(pending.map(entry => uploadToCloudinary(entry)));
 });
 </script>
 </body>

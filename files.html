@@ -403,15 +403,46 @@ body {
 </div>
 
 <script>
-const WORKER_URL = 'https://tuerk-uploads.YOUR_SUBDOMAIN.workers.dev';
+const CLOUD_NAME = 'dbug0pjk0';
+const CLOUDINARY_LIST_URL = `https://res.cloudinary.com/${CLOUD_NAME}/image/list/tuerk-uploads.json`;
+const CLOUDINARY_VIDEO_LIST_URL = `https://res.cloudinary.com/${CLOUD_NAME}/video/list/tuerk-uploads.json`;
+
 let currentFilter = 'all';
 let viewMode = 'grid';
 let cachedFiles = [];
 
+function cloudinaryThumb(publicId, resourceType) {
+  if (resourceType === 'image') {
+    return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_300,c_fill/${publicId}`;
+  }
+  if (resourceType === 'video') {
+    return `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/w_400,h_300,c_fill,so_2/${publicId}.jpg`;
+  }
+  return null;
+}
+
+function cloudinaryUrl(publicId, resourceType, format) {
+  return `https://res.cloudinary.com/${CLOUD_NAME}/${resourceType}/upload/${publicId}.${format}`;
+}
+
 async function load() {
-  const res = await fetch(`${WORKER_URL}/`);
-  if (!res.ok) throw new Error('Failed to load files');
-  return res.json();
+  const [imgRes, vidRes] = await Promise.allSettled([
+    fetch(CLOUDINARY_LIST_URL),
+    fetch(CLOUDINARY_VIDEO_LIST_URL),
+  ]);
+
+  const files = [];
+
+  if (imgRes.status === 'fulfilled' && imgRes.value.ok) {
+    const data = await imgRes.value.json();
+    (data.resources || []).forEach(r => files.push({ ...r, resource_type: 'image' }));
+  }
+  if (vidRes.status === 'fulfilled' && vidRes.value.ok) {
+    const data = await vidRes.value.json();
+    (data.resources || []).forEach(r => files.push({ ...r, resource_type: 'video' }));
+  }
+
+  return files;
 }
 
 function formatBytes(b) {
@@ -446,9 +477,10 @@ function typeLabel(type) {
   return ext ? ext.split('.').pop().toUpperCase() : 'Datei';
 }
 
-async function deleteFile(key) {
-  await fetch(`${WORKER_URL}/${encodeURIComponent(key)}`, { method: 'DELETE' });
-  await render();
+async function deleteFile(publicId, resourceType) {
+  // Deletion from Cloudinary requires a signed request (backend).
+  // For now, notify the user to delete from the Cloudinary dashboard.
+  alert(`Zum Löschen bitte im Cloudinary-Dashboard unter "${publicId}" entfernen.`);
 }
 
 async function render() {
@@ -458,17 +490,19 @@ async function render() {
   try {
     cachedFiles = await load();
   } catch (e) {
-    container.innerHTML = `<div class="empty-state"><p>Fehler beim Laden. Worker URL prüfen.</p></div>`;
+    container.innerHTML = `<div class="empty-state"><p>Fehler beim Laden.</p></div>`;
     return;
   }
 
   const all = cachedFiles.map(f => ({
-    key: f.key,
-    name: f.key,
-    size: f.size,
-    type: f.contentType,
-    date: f.uploaded,
-    url: `${WORKER_URL}/${encodeURIComponent(f.key)}`
+    key: f.public_id,
+    name: f.public_id.split('/').pop() + '.' + f.format,
+    size: f.bytes,
+    type: f.resource_type === 'video' ? `video/${f.format}` : `image/${f.format}`,
+    date: f.created_at,
+    thumb: cloudinaryThumb(f.public_id, f.resource_type),
+    url: cloudinaryUrl(f.public_id, f.resource_type, f.format),
+    resourceType: f.resource_type,
   }));
 
   const filtered = currentFilter === 'all' ? all : all.filter(f => getCategory(f.type) === currentFilter);
@@ -494,12 +528,12 @@ async function render() {
     return;
   }
 
-  const thumbFor = f => f.type.startsWith('image/')
-    ? `<img src="${f.url}" alt="${f.name}" loading="lazy">`
+  const thumbFor = f => f.thumb
+    ? `<img src="${f.thumb}" alt="${f.name}" loading="lazy">`
     : `${fileIcon(f.type)}<span class="type-badge">${typeLabel(f.type)}</span>`;
 
-  const deleteBtn = key => `
-    <button class="btn-delete" data-key="${key}" title="Löschen">
+  const deleteBtn = (key, resourceType) => `
+    <button class="btn-delete" data-key="${key}" data-resource-type="${resourceType}" title="Löschen">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
         <path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/>
@@ -509,27 +543,31 @@ async function render() {
   if (viewMode === 'grid') {
     container.innerHTML = `<div class="file-grid">${filtered.map((f, i) => `
       <div class="file-card" style="animation-delay:${i * 0.04}s">
-        <div class="file-card-thumb">${thumbFor(f)}</div>
+        <a href="${f.url}" target="_blank" rel="noopener" style="text-decoration:none;display:block;">
+          <div class="file-card-thumb">${thumbFor(f)}</div>
+        </a>
         <div class="file-card-body">
           <div class="file-card-name" title="${f.name}">${f.name}</div>
           <div class="file-card-meta">${formatBytes(f.size)} · ${formatDate(f.date)}</div>
         </div>
-        <div class="file-card-footer">${deleteBtn(f.key)}</div>
+        <div class="file-card-footer">${deleteBtn(f.key, f.resourceType)}</div>
       </div>`).join('')}</div>`;
   } else {
     container.innerHTML = `<div class="file-list-view">${filtered.map((f, i) => `
       <div class="file-row" style="animation-delay:${i * 0.03}s">
-        <div class="file-row-thumb">${f.type.startsWith('image/') ? `<img src="${f.url}" alt="${f.name}" loading="lazy">` : fileIcon(f.type)}</div>
-        <div class="file-row-info">
-          <div class="file-row-name" title="${f.name}">${f.name}</div>
-          <div class="file-row-meta">${formatBytes(f.size)} · ${formatDate(f.date)}</div>
-        </div>
-        ${deleteBtn(f.key)}
+        <a href="${f.url}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.85rem;flex:1;min-width:0;text-decoration:none;">
+          <div class="file-row-thumb">${f.thumb ? `<img src="${f.thumb}" alt="${f.name}" loading="lazy">` : fileIcon(f.type)}</div>
+          <div class="file-row-info">
+            <div class="file-row-name" title="${f.name}">${f.name}</div>
+            <div class="file-row-meta">${formatBytes(f.size)} · ${formatDate(f.date)}</div>
+          </div>
+        </a>
+        ${deleteBtn(f.key, f.resourceType)}
       </div>`).join('')}</div>`;
   }
 
   container.querySelectorAll('.btn-delete').forEach(btn => {
-    btn.addEventListener('click', () => deleteFile(btn.dataset.key));
+    btn.addEventListener('click', () => deleteFile(btn.dataset.key, btn.dataset.resourceType));
   });
 }
 
@@ -557,15 +595,9 @@ document.getElementById('viewList').addEventListener('click', () => {
   render();
 });
 
-// Clear all
-document.getElementById('btnClearAll').addEventListener('click', async () => {
-  if (!cachedFiles.length) return;
-  if (confirm('Alle gespeicherten Dateien löschen?')) {
-    await Promise.all(cachedFiles.map(f =>
-      fetch(`${WORKER_URL}/${encodeURIComponent(f.key)}`, { method: 'DELETE' })
-    ));
-    await render();
-  }
+// Clear all — requires Cloudinary dashboard for signed deletes
+document.getElementById('btnClearAll').addEventListener('click', () => {
+  alert('Zum Löschen aller Dateien bitte das Cloudinary-Dashboard verwenden.');
 });
 
 render();
