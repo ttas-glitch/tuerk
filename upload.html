@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<script src="/auth.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload — Nahost Faktencheck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0a0a0a;
+  --white: #fafafa;
+  --gray-100: #f4f4f4;
+  --gray-200: #e8e8e8;
+  --gray-400: #999;
+  --gray-600: #555;
+  --gray-800: #222;
+  --accent: #c0392b;
+  --accent-light: #fdf0ef;
+  --accent-mid: #e74c3c;
+  --green: #1a7a4a;
+  --green-light: #edf7f1;
+  --border: #e2e2e2;
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.upload-wrapper {
+  width: 100%;
+  max-width: 680px;
+}
+
+.upload-header {
+  margin-bottom: 2rem;
+}
+
+.upload-header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.upload-header h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.upload-header p {
+  margin-top: 0.6rem;
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* ── Drop Zone ── */
+.drop-zone {
+  position: relative;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--gray-100);
+  padding: 3.5rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  outline: none;
+  user-select: none;
+}
+
+.drop-zone:hover,
+.drop-zone:focus {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.drop-zone.dragover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  transform: scale(1.01);
+}
+
+.drop-zone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.drop-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.drop-zone:hover .drop-icon,
+.drop-zone.dragover .drop-icon {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(192, 57, 43, 0.08);
+}
+
+.drop-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--gray-600);
+  transition: stroke 0.2s;
+}
+
+.drop-zone:hover .drop-icon svg,
+.drop-zone.dragover .drop-icon svg {
+  stroke: var(--accent);
+}
+
+.drop-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-bottom: 0.3rem;
+}
+
+.drop-label span {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.drop-hint {
+  font-size: 0.775rem;
+  color: var(--gray-400);
+  letter-spacing: 0.01em;
+}
+
+/* ── File List ── */
+.file-list {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  animation: slideIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.file-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.file-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.file-thumb svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--gray-400);
+}
+
+.file-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.file-name {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-meta {
+  font-size: 0.72rem;
+  color: var(--gray-400);
+  margin-top: 0.1rem;
+}
+
+.file-progress-wrap {
+  margin-top: 0.4rem;
+  height: 3px;
+  background: var(--gray-200);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.file-progress-bar {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 999px;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.file-status {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.file-status.uploading { color: var(--gray-400); }
+.file-status.done      { color: var(--green); }
+.file-status.error     { color: var(--accent); }
+
+.file-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--gray-400);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background 0.15s;
+  flex-shrink: 0;
+}
+
+.file-remove:hover {
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+/* ── Actions ── */
+.upload-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.btn-upload {
+  flex: 1;
+  padding: 0.85rem 1.5rem;
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Sora', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border: 2px solid var(--black);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, transform 0.12s;
+}
+
+.btn-upload:hover:not(:disabled) {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.btn-upload:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-upload:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn-clear {
+  padding: 0.85rem 1rem;
+  background: transparent;
+  color: var(--gray-600);
+  font-family: 'Sora', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.btn-clear:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.upload-count {
+  font-size: 0.75rem;
+  color: var(--gray-400);
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
+.upload-count strong {
+  color: var(--gray-800);
+}
+</style>
+</head>
+<body>
+
+<div class="upload-wrapper">
+  <div class="upload-header">
+    <h1>Dateien <em>hochladen</em></h1>
+    <p>Videos, Dokumente oder Bilder — bis zu 500 MB pro Datei.</p>
+  </div>
+
+  <div class="drop-zone" id="dropZone" tabindex="0" role="button" aria-label="Dateien auswählen oder hierher ziehen">
+    <input type="file" id="fileInput" multiple accept="video/*,image/*,.pdf,.doc,.docx,.txt,.zip">
+    <div class="drop-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="17 8 12 3 7 8"/>
+        <line x1="12" y1="3" x2="12" y2="15"/>
+      </svg>
+    </div>
+    <div class="drop-label">Dateien hierher ziehen oder <span>durchsuchen</span></div>
+    <div class="drop-hint">MP4, MOV, AVI · PDF, DOCX · JPG, PNG · ZIP — max. 500 MB</div>
+  </div>
+
+  <div class="file-list" id="fileList"></div>
+
+  <div class="upload-actions" id="uploadActions" style="display:none">
+    <button class="btn-clear" id="btnClear">Alle entfernen</button>
+    <button class="btn-upload" id="btnUpload">Hochladen</button>
+  </div>
+  <div class="upload-count" id="uploadCount" style="display:none"></div>
+</div>
+
+<script>
+const dropZone   = document.getElementById('dropZone');
+const fileInput  = document.getElementById('fileInput');
+const fileList   = document.getElementById('fileList');
+const uploadActions = document.getElementById('uploadActions');
+const uploadCount   = document.getElementById('uploadCount');
+const btnUpload  = document.getElementById('btnUpload');
+const btnClear   = document.getElementById('btnClear');
+
+let files = [];
+
+function formatBytes(b) {
+  if (b < 1024) return b + ' B';
+  if (b < 1048576) return (b / 1024).toFixed(1) + ' KB';
+  return (b / 1048576).toFixed(1) + ' MB';
+}
+
+function fileIcon(type) {
+  if (type.startsWith('video/')) return `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>`;
+  if (type.startsWith('image/')) return `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`;
+  if (type === 'application/pdf') return `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`;
+  return `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>`;
+}
+
+function addFiles(newFiles) {
+  for (const f of newFiles) {
+    if (files.find(x => x.file.name === f.name && x.file.size === f.size)) continue;
+    files.push({ file: f, id: crypto.randomUUID(), progress: 0, status: 'idle' });
+  }
+  render();
+}
+
+function render() {
+  fileList.innerHTML = '';
+
+  for (const entry of files) {
+    const { file, id, progress, status } = entry;
+    const isImage = file.type.startsWith('image/');
+
+    const item = document.createElement('div');
+    item.className = 'file-item';
+    item.dataset.id = id;
+
+    const thumb = document.createElement('div');
+    thumb.className = 'file-thumb';
+
+    if (isImage) {
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file);
+      thumb.appendChild(img);
+    } else {
+      thumb.innerHTML = fileIcon(file.type);
+    }
+
+    const statusLabel = status === 'done' ? 'Fertig' : status === 'error' ? 'Fehler' : status === 'uploading' ? '…' : '';
+    const statusClass = status === 'done' ? 'done' : status === 'error' ? 'error' : 'uploading';
+
+    item.innerHTML = `
+      ${thumb.outerHTML}
+      <div class="file-info">
+        <div class="file-name">${file.name}</div>
+        <div class="file-meta">${formatBytes(file.size)}</div>
+        ${status !== 'idle' ? `<div class="file-progress-wrap"><div class="file-progress-bar" style="width:${progress}%"></div></div>` : ''}
+      </div>
+      ${statusLabel ? `<span class="file-status ${statusClass}">${statusLabel}</span>` : ''}
+      <button class="file-remove" data-id="${id}" aria-label="Entfernen" title="Entfernen">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    `;
+
+    fileList.appendChild(item);
+  }
+
+  const has = files.length > 0;
+  uploadActions.style.display = has ? 'flex' : 'none';
+  uploadCount.style.display = has ? 'block' : 'none';
+  uploadCount.innerHTML = `<strong>${files.length}</strong> Datei${files.length !== 1 ? 'en' : ''} ausgewählt`;
+
+  const allDone = files.length > 0 && files.every(f => f.status === 'done');
+  btnUpload.disabled = allDone || files.every(f => f.status === 'uploading');
+  btnUpload.textContent = allDone ? 'Hochgeladen ✓' : 'Hochladen';
+
+  fileList.querySelectorAll('.file-remove').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const removeId = btn.dataset.id;
+      files = files.filter(f => f.id !== removeId);
+      render();
+    });
+  });
+}
+
+// Drag & drop
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  addFiles([...e.dataTransfer.files]);
+});
+dropZone.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
+fileInput.addEventListener('change', () => { addFiles([...fileInput.files]); fileInput.value = ''; });
+
+// Clear all
+btnClear.addEventListener('click', () => { files = []; render(); });
+
+// Simulated upload
+btnUpload.addEventListener('click', () => {
+  const pending = files.filter(f => f.status === 'idle' || f.status === 'error');
+  if (!pending.length) return;
+
+  pending.forEach(entry => { entry.status = 'uploading'; entry.progress = 0; });
+  render();
+
+  pending.forEach(entry => {
+    let p = 0;
+    const tick = setInterval(() => {
+      p += Math.random() * 18 + 4;
+      entry.progress = Math.min(p, 98);
+
+      const bar = fileList.querySelector(`[data-id="${entry.id}"] .file-progress-bar`);
+      if (bar) bar.style.width = entry.progress + '%';
+
+      if (p >= 98) {
+        clearInterval(tick);
+        setTimeout(() => {
+          entry.progress = 100;
+          entry.status = 'done';
+          render();
+        }, 300 + Math.random() * 400);
+      }
+    }, 120 + Math.random() * 80);
+  });
+});
+</script>
+</body>
+</html>
