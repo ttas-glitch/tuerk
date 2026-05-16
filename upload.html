@@ -368,6 +368,9 @@ body {
     <button class="btn-upload" id="btnUpload">Hochladen</button>
   </div>
   <div class="upload-count" id="uploadCount" style="display:none"></div>
+  <div style="margin-top:1.25rem;text-align:center;">
+    <a href="files.html" style="font-size:0.8rem;font-weight:600;color:var(--gray-600);text-decoration:underline;text-underline-offset:3px;">Gespeicherte Dateien ansehen →</a>
+  </div>
 </div>
 
 <script>
@@ -478,6 +481,35 @@ fileInput.addEventListener('change', () => { addFiles([...fileInput.files]); fil
 // Clear all
 btnClear.addEventListener('click', () => { files = []; render(); });
 
+function saveToStorage(entry) {
+  const isImage = entry.file.type.startsWith('image/');
+  const doSave = (dataUrl) => {
+    const saved = JSON.parse(localStorage.getItem('uploaded_files') || '[]');
+    saved.unshift({
+      id: entry.id,
+      name: entry.file.name,
+      size: entry.file.size,
+      type: entry.file.type,
+      date: new Date().toISOString(),
+      dataUrl: dataUrl || null
+    });
+    try {
+      localStorage.setItem('uploaded_files', JSON.stringify(saved));
+    } catch (e) {
+      // localStorage quota exceeded — save without dataUrl
+      saved[0].dataUrl = null;
+      try { localStorage.setItem('uploaded_files', JSON.stringify(saved)); } catch (_) {}
+    }
+  };
+  if (isImage) {
+    const reader = new FileReader();
+    reader.onload = e => doSave(e.target.result);
+    reader.readAsDataURL(entry.file);
+  } else {
+    doSave(null);
+  }
+}
+
 // Simulated upload
 btnUpload.addEventListener('click', () => {
   const pending = files.filter(f => f.status === 'idle' || f.status === 'error');
@@ -500,6 +532,7 @@ btnUpload.addEventListener('click', () => {
         setTimeout(() => {
           entry.progress = 100;
           entry.status = 'done';
+          saveToStorage(entry);
           render();
         }, 300 + Math.random() * 400);
       }
