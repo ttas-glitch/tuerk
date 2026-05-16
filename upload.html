@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="/auth.js"></script>
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Upload — Nahost Faktencheck</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -486,40 +487,46 @@ btnClear.addEventListener('click', () => { files = []; render(); });
 
 const CLOUD_NAME = 'dbug0pjk0';
 const UPLOAD_PRESET = 'tuerk-uploads';
-const CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`;
 
-async function uploadToCloudinary(entry) {
-  const formData = new FormData();
-  formData.append('file', entry.file);
-  formData.append('upload_preset', UPLOAD_PRESET);
-  formData.append('tags', UPLOAD_PRESET);
-
-  try {
-    const res = await fetch(CLOUDINARY_URL, { method: 'POST', body: formData });
-    const data = await res.json();
-    if (!res.ok) {
-      console.error('Cloudinary error:', data);
-      entry.status = 'error';
-    } else {
-      entry.progress = 100;
-      entry.status = 'done';
+const widget = cloudinary.createUploadWidget(
+  {
+    cloudName: CLOUD_NAME,
+    uploadPreset: UPLOAD_PRESET,
+    tags: [UPLOAD_PRESET],
+    sources: ['local', 'camera'],
+    multiple: true,
+    resourceType: 'auto',
+    styles: {
+      palette: {
+        window: '#FAFAFA',
+        windowBorder: '#E2E2E2',
+        tabIcon: '#0A0A0A',
+        menuIcons: '#555',
+        textDark: '#0A0A0A',
+        textLight: '#FAFAFA',
+        link: '#C0392B',
+        action: '#0A0A0A',
+        inactiveTabIcon: '#999',
+        error: '#C0392B',
+        inProgress: '#0A0A0A',
+        complete: '#1A7A4A',
+        sourceBg: '#F4F4F4',
+      },
+      fonts: { default: null, "'Sora', sans-serif": { url: 'https://fonts.googleapis.com/css2?family=Sora:wght@400;600', active: true } },
+    },
+  },
+  (error, result) => {
+    if (error) { console.error('Widget error:', error); return; }
+    if (result.event === 'success') {
+      console.log('Uploaded:', result.info.public_id);
     }
-  } catch (e) {
-    console.error('Upload failed:', e);
-    entry.status = 'error';
+    if (result.event === 'close') {
+      window.location.href = '/files.html';
+    }
   }
-  render();
-}
+);
 
-btnUpload.addEventListener('click', async () => {
-  const pending = files.filter(f => f.status === 'idle' || f.status === 'error');
-  if (!pending.length) return;
-
-  pending.forEach(entry => { entry.status = 'uploading'; entry.progress = 50; });
-  render();
-
-  await Promise.allSettled(pending.map(entry => uploadToCloudinary(entry)));
-});
+btnUpload.addEventListener('click', () => widget.open());
 </script>
 </body>
 </html>
