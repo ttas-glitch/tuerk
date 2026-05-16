@@ -426,22 +426,17 @@ function cloudinaryUrl(publicId, resourceType, format) {
 }
 
 async function load() {
-  const [imgRes, vidRes] = await Promise.allSettled([
-    fetch(CLOUDINARY_LIST_URL),
-    fetch(CLOUDINARY_VIDEO_LIST_URL),
-  ]);
-
   const files = [];
 
-  if (imgRes.status === 'fulfilled' && imgRes.value.ok) {
-    const data = await imgRes.value.json();
-    (data.resources || []).forEach(r => files.push({ ...r, resource_type: 'image' }));
+  for (const [url, type] of [[CLOUDINARY_LIST_URL, 'image'], [CLOUDINARY_VIDEO_LIST_URL, 'video']]) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        const data = await res.json();
+        (data.resources || []).forEach(r => files.push({ ...r, resource_type: type }));
+      }
+    } catch (_) {}
   }
-  if (vidRes.status === 'fulfilled' && vidRes.value.ok) {
-    const data = await vidRes.value.json();
-    (data.resources || []).forEach(r => files.push({ ...r, resource_type: 'video' }));
-  }
-  // 404 means no files uploaded yet — not an error
 
   return files;
 }
