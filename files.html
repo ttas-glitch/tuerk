@@ -484,7 +484,7 @@ async function deleteFile(publicId, resourceType) {
     body: JSON.stringify({ public_id: publicId, resource_type: resourceType })
   });
   const data = await res.json();
-  if (data.result === 'ok') {
+  if (data.result === 'ok' || data.result === 'not found') {
     await render();
   } else {
     alert('Löschen fehlgeschlagen: ' + JSON.stringify(data));
