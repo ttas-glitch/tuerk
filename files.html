@@ -441,6 +441,7 @@ async function load() {
     const data = await vidRes.value.json();
     (data.resources || []).forEach(r => files.push({ ...r, resource_type: 'video' }));
   }
+  // 404 means no files uploaded yet — not an error
 
   return files;
 }
