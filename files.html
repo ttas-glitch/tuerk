@@ -477,9 +477,18 @@ function typeLabel(type) {
 }
 
 async function deleteFile(publicId, resourceType) {
-  // Deletion from Cloudinary requires a signed request (backend).
-  // For now, notify the user to delete from the Cloudinary dashboard.
-  alert(`Zum Löschen bitte im Cloudinary-Dashboard unter "${publicId}" entfernen.`);
+  if (!confirm(`"${publicId}" löschen?`)) return;
+  const res = await fetch('/api/delete', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ public_id: publicId, resource_type: resourceType })
+  });
+  const data = await res.json();
+  if (data.result === 'ok') {
+    await render();
+  } else {
+    alert('Löschen fehlgeschlagen: ' + JSON.stringify(data));
+  }
 }
 
 async function render() {
@@ -594,9 +603,17 @@ document.getElementById('viewList').addEventListener('click', () => {
   render();
 });
 
-// Clear all — requires Cloudinary dashboard for signed deletes
-document.getElementById('btnClearAll').addEventListener('click', () => {
-  alert('Zum Löschen aller Dateien bitte das Cloudinary-Dashboard verwenden.');
+document.getElementById('btnClearAll').addEventListener('click', async () => {
+  if (!cachedFiles.length) return;
+  if (!confirm('Alle Dateien löschen?')) return;
+  await Promise.all(cachedFiles.map(f =>
+    fetch('/api/delete', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ public_id: f.public_id, resource_type: f.resource_type })
+    })
+  ));
+  await render();
 });
 
 render();
