@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<script src="/auth.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Westsahara - NahostFakten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+:root {
+  --black: #201e1e; --white: #fafafa; --gray-100: #f4f4f4; --gray-200: #e8e8e8;
+  --gray-400: #999; --gray-600: #555; --border: #e2e2e2;
+  --accent: #c0392b; --accent-light: #fdf0ef;
+  --green: #1a7a4a; --green-light: #edf7f1;
+  --amber: #b7560a; --amber-light: #fef6ee;
+  --blue: #1a5fa8; --blue-light: #eef4fd;
+  --sand: #c49a3c; --sand-light: #fdf8ee;
+  --radius: 12px; --radius-lg: 20px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Sora', sans-serif; background: var(--white); color: var(--black); line-height: 1.7; -webkit-font-smoothing: antialiased; font-size: 15px; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,250,250,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-size: 15px; font-weight: 700; color: var(--black); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-back { font-size: 13px; color: var(--gray-600); text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); transition: all 0.15s; }
+.nav-back:hover { border-color: var(--black); color: var(--black); }
+
+.page-hero { padding: 100px 24px 60px; max-width: 860px; margin: 0 auto; }
+.breadcrumb { font-size: 12px; color: var(--gray-400); margin-bottom: 16px; }
+.breadcrumb a { color: var(--gray-400); text-decoration: none; }
+.breadcrumb a:hover { color: var(--black); }
+
+.badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 20px; background: var(--sand-light); color: var(--sand); border: 1px solid rgba(196,154,60,0.25); }
+.page-hero h1 { font-family: 'Fraunces', serif; font-size: clamp(26px, 4.5vw, 44px); font-weight: 700; line-height: 1.15; margin-bottom: 16px; }
+.page-hero .summary { font-size: 17px; color: var(--gray-600); font-weight: 300; line-height: 1.7; }
+
+.content { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
+
+.section-divider { border: none; border-top: 1px solid var(--border); margin: 52px 0; }
+.section-h2 { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+.section-label { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+.section-text { font-size: 15px; color: var(--gray-600); line-height: 1.8; margin-bottom: 18px; }
+.section-text strong { color: var(--black); font-weight: 600; }
+
+.facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 28px 0; }
+.fact-card { background: var(--gray-100); border-radius: var(--radius); padding: 18px; text-align: center; }
+.fact-num { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 700; display: block; color: var(--black); }
+.fact-label { font-size: 12px; color: var(--gray-600); margin-top: 4px; line-height: 1.4; }
+
+.info-box { background: var(--gray-100); border-radius: var(--radius-lg); padding: 26px 28px; margin: 28px 0; }
+.info-box-label { font-size: 11px; font-weight: 700; color: var(--sand); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+.info-box-label::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--sand); }
+.info-box h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+.info-box p { font-size: 14px; color: var(--gray-600); line-height: 1.75; }
+.info-box p + p { margin-top: 10px; }
+
+.alert-box { border-left: 4px solid var(--amber); background: var(--amber-light); border-radius: 0 var(--radius) var(--radius) 0; padding: 16px 20px; margin: 24px 0; font-size: 14px; color: var(--amber); line-height: 1.7; }
+.alert-box strong { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+
+/* Data tables */
+.data-table-wrap { overflow-x: auto; margin: 28px 0; border-radius: var(--radius-lg); border: 1px solid var(--border); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th { background: var(--gray-100); padding: 12px 14px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gray-400); border-bottom: 1px solid var(--border); white-space: nowrap; }
+.data-table td { padding: 13px 14px; vertical-align: top; border-bottom: 1px solid var(--border); line-height: 1.6; color: var(--gray-600); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table td:first-child { color: var(--black); font-weight: 600; white-space: nowrap; }
+.data-table td strong { color: var(--black); font-weight: 600; }
+
+/* Mermaid diagram container */
+.diagram-box { background: var(--gray-100); border-radius: var(--radius-lg); padding: 28px 24px; margin: 28px 0; overflow-x: auto; }
+.diagram-box .diagram-label { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+.mermaid { font-family: 'Sora', sans-serif !important; }
+
+/* Policy options table */
+.options-table-wrap { overflow-x: auto; margin: 28px 0; }
+.options-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.options-table th { padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gray-400); border-bottom: 2px solid var(--border); }
+.options-table td { padding: 14px; vertical-align: top; border-bottom: 1px solid var(--border); line-height: 1.6; color: var(--gray-600); }
+.options-table tr:last-child td { border-bottom: none; }
+.options-table td:first-child { font-weight: 700; color: var(--black); min-width: 180px; }
+
+/* Verdict / summary box */
+.verdict-final { background: var(--black); color: var(--white); border-radius: var(--radius-lg); padding: 32px; margin: 48px 0; }
+.verdict-final h3 { font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 12px; }
+.verdict-final p { font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.8; }
+.verdict-final p + p { margin-top: 12px; }
+
+/* Sources */
+.sources-box { border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-top: 40px; }
+.sources-box h4 { font-size: 13px; font-weight: 700; margin-bottom: 16px; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.05em; }
+.sources-section { margin-bottom: 18px; }
+.sources-section h5 { font-size: 12px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+.sources-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.source-pill { font-size: 12px; background: var(--gray-100); padding: 4px 12px; border-radius: 20px; color: var(--gray-600); }
+
+/* Nav pages */
+.nav-pages { display: flex; gap: 12px; margin-top: 48px; }
+.nav-page-btn { flex: 1; display: block; padding: 16px; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--black); transition: all 0.2s; }
+.nav-page-btn:hover { border-color: var(--black); }
+.nav-page-btn .dir { font-size: 11px; color: var(--gray-400); margin-bottom: 4px; }
+.nav-page-btn .ptitle { font-size: 14px; font-weight: 600; }
+
+@media (max-width: 700px) {
+  .facts-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-pages { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Nahost<span>Fakten</span></a>
+  <a class="nav-back" href="zusatzinfos.html">← Zurück</a>
+</nav>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="index.html">NahostFakten</a> · <a href="zusatzinfos.html">Zusatzinfos</a> · Westsahara</p>
+  <div class="badge">Dekolonisierung · Ungelöster Konflikt</div>
+  <h1>Westsahara zwischen Dekolonisierung, Krieg und geopolitischer Verschiebung</h1>
+  <p class="summary">Westsahara ist völkerrechtlich weiterhin ein <strong>Nichtselbstverwaltungsgebiet</strong> der Vereinten Nationen — und zugleich ein Konfliktsystem, in dem sich Selbstbestimmungsrecht, Territorialansprüche, Ressourcenpolitik und regionale Machtkonkurrenz überlagern. Diese Seite ordnet den Konflikt, seine Akteure, die rechtlichen Fixpunkte und die aktuelle diplomatische Verschiebung ein.</p>
+</div>
+
+<div class="content">
+
+  <!-- Key figures -->
+  <div class="facts-grid">
+    <div class="fact-card">
+      <span class="fact-num">1963</span>
+      <span class="fact-label">UN-Listung als Nichtselbstverwaltungsgebiet</span>
+    </div>
+    <div class="fact-card">
+      <span class="fact-num">173.600</span>
+      <span class="fact-label">Sahrauische Flüchtlinge bei Tindouf (UNICEF)</span>
+    </div>
+    <div class="fact-card">
+      <span class="fact-num">78 %</span>
+      <span class="fact-label">Ernährungsunsicher oder akut gefährdet (WFP)</span>
+    </div>
+    <div class="fact-card">
+      <span class="fact-num">504 Mio. €</span>
+      <span class="fact-label">EU-Import Fischereierzeugnisse aus Westsahara (2022)</span>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Geschichte -->
+  <p class="section-label">Hintergrund</p>
+  <h2 class="section-h2">Geschichte und Konfliktentstehung</h2>
+
+  <p class="section-text">
+    Vor der spanischen Kolonisierung war der Raum Westsahara kein moderner Territorialstaat, sondern von <strong>hassanischsprachigen</strong>, überwiegend nomadischen oder halbnomadischen Stammesgesellschaften geprägt. Eine moderne, politisch verdichtete <strong>Sahraui-Identität</strong> bildete sich erst im Widerstand gegen die Kolonialherrschaft des 20. Jahrhunderts heraus — später als viele heutige nationale Narrative suggerieren.
+  </p>
+  <p class="section-text">
+    Spanien erklärte 1884 zunächst ein Protektorat über Río de Oro. 1963 wurde das Gebiet von den Vereinten Nationen als Nichtselbstverwaltungsgebiet gelistet. Die <strong>Frente Polisario</strong> gründete sich 1973. 1975 beschleunigten der „Grüne Marsch" Marokkos, die Krise des Franco-Regimes und internationaler Druck den spanischen Rückzug.
+  </p>
+  <p class="section-text">
+    Die <strong>Madrid-Vereinbarung</strong> von November 1975 beendete die spanische Präsenz, löste den völkerrechtlichen Status aber nicht. Marokko und Mauretanien besetzten danach verschiedene Teile; die Polisario rief 1976 die <strong>Sahrauische Arabische Demokratische Republik (SADR)</strong> aus. 1979 zog sich Mauretanien zurück — seither verwaltet Marokko das Gebiet in den von ihm kontrollierten Zonen, ohne von der UN als Verwaltungsmacht geführt zu werden.
+  </p>
+
+  <div class="diagram-box">
+    <p class="diagram-label">Zeitleiste · Schlüsselereignisse in Westsahara</p>
+    <div class="mermaid">
+timeline
+    title Schlüsselereignisse in Westsahara
+    1884 : Spanien erklärt Protektorat über Río de Oro
+    1963 : UN führen Spanisch-Sahara als Nichtselbstverwaltungsgebiet
+    1973 : Gründung der Frente Polisario
+    1975 : IGH-Gutachten · Grüner Marsch · Madrid-Vereinbarung
+    1976 : Ausrufung der SADR
+    1979 : Mauretanien zieht sich aus Ansprüchen zurück
+    1991 : Waffenstillstand · Einrichtung von MINURSO
+    2003 : Baker-Plan II
+    2007 : Marokkanische Autonomieinitiative
+    2020 : Bruch des Waffenstillstands nach Guerguerat · USA erkennen marokk. Souveränität an
+    2024 : CJEU bestätigt Zustimmungserfordernis · Frankreich auf Autonomiekurs
+    2025 : UK unterstützt Autonomieplan · UN-Resolution 2797
+    2026 : Deutschland und EU bekräftigen neuen Verhandlungsrahmen
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Völkerrecht -->
+  <p class="section-label">Rechtlicher Rahmen</p>
+  <h2 class="section-h2">Völkerrecht, UN-Prozess und Referendumsfrage</h2>
+
+  <p class="section-text">
+    Völkerrechtlich ist Westsahara bis heute <strong>kein anerkannter Teil Marokkos</strong>. Das Gutachten des Internationalen Gerichtshofs vom 16. Oktober 1975 stellte fest, dass keine territoriale Souveränität Marokkos oder der mauretanischen Einheit belegt werden konnte — und dass die Anwendung des Selbstbestimmungsrechts durch freie Willensäußerung daher nicht verdrängt werden kann.
+  </p>
+  <p class="section-text">
+    Das UN-Gutachten von Hans Corell (2002) hält fest, dass Marokko das Gebiet seit 1979 verwaltet, aber <strong>nicht als Verwaltungsmacht der UN geführt wird</strong>. Der belastbarste Minimalbefund lautet: Die Souveränität ist ungeklärt; die Dekolonisierung ist unvollendet.
+  </p>
+
+  <div class="info-box">
+    <p class="info-box-label">MINURSO</p>
+    <h3>Mission ohne Referendum</h3>
+    <p>1991 wurde MINURSO mit Resolution 690 eingerichtet — ursprünglich mit dem Ziel, einen Waffenstillstand zu überwachen und ein Statusreferendum zu organisieren. Bis heute hat die Mission kein Referendum umgesetzt. Das scheiterte vor allem an der <strong>Wähleridentifikation</strong>: Wer als „Volk der Westsahara" gilt, entscheidet über das Ergebnis — und diese Frage blieb politisch blockiert.</p>
+    <p>Seit dem marokkanischen Vorgehen in Guerguerat (November 2020) und der Erklärung der Polisario, der Waffenstillstand sei beendet, spricht MINURSO wieder von aufgenommener Feindseligkeit und konzentriert sich auf Deeskalation und Beobachtung.</p>
+  </div>
+
+  <div class="info-box">
+    <p class="info-box-label">Resolution 2797 (2025)</p>
+    <h3>Verschiebung des UN-Rahmens</h3>
+    <p>Die Resolution 2797 von 2025 markiert einen Einschnitt: Sie hebt die marokkanische Autonomieinitiative ausdrücklich als Verhandlungsbasis hervor und nennt „genuine autonomy" unter marokkanischer Souveränität als mögliches Ergebnis. Der UN-Klassifikation des Gebiets als Nichtselbstverwaltungsgebiet folgt daraus jedoch <strong>kein automatischer Statuswechsel</strong>.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Akteure -->
+  <p class="section-label">Akteure & Ressourcen</p>
+  <h2 class="section-h2">Akteure, Ressourcen und politische Ökonomie</h2>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Akteur</th>
+          <th>Kernziel</th>
+          <th>Dominantes Narrativ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Marokko</strong></td>
+          <td>Internationale Konsolidierung der Souveränitätsansprüche; Autonomie unter marokkanischer Souveränität</td>
+          <td>„Südprovinzen", territoriale Integrität, Entwicklung, Autonomie als realistische Lösung</td>
+        </tr>
+        <tr>
+          <td><strong>Frente Polisario / SADR</strong></td>
+          <td>Selbstbestimmung bis hin zur Unabhängigkeit; internationale Anerkennung des Sahraui-Volkes</td>
+          <td>Dekolonisierung, Besatzung, Referendum mit Unabhängigkeitsoption</td>
+        </tr>
+        <tr>
+          <td><strong>Sahrauische Bevölkerung</strong></td>
+          <td>Sehr heterogene Präferenzen; gemeinsam: Betroffenheit durch Statusungewissheit, Repression oder Exil</td>
+          <td>Selbstbestimmung, Menschenrechte, Würde, teils auch Entwicklungs- oder Stabilitätsinteressen</td>
+        </tr>
+        <tr>
+          <td><strong>Algerien</strong></td>
+          <td>Eindämmung marokkanischer Dominanz; Unterstützung der Polisario; Schutzmachtrolle</td>
+          <td>Westsahara als Dekolonisierungsfrage, Referendum und Unabhängigkeitsoption</td>
+        </tr>
+        <tr>
+          <td><strong>UN / MINURSO</strong></td>
+          <td>Waffenstillstandsmanagement, politische Vermittlung, Verhinderung von Eskalation</td>
+          <td>„Mutually acceptable political solution" innerhalb des UN-Prozesses</td>
+        </tr>
+        <tr>
+          <td><strong>EU</strong></td>
+          <td>Balance zwischen Marokko-Partnerschaft und Bindung an Völker- und EU-Recht</td>
+          <td>Unterstützung des UN-Prozesses; faktische Annäherung an Autonomieinitiative, aber EuGH-Grenze</td>
+        </tr>
+        <tr>
+          <td><strong>USA</strong></td>
+          <td>Strategische Partnerschaft mit Marokko; politische Stützung der Autonomielinie</td>
+          <td>Souveränitätsanerkennung (2020) und Autonomie als politische Lösung</td>
+        </tr>
+        <tr>
+          <td><strong>Israel</strong></td>
+          <td>Vertiefung der Abraham-Accords-Normalisierung mit Marokko</td>
+          <td>Anerkennung marokkanischer Souveränität als Teil bilateraler Normalisierung (2023)</td>
+        </tr>
+        <tr>
+          <td><strong>Mauretanien</strong></td>
+          <td>Grenz- und Transitstabilität; Vermeidung offener Parteinahme</td>
+          <td>Pragmatismus und Nichteskalation</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="diagram-box">
+    <p class="diagram-label">Netzwerk · Hauptkonfliktbeziehungen</p>
+    <div class="mermaid">
+flowchart LR
+    M[Marokko]
+    P[Frente Polisario / SADR]
+    S[Sahrauische Bevölkerung]
+    A[Algerien]
+    U[UN / MINURSO]
+    E[EU]
+    US[USA]
+    I[Israel]
+    MA[Mauretanien]
+
+    M <-- Territorialkonflikt --> P
+    S --- P
+    S --- M
+    A --- P
+    U --- M
+    U --- P
+    E --- M
+    E -. Rechtskonflikte über Handel/Ressourcen .- P
+    US --- M
+    I --- M
+    MA --- M
+    MA --- P
+    </div>
+  </div>
+
+  <p class="section-text" style="margin-top: 24px;">
+    Ökonomisch ist der Konflikt untrennbar mit <strong>natürlichen Ressourcen</strong> verbunden. Die Phosphatmine <strong>Bou Craa</strong> ist der sichtbarste Streitpunkt. Marokkos OCP/Phosboucraa beschreibt sich als größter privater Arbeitgeber der Region; Beobachter wie Western Sahara Resource Watch halten dagegen, dass Produktion und Export ohne nachweisbare freie Zustimmung des Volkes der Westsahara erfolgen.
+  </p>
+  <p class="section-text">
+    Bei der <strong>Fischerei</strong> bezifferte die Europäische Kommission für 2022 den Wert der aus Westsahara in die EU exportierten Fischereierzeugnisse auf rund <strong>504 Millionen Euro</strong>. Genau diese Verflechtung steht im Zentrum der EuGH-Rechtsprechung: Der Gerichtshof stellte 2024 klar, dass entsprechende EU-Marokko-Abkommen ohne Zustimmung des Volkes der Westsahara gegen das Selbstbestimmungsrecht verstoßen.
+  </p>
+
+  <hr class="section-divider">
+
+  <!-- Menschenrechte -->
+  <p class="section-label">Humanitäre Lage</p>
+  <h2 class="section-h2">Menschenrechte, Gesellschaft und Flucht</h2>
+
+  <p class="section-text">
+    Im von Marokko kontrollierten Teil dokumentieren Amnesty International, Human Rights Watch und UN-Menschenrechtsexpert:innen seit Jahren Vorwürfe zu <strong>Überwachung, Einschüchterung, Kriminalisierung friedlicher Aktivist:innen</strong>, unfairen Verfahren und Beschränkungen der Meinungs- und Vereinigungsfreiheit. HRW stellte 2026 fest, dass marokkanische Behörden die Repression gegen Aktivist:innen und Journalist:innen weiter intensiviert hätten.
+  </p>
+
+  <div class="info-box">
+    <p class="info-box-label">Tindouf-Lager</p>
+    <h3>Fast fünf Jahrzehnte im Exil</h3>
+    <p>Der <em>Sahrawi Refugees Response Plan 2024–2025</em> beschreibt fast fünf Jahrzehnte Exil in fünf Lagern bei Tindouf — mit wachsendem Druck durch Unterfinanzierung, Nahrungsmittelknappheit, Malnutrition und extreme Wetterereignisse.</p>
+    <p>UNICEF beziffert die Flüchtlingsbevölkerung auf <strong>173.600</strong>. WFP berichtet, dass <strong>78 Prozent</strong> ernährungsunsicher oder gefährdet sind und mehr als <strong>53,5 Prozent</strong> der Frauen im gebärfähigen Alter an Anämie leiden. Erschwerend kommt hinzu, dass bis 2024 keine formale <strong>Individualregistrierung</strong> durchgeführt wurde — was belastbare demografische und rechtsstaatliche Bewertungen erheblich erschwert.</p>
+  </div>
+
+  <div class="alert-box">
+    <strong>Analytischer Hinweis</strong>
+    Die Vorwürfe in den marokkanisch kontrollierten Gebieten stammen aus konsistenten, langjährigen Befunden etablierter Organisationen — sind aber keine gerichtlich abschließend geklärten Tatsachen im Einzelfall. Für die Tindouf-Lager ist die aktuelle unabhängige Evidenzlage dünner, weil der Zugang eingeschränkter ist.
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Geopolitik -->
+  <p class="section-label">Geopolitik</p>
+  <h2 class="section-h2">Regionale Geopolitik und neue Dynamiken</h2>
+
+  <p class="section-text">
+    Regional ist Westsahara vor allem ein Brennpunkt der <strong>marokkanisch-algerischen Rivalität</strong>. Algerien beherbergt die Lager, unterstützt die Polisario politisch und versteht die Frage als Dekolonisierungsproblem; Marokko sieht darin eine algerisch gespeiste Sezessionsagenda.
+  </p>
+  <p class="section-text">
+    Für die <strong>EU</strong> ist Westsahara ein Lehrstück des Widerspruchs zwischen strategischer Partnerschaft und Rechtsbindung. Die EuGH-Rechtsprechung von 2016, 2018 und 2024 bekräftigt die territoriale Trennung zwischen Marokko und Westsahara immer wieder — während EU-Außenbeauftragte Kaja Kallas im April 2026 mit Nasser Bourita eine Erklärung unterzeichnete, die sich ausdrücklich auf Verhandlungen auf Basis der marokkanischen Autonomieinitiative bezieht.
+  </p>
+
+  <div class="info-box">
+    <p class="info-box-label">Diplomatische Kaskade 2020–2026</p>
+    <h3>Politisches Terrain verschiebt sich</h3>
+    <p><strong>2020 (USA):</strong> Präsident Trump erkennt marokkanische Souveränitätsansprüche an — im Kontext der Normalisierung zwischen Marokko und Israel.</p>
+    <p><strong>2023 (Israel):</strong> Israel erkennt marokkanische Souveränität über Westsahara an.</p>
+    <p><strong>2024 (Frankreich):</strong> Der Élysée bezeichnet Autonomie unter marokkanischer Souveränität ausdrücklich als „einzige Basis" für eine Lösung.</p>
+    <p><strong>2025 (UK):</strong> Das Vereinigte Königreich schließt sich offiziell an.</p>
+    <p><strong>2026 (Deutschland, EU):</strong> Beide formulieren Unterstützung für einen UN-Prozess, der auf der marokkanischen Autonomieinitiative aufsetzt.</p>
+    <p><strong>Einordnung:</strong> Diese Kaskade verändert den politischen Kontext erheblich — hebt aber den UN-Rechtsstatus des Gebiets nicht auf.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Narrative & Politikoptionen -->
+  <p class="section-label">Analyse</p>
+  <h2 class="section-h2">Narrative, Sicherheit und Politikoptionen</h2>
+
+  <p class="section-text">
+    Der Konflikt ist auch ein <strong>Kampf um Begriffe</strong>. Marokko spricht von den „südlichen Provinzen", territorialer Integrität und regionaler Entwicklung; Polisario, viele NGOs und Teile der Fachliteratur sprechen von Besatzung, Dekolonisierung und Ressourcenplünderung. RSF beschrieb Westsahara als nahezu journalistisches „black hole" — Zugänge, Informationen und Berichterstattung sind stark eingeschränkt und politisiert. <strong>Quellenkritik ist hier kein Zusatz, sondern Kern der Methode.</strong>
+  </p>
+
+  <div class="data-table-wrap" style="margin-top: 28px;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Inhalt</th>
+          <th>Analytische Bewertung</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Verhandelte Autonomie unter marokkanischer Souveränität</strong></td>
+          <td>Ausbau der marokkanischen Initiative von 2007 zu einem detaillierten Statut mit lokalen Exekutiv-, Legislativ- und Justizorganen</td>
+          <td>Politisch derzeit die <strong>stärkste</strong> internationale Dynamik; völkerrechtlich nur tragfähig, wenn sie glaubwürdig als Form von Selbstbestimmung akzeptiert würde</td>
+        </tr>
+        <tr>
+          <td><strong>Referendum mit Unabhängigkeitsoption</strong></td>
+          <td>Rückkehr zum klassischen UN-Settlement-Plan; Abstimmung über Unabhängigkeit, Integration oder Selbstregierung</td>
+          <td>Juristisch stark verankert, politisch derzeit <strong>sehr schwach</strong>, weil zentrale westliche Mächte den offenen Referendumsrahmen faktisch verlassen haben</td>
+        </tr>
+        <tr>
+          <td><strong>Rechte- und Ressourcen-zuerst</strong></td>
+          <td>Vorrangig Menschenrechtsmonitoring, Freizügigkeit, Familienkontakte, zustimmungsbasierte Ressourcenabkommen</td>
+          <td>Könnte deeskalierend wirken; löst den Statuskonflikt nicht, würde aber die größten Rechtsbrüche und Vertrauensdefizite adressieren</td>
+        </tr>
+        <tr>
+          <td><strong>Phasenmodell</strong></td>
+          <td>Sofortmaßnahmen zu Waffenruhe, Mine Action, humanitärer Registrierung, lokalen Garantien — danach Statusgespräche</td>
+          <td>Wahrscheinlich die pragmatischste Zwischenlösung; scheitert, wenn eine Seite darin nur Zeitgewinn der anderen sieht</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert-box" style="border-color: var(--blue); background: var(--blue-light); color: var(--blue);">
+    <strong>Offene Fragen und Grenzen der Evidenz</strong>
+    Die fehlende formale Individualregistrierung in Tindouf erschwert belastbare demografische Aussagen. Bevölkerungs- und Siedlungsdaten im marokkanisch kontrollierten Teil sind politisch hoch umkämpft; unabhängiger Zugang ist begrenzt. Die neue Sprache der Resolution 2797 (2025) ist juristisch noch im Fluss. Offen bleibt, ob ein künftiges Arrangement eine echte, frei akzeptierte Form interner Selbstbestimmung bieten könnte — oder ob es nur den bestehenden Machtzustand nachträglich legitimieren würde.
+  </div>
+
+  <!-- Fazit -->
+  <div class="verdict-final">
+    <h3>Analytisches Fazit</h3>
+    <p>Westsahara ist heute weniger durch einen einzigen „eingefrorenen" Konflikt zu beschreiben als durch ein <strong>Konfliktsystem</strong>: ungelöste Dekolonisierung, begrenzte Kampfhandlungen seit 2020, Ressourcennutzung ohne konsensbasierte Statuslösung, marokkanisch-algerische Rivalität und eine hoch verdichtete Schlacht um Narrative, Karten und Begriffe.</p>
+    <p>Gerade deshalb sind einfache Etiketten irreführend: Wer nur von „territorialer Integrität" spricht, blendet das Dekolonisierungsrecht aus; wer nur von „letzter Kolonie Afrikas" spricht, unterschätzt die veränderte diplomatische Realität seit 2020. Politisch gewann Marokko international deutlich an Terrain — juristisch blieben die stärksten Gerichts- und UN-Fixpunkte weiterhin auf Trennung und Selbstbestimmung ausgerichtet. Gerade dieser Widerspruch erklärt, warum der Konflikt zugleich „zugunsten Marokkos kippt" und doch nicht gelöst ist.</p>
+  </div>
+
+  <!-- Quellenverzeichnis -->
+  <div class="sources-box">
+    <h4>Quellenverzeichnis (Auswahl)</h4>
+
+    <div class="sources-section">
+      <h5>Primär- und amtliche Quellen</h5>
+      <div class="sources-list">
+        <span class="source-pill">UN — Western Sahara / Decolonization</span>
+        <span class="source-pill">MINURSO-Mandat &amp; Website</span>
+        <span class="source-pill">IGH-Gutachten 1975</span>
+        <span class="source-pill">UN-Rechtsgutachten Corell S/2002/161</span>
+        <span class="source-pill">Resolution 690 (1991)</span>
+        <span class="source-pill">Resolution 2797 (2025)</span>
+        <span class="source-pill">EuGH-Urteile 2016, 2018, 2024</span>
+        <span class="source-pill">US Presidential Proclamation 2020</span>
+        <span class="source-pill">Sahrawi Refugees Response Plan 2024–2025</span>
+        <span class="source-pill">UNICEF / UNHCR / WFP Algeria</span>
+      </div>
+    </div>
+
+    <div class="sources-section">
+      <h5>Fachliteratur und Gutachten</h5>
+      <div class="sources-list">
+        <span class="source-pill">Tara F. Deubel — Ethnography of the Western Sahara</span>
+        <span class="source-pill">I. Barreñada Bajo — Western Saharan and Southern Moroccan Sahrawis</span>
+        <span class="source-pill">Wissenschaftliche Dienste Bundestag — Westsahara-Gutachten</span>
+        <span class="source-pill">Kalicka-Mikołajczyk — International Legal Status of Western Sahara</span>
+        <span class="source-pill">Enrico Milano — Natürliche Ressourcen und Dekolonisierung</span>
+      </div>
+    </div>
+
+    <div class="sources-section">
+      <h5>NGOs, Daten &amp; Qualitätsmedien</h5>
+      <div class="sources-list">
+        <span class="source-pill">Amnesty International</span>
+        <span class="source-pill">Human Rights Watch</span>
+        <span class="source-pill">Western Sahara Resource Watch</span>
+        <span class="source-pill">RSF — Medienrestriktionen</span>
+        <span class="source-pill">Reuters · AP · Le Monde (2024–2026)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-pages">
+    <a href="zusatzinfos.html" class="nav-page-btn">
+      <p class="dir">← Zurück</p>
+      <p class="ptitle">Alle Zusatzinfos</p>
+    </a>
+    <a href="index.html" class="nav-page-btn" style="text-align:right;">
+      <p class="dir">→ Startseite</p>
+      <p class="ptitle">NahostFakten Übersicht</p>
+    </a>
+  </div>
+
+</div>
+
+<script>
+  mermaid.initialize({ startOnLoad: true, theme: 'neutral', fontFamily: 'Sora, sans-serif' });
+</script>
+</body>
+</html>
