@@ -1,3 +1,9 @@
+> **INTERNAL RESEARCH DRAFT — NOT PUBLIC**
+> This file contains raw AI-assisted research with citation artifacts (`citeturn...`, `iturn...`).
+> Do not serve, link, or publish this file. The public-facing article is `westsahara.html`.
+
+---
+
 # Westsahara zwischen Dekolonisierung, Krieg und geopolitischer Verschiebung
 
 iturn47image1
