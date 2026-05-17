@@ -69,7 +69,32 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .data-table td:first-child { color: var(--black); font-weight: 600; white-space: nowrap; }
 .data-table td strong { color: var(--black); font-weight: 600; }
 
-/* Mermaid diagram container */
+/* Custom timeline */
+.ws-timeline { position: relative; margin: 32px 0; padding-bottom: 4px; }
+.ws-tl-era-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gray-400); padding: 18px 0 8px 100px; }
+.ws-tl-era-label:first-child { padding-top: 4px; }
+.ws-timeline-inner { position: relative; }
+.ws-timeline-inner::before { content: ''; position: absolute; left: 76px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--gray-200), var(--gray-200)); border-radius: 2px; }
+.ws-tl-item { display: flex; align-items: flex-start; gap: 0; position: relative; }
+.ws-tl-left { width: 76px; flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; padding-right: 20px; padding-top: 14px; }
+.ws-tl-year { font-family: 'Fraunces', serif; font-size: 14px; font-weight: 700; line-height: 1; white-space: nowrap; }
+.ws-tl-dot-col { width: 16px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; padding-top: 16px; position: relative; z-index: 1; }
+.ws-tl-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--white); box-shadow: 0 0 0 2px currentColor; flex-shrink: 0; }
+.ws-tl-body { flex: 1; padding: 10px 0 10px 20px; }
+.ws-tl-item:not(:last-child) .ws-tl-body { border-bottom: 1px solid var(--gray-100); }
+.ws-tl-title { font-size: 14px; font-weight: 700; color: var(--black); margin-bottom: 2px; line-height: 1.4; }
+.ws-tl-sub { font-size: 12px; color: var(--gray-400); line-height: 1.5; }
+/* Era colors */
+.era-colonial .ws-tl-year { color: var(--gray-600); }
+.era-colonial .ws-tl-dot { color: var(--gray-400); background: var(--gray-400); }
+.era-founding .ws-tl-year { color: var(--amber); }
+.era-founding .ws-tl-dot { color: var(--amber); background: var(--amber); }
+.era-un .ws-tl-year { color: var(--blue); }
+.era-un .ws-tl-dot { color: var(--blue); background: var(--blue); }
+.era-new .ws-tl-year { color: var(--accent); }
+.era-new .ws-tl-dot { color: var(--accent); background: var(--accent); }
+
+/* Diagram box (for flowchart) */
 .diagram-box { background: var(--gray-100); border-radius: var(--radius-lg); padding: 28px 24px; margin: 28px 0; overflow-x: auto; }
 .diagram-box .diagram-label { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
 .mermaid { font-family: 'Sora', sans-serif !important; }
@@ -161,24 +186,150 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
     Die <strong>Madrid-Vereinbarung</strong> von November 1975 beendete die spanische Präsenz, löste den völkerrechtlichen Status aber nicht. Marokko und Mauretanien besetzten danach verschiedene Teile; die Polisario rief 1976 die <strong>Sahrauische Arabische Demokratische Republik (SADR)</strong> aus. 1979 zog sich Mauretanien zurück — seither verwaltet Marokko das Gebiet in den von ihm kontrollierten Zonen, ohne von der UN als Verwaltungsmacht geführt zu werden.
   </p>
 
-  <div class="diagram-box">
-    <p class="diagram-label">Zeitleiste · Schlüsselereignisse in Westsahara</p>
-    <div class="mermaid">
-timeline
-    title Schlüsselereignisse in Westsahara
-    1884 : Spanien erklärt Protektorat über Río de Oro
-    1963 : UN führen Spanisch-Sahara als Nichtselbstverwaltungsgebiet
-    1973 : Gründung der Frente Polisario
-    1975 : IGH-Gutachten · Grüner Marsch · Madrid-Vereinbarung
-    1976 : Ausrufung der SADR
-    1979 : Mauretanien zieht sich aus Ansprüchen zurück
-    1991 : Waffenstillstand · Einrichtung von MINURSO
-    2003 : Baker-Plan II
-    2007 : Marokkanische Autonomieinitiative
-    2020 : Bruch des Waffenstillstands nach Guerguerat · USA erkennen marokk. Souveränität an
-    2024 : CJEU bestätigt Zustimmungserfordernis · Frankreich auf Autonomiekurs
-    2025 : UK unterstützt Autonomieplan · UN-Resolution 2797
-    2026 : Deutschland und EU bekräftigen neuen Verhandlungsrahmen
+  <!-- Custom timeline -->
+  <div style="background:var(--gray-100);border-radius:var(--radius-lg);padding:28px 24px;margin:28px 0;">
+    <p style="font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:20px;">Zeitleiste · Schlüsselereignisse in Westsahara</p>
+    <div class="ws-timeline">
+      <div class="ws-timeline-inner">
+
+        <!-- Kolonialzeit -->
+        <div class="ws-tl-item era-colonial">
+          <div class="ws-tl-left"><span class="ws-tl-year">1884</span></div>
+          <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
+          <div class="ws-tl-body">
+            <p class="ws-tl-title">Spanisches Protektorat über Río de Oro</p>
+            <p class="ws-tl-sub">Beginn der spanischen Kolonialherrschaft</p>
+          </div>
+        </div>
+
+        <div class="ws-tl-item era-colonial">
+          <div class="ws-tl-left"><span class="ws-tl-year">1963</span></div>
+          <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
+          <div class="ws-tl-body">
+            <p class="ws-tl-title">UN-Listung als Nichtselbstverwaltungsgebiet</p>
+            <p class="ws-tl-sub">Spanisch-Sahara auf der Dekolonisierungsliste der Vereinten Nationen</p>
+          </div>
+        </div>
+
+        <!-- Gründungsphase -->
+        <div class="ws-tl-item era-founding" style="margin-top:8px;">
+          <div class="ws-tl-left"><span class="ws-tl-year">1973</span></div>
+          <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
+          <div class="ws-tl-body">
+            <p class="ws-tl-title">Gründung der Frente Polisario</p>
+            <p class="ws-tl-sub">Antikoloniale Widerstandsbewegung formiert sich</p>
+          </div>
+        </div>
+
+        <div class="ws-tl-item era-founding">
+          <div class="ws-tl-left"><span class="ws-tl-year">1975</span></div>
+          <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
+          <div class="ws-tl-body">
+            <p class="ws-tl-title">IGH-Gutachten · Grüner Marsch · Madrid-Vereinbarung</p>
+            <p class="ws-tl-sub">Drei Schlüsselereignisse innerhalb von Wochen beschleunigen den spanischen Rückzug</p>
+          </div>
+        </div>
+
+        <div class="ws-tl-item era-founding">
+          <div class="ws-tl-left"><span class="ws-tl-year">1976</span></div>
+          <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
+          <div class="ws-tl-body">
+            <p class="ws-tl-title">Ausrufung der SADR</p>
+            <p class="ws-tl-sub">Polisario proklamiert die Sahrauische Arabische Demokratische Republik</p>
+          </div>
+        </div>
+
+        <div class="ws-tl-item era-founding">
+          <div class="ws-tl-left"><span class="ws-tl-year">1979</span></div>
+          <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
+          <div class="ws-tl-body">
+            <p class="ws-tl-title">Mauretanien zieht sich zurück</p>
+            <p class="ws-tl-sub">Marokko verwaltet seitdem alle von ihm kontrollierten Zonen allein</p>
+          </div>
+        </div>
+
+        <!-- UN-Prozess -->
+        <div class="ws-tl-item era-un" style="margin-top:8px;">
+          <div class="ws-tl-left"><span class="ws-tl-year">1991</span></div>
+          <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
+          <div class="ws-tl-body">
+            <p class="ws-tl-title">Waffenstillstand · Einrichtung von MINURSO</p>
+            <p class="ws-tl-sub">Resolution 690: Waffenruhe und Mission für ein Referendum, das bis heute nicht stattfand</p>
+          </div>
+        </div>
+
+        <div class="ws-tl-item era-un">
+          <div class="ws-tl-left"><span class="ws-tl-year">2003</span></div>
+          <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
+          <div class="ws-tl-body">
+            <p class="ws-tl-title">Baker-Plan II</p>
+            <p class="ws-tl-sub">Autonomievorschlag des UN-Sondergesandten scheitert am marokkanischen Widerstand</p>
+          </div>
+        </div>
+
+        <div class="ws-tl-item era-un">
+          <div class="ws-tl-left"><span class="ws-tl-year">2007</span></div>
+          <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
+          <div class="ws-tl-body">
+            <p class="ws-tl-title">Marokkanische Autonomieinitiative</p>
+            <p class="ws-tl-sub">Marokko legt formalen Autonomieplan vor; Polisario besteht auf Referendumoption</p>
+          </div>
+        </div>
+
+        <!-- Neue Dynamiken -->
+        <div class="ws-tl-item era-new" style="margin-top:8px;">
+          <div class="ws-tl-left"><span class="ws-tl-year">2020</span></div>
+          <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
+          <div class="ws-tl-body">
+            <p class="ws-tl-title">Bruch des Waffenstillstands · USA erkennen marokk. Souveränität an</p>
+            <p class="ws-tl-sub">Guerguerat-Zwischenfall beendet den Waffenstillstand von 1991; Trump-Proklamation im Abraham-Accords-Kontext</p>
+          </div>
+        </div>
+
+        <div class="ws-tl-item era-new">
+          <div class="ws-tl-left"><span class="ws-tl-year">2024</span></div>
+          <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
+          <div class="ws-tl-body">
+            <p class="ws-tl-title">CJEU-Urteil · Frankreich auf Autonomiekurs</p>
+            <p class="ws-tl-sub">EuGH bekräftigt Zustimmungserfordernis; Élysée nennt Autonomie unter marokkaner Souveränität als „einzige Basis"</p>
+          </div>
+        </div>
+
+        <div class="ws-tl-item era-new">
+          <div class="ws-tl-left"><span class="ws-tl-year">2025</span></div>
+          <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
+          <div class="ws-tl-body">
+            <p class="ws-tl-title">UK unterstützt Autonomieplan · UN-Resolution 2797</p>
+            <p class="ws-tl-sub">Sicherheitsrat hebt marokkanische Autonomieinitiative ausdrücklich als Verhandlungsbasis hervor</p>
+          </div>
+        </div>
+
+        <div class="ws-tl-item era-new">
+          <div class="ws-tl-left"><span class="ws-tl-year">2026</span></div>
+          <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
+          <div class="ws-tl-body">
+            <p class="ws-tl-title">Deutschland und EU bekräftigen neuen Verhandlungsrahmen</p>
+            <p class="ws-tl-sub">Kallas-Bourita-Erklärung: EU stützt Verhandlungen auf Basis der marokkanischen Initiative</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
+      <span style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--gray-600);">
+        <span style="width:10px;height:10px;border-radius:50%;background:var(--gray-400);display:inline-block;"></span>Kolonialzeit
+      </span>
+      <span style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--amber);">
+        <span style="width:10px;height:10px;border-radius:50%;background:var(--amber);display:inline-block;"></span>Gründungsphase
+      </span>
+      <span style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--blue);">
+        <span style="width:10px;height:10px;border-radius:50%;background:var(--blue);display:inline-block;"></span>UN-Prozess
+      </span>
+      <span style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--accent);">
+        <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block;"></span>Neue Dynamiken
+      </span>
     </div>
   </div>
 
