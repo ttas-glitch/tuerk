@@ -137,15 +137,80 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
 .nav-page-btn .dir { font-size: 11px; color: var(--gray-400); margin-bottom: 4px; }
 .nav-page-btn .ptitle { font-size: 14px; font-weight: 600; }
 
+/* ── Scroll helper for tables ── */
+.data-table-wrap { -webkit-overflow-scrolling: touch; }
+
+/* ── Actor network mobile note ── */
+.actor-network-mobile-note { display: none; font-size: 13px; color: var(--gray-400); text-align: center; padding: 20px 0 4px; }
+
+/* ── FAQ box ── */
+.faq-box { background: var(--gray-100); border-radius: var(--radius-lg); padding: 28px; margin: 28px 0; }
+.faq-box .faq-item { margin-bottom: 16px; }
+.faq-box .faq-item:last-child { margin-bottom: 0; }
+.faq-box .faq-q { font-size: 14px; font-weight: 700; color: var(--black); margin-bottom: 4px; }
+.faq-box .faq-a { font-size: 14px; color: var(--gray-600); }
+
 /* ── Responsive ── */
 @media (max-width: 700px) {
-  .facts-grid { grid-template-columns: repeat(2, 1fr); }
-  .nav-pages { flex-direction: column; }
-  .data-table-wrap { display: none; }
+  /* Layout */
+  .page-hero { padding: 82px 16px 36px; }
+  .content { padding: 0 16px 56px; }
+  .section-divider { margin: 36px 0; }
+
+  /* Typography */
+  .page-hero .summary { font-size: 15px; }
+  .section-h2 { font-size: 21px; }
+  .section-text { font-size: 14px; }
+
+  /* Stats grid */
+  .facts-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 20px 0; }
+  .fact-num { font-size: 22px; }
+  .fact-label { font-size: 11px; }
+
+  /* Map */
+  .geo-map-wrap { padding: 14px 12px; margin: 20px 0; }
+
+  /* Info & alert boxes */
+  .info-box { padding: 16px 14px; margin: 18px 0; }
+  .info-box h3 { font-size: 15px; }
+  .info-box p { font-size: 13px; }
+  .alert-box { padding: 12px 14px; font-size: 13px; }
+
+  /* Timeline */
+  .ws-tl-left { width: 44px; padding-right: 10px; }
+  .ws-tl-year { font-size: 11px; }
+  .ws-timeline-inner::before { left: 44px; }
+  .ws-tl-body { padding: 7px 0 7px 12px; }
+  .ws-tl-title { font-size: 13px; }
+  .ws-tl-sub { font-size: 11px; }
+
+  /* Actor table → cards */
+  .actor-table-wrap { display: none; }
   .actor-cards { display: flex; }
-  .ws-tl-left { width: 56px; padding-right: 14px; }
-  .ws-tl-year { font-size: 12px; }
-  .ws-timeline-inner::before { left: 56px; }
+
+  /* Policy options table: keep scrollable, just tighten */
+  .data-table-wrap { border-radius: var(--radius); }
+  .data-table { font-size: 12px; }
+  .data-table th, .data-table td { padding: 10px 11px; }
+
+  /* Actor network: hide SVG, show note */
+  .actor-network-wrap .actor-network-svg { display: none; }
+  .actor-network-mobile-note { display: block; }
+
+  /* Verdict */
+  .verdict-final { padding: 22px 18px; margin: 36px 0; }
+  .verdict-final h3 { font-size: 18px; }
+  .verdict-final p { font-size: 14px; }
+
+  /* Sources */
+  .sources-box { padding: 16px 14px; }
+  a.source-pill { padding: 7px 12px; font-size: 11px; min-height: 34px; display: inline-flex; align-items: center; }
+
+  /* FAQ box */
+  .faq-box { padding: 18px 14px; }
+
+  /* Nav pages */
+  .nav-pages { flex-direction: column; }
 }
 </style>
 </head>
@@ -413,7 +478,7 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
   <h2 class="section-h2">Akteure, Ressourcen und politische Ökonomie</h2>
 
   <!-- Desktop actor table -->
-  <div class="data-table-wrap">
+  <div class="data-table-wrap actor-table-wrap">
     <table class="data-table">
       <thead>
         <tr>
@@ -518,6 +583,7 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
   <!-- ═══ ACTOR NETWORK SVG ═══ -->
   <div class="actor-network-wrap">
     <p class="net-label">Netzwerk · Hauptkonfliktbeziehungen</p>
+    <p class="actor-network-mobile-note">Netzwerkdiagramm auf größeren Bildschirmen verfügbar.</p>
     <svg class="actor-network-svg" viewBox="0 0 760 355" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Akteurnetzwerk: Hauptkonfliktbeziehungen Westsahara">
       <defs>
         <marker id="aGray" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="5" markerHeight="5" orient="auto">
@@ -769,24 +835,24 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
     </div>
   </div>
 
-  <div style="background:var(--gray-100);border-radius:var(--radius-lg);padding:28px;margin:28px 0;">
+  <div class="faq-box">
     <p class="section-label">Mini-FAQ</p>
     <div style="display:grid;gap:16px;margin-top:12px;">
-      <div>
-        <p style="font-size:14px;font-weight:700;color:var(--black);margin-bottom:4px;">Haben Sahrauis einen legitimen Anspruch auf Westsahara?</p>
-        <p style="font-size:14px;color:var(--gray-600);">Ja — als Selbstbestimmungsanspruch im Dekolonisierungskontext. Er ergibt sich aus dem nicht abgeschlossenen Status Westsaharas und der fehlenden freien Statusentscheidung, nicht aus ethnischer Abstammung allein.</p>
+      <div class="faq-item">
+        <p class="faq-q">Haben Sahrauis einen legitimen Anspruch auf Westsahara?</p>
+        <p class="faq-a">Ja — als Selbstbestimmungsanspruch im Dekolonisierungskontext. Er ergibt sich aus dem nicht abgeschlossenen Status Westsaharas und der fehlenden freien Statusentscheidung, nicht aus ethnischer Abstammung allein.</p>
       </div>
-      <div>
-        <p style="font-size:14px;font-weight:700;color:var(--black);margin-bottom:4px;">Heißt das, Westsahara muss unabhängig sein?</p>
-        <p style="font-size:14px;color:var(--gray-600);">Nein. Selbstbestimmung bedeutet freie Entscheidung. Unabhängigkeit ist eine Option, aber nicht die einzige — Autonomie oder Integration wären legitim, wenn sie frei und glaubwürdig akzeptiert werden.</p>
+      <div class="faq-item">
+        <p class="faq-q">Heißt das, Westsahara muss unabhängig sein?</p>
+        <p class="faq-a">Nein. Selbstbestimmung bedeutet freie Entscheidung. Unabhängigkeit ist eine Option, aber nicht die einzige — Autonomie oder Integration wären legitim, wenn sie frei und glaubwürdig akzeptiert werden.</p>
       </div>
-      <div>
-        <p style="font-size:14px;font-weight:700;color:var(--black);margin-bottom:4px;">Beweisen historische Bindungen zu Marokko Souveränität?</p>
-        <p style="font-size:14px;color:var(--gray-600);">Nein. Der IGH erkannte 1975 historische Bindungen an — wertete sie aber ausdrücklich nicht als Souveränitätstitel, der das Selbstbestimmungsrecht verdrängt.</p>
+      <div class="faq-item">
+        <p class="faq-q">Beweisen historische Bindungen zu Marokko Souveränität?</p>
+        <p class="faq-a">Nein. Der IGH erkannte 1975 historische Bindungen an — wertete sie aber ausdrücklich nicht als Souveränitätstitel, der das Selbstbestimmungsrecht verdrängt.</p>
       </div>
-      <div>
-        <p style="font-size:14px;font-weight:700;color:var(--black);margin-bottom:4px;">Löst die Anerkennung durch USA oder Israel den Konflikt?</p>
-        <p style="font-size:14px;color:var(--gray-600);">Nein. Sie stärkt Marokkos Position politisch, ersetzt aber keine allgemein akzeptierte freie Statusentscheidung des Volkes der Westsahara.</p>
+      <div class="faq-item">
+        <p class="faq-q">Löst die Anerkennung durch USA oder Israel den Konflikt?</p>
+        <p class="faq-a">Nein. Sie stärkt Marokkos Position politisch, ersetzt aber keine allgemein akzeptierte freie Statusentscheidung des Volkes der Westsahara.</p>
       </div>
     </div>
   </div>
