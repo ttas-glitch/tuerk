@@ -5,9 +5,9 @@
 <script src="/auth.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PKK, Kurden und typische Narrative – Faktencheck – NahostFakten</title>
-<meta name="description" content="Faktencheck zu PKK, YPG/SDF und kurdischen Rechten: Was ist Propaganda, was ist belastbar? Mit Quellen aus NCTC, GOV.UK, Reuters, AP und HRW.">
+<meta name="description" content="Faktencheck zu PKK, YPG/SDF, kurdischen Rechten, Völkerrecht und Selbstbestimmung: Was ist Propaganda, was ist belastbar? Mit Quellen aus NCTC, GOV.UK, Reuters, AP, HRW und Britannica.">
 <meta property="og:title" content="PKK, Kurden und typische Narrative – Faktencheck">
-<meta property="og:description" content="PKK ≠ Kurden. Faktencheck zu 35 Behauptungen über PKK, YPG/SDF, Terrorlisten, kurdische Rechte und türkische Staatspolitik.">
+<meta property="og:description" content="PKK ≠ Kurden. 35+ Behauptungen gecheckt: Terrorlisten, YPG/SDF, Völkerrecht, vier kurdische Räume, innerkurdische Spaltungen.">
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -23,15 +23,11 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Sora', sans-serif; background: var(--white); color: var(--black); line-height: 1.7; -webkit-font-smoothing: antialiased; font-size: 15px; }
-
-/* ── Nav ── */
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,250,250,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { font-size: 15px; font-weight: 700; color: var(--black); text-decoration: none; }
 .nav-logo span { color: var(--accent); }
 .nav-back { font-size: 13px; color: var(--gray-600); text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); transition: all 0.15s; }
 .nav-back:hover { border-color: var(--black); color: var(--black); }
-
-/* ── Hero ── */
 .page-hero { padding: 100px 24px 60px; max-width: 860px; margin: 0 auto; }
 .breadcrumb { font-size: 12px; color: var(--gray-400); margin-bottom: 16px; }
 .breadcrumb a { color: var(--gray-400); text-decoration: none; }
@@ -39,44 +35,34 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 20px; background: var(--accent-light); color: var(--accent); border: 1px solid rgba(192,57,43,0.2); }
 .page-hero h1 { font-family: 'Fraunces', serif; font-size: clamp(26px, 4.5vw, 44px); font-weight: 700; line-height: 1.15; margin-bottom: 16px; }
 .page-hero .summary { font-size: 17px; color: var(--gray-600); font-weight: 300; line-height: 1.7; }
-
-/* ── Content ── */
 .content { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
 .section-divider { border: none; border-top: 1px solid var(--border); margin: 52px 0; }
 .section-h2 { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 700; margin-bottom: 8px; }
 .section-label { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
 .section-text { font-size: 15px; color: var(--gray-600); line-height: 1.8; margin-bottom: 18px; }
 .section-text strong { color: var(--black); font-weight: 600; }
-
-/* ── Facts grid ── */
-.facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 28px 0; }
+.facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 28px 0; }
 .fact-card { background: var(--gray-100); border-radius: var(--radius); padding: 18px; text-align: center; }
-.fact-num { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 700; display: block; color: var(--black); }
-.fact-label { font-size: 12px; color: var(--gray-600); margin-top: 4px; line-height: 1.4; }
-
-/* ── Entity diagram ── */
+.fact-num { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 700; display: block; color: var(--black); line-height: 1.1; }
+.fact-label { font-size: 11px; color: var(--gray-600); margin-top: 5px; line-height: 1.4; }
 .entity-diagram-wrap { background: var(--gray-100); border-radius: var(--radius-lg); padding: 24px; margin: 32px 0; }
 .entity-diagram-wrap .diag-title { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
 .entity-diagram-svg { width: 100%; height: auto; display: block; font-family: 'Sora', sans-serif; }
-
-/* ── Info boxes ── */
 .info-box { background: var(--gray-100); border-radius: var(--radius-lg); padding: 26px 28px; margin: 28px 0; }
-.info-box-label { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+.info-box-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
 .info-box-label::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
 .info-box h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
 .info-box p { font-size: 14px; color: var(--gray-600); line-height: 1.75; }
 .info-box p + p { margin-top: 10px; }
+.info-box ul { margin: 10px 0 0 18px; }
+.info-box ul li { font-size: 13px; color: var(--gray-600); line-height: 1.65; margin-bottom: 5px; }
 .alert-box { border-left: 4px solid var(--amber); background: var(--amber-light); border-radius: 0 var(--radius) var(--radius) 0; padding: 16px 20px; margin: 24px 0; font-size: 14px; color: var(--amber); line-height: 1.7; }
 .alert-box strong { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
-
-/* ── Grundregel box ── */
 .grundregel-box { background: var(--black); color: var(--white); border-radius: var(--radius-lg); padding: 32px; margin: 32px 0; }
 .grundregel-box h3 { font-family: 'Fraunces', serif; font-size: 20px; margin-bottom: 16px; }
 .grundregel-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .grundregel-box ul li { font-size: 14px; color: rgba(255,255,255,0.78); padding: 8px 14px; background: rgba(255,255,255,0.06); border-radius: 8px; }
 .grundregel-box ul li strong { color: var(--white); }
-
-/* ── Claim blocks ── */
 .claim-grid { display: grid; gap: 10px; margin: 20px 0; }
 .claim-block { border-radius: var(--radius); padding: 18px 20px; border: 1px solid var(--border); }
 .claim-block .cb-verdict { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
@@ -93,8 +79,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .cb-complex { border-left: 3px solid var(--blue); }
 .cb-complex .cb-verdict { color: var(--blue); }
 .cb-complex .cb-formula { border-color: var(--blue); background: var(--blue-light); color: var(--blue); }
-
-/* ── Timeline ── */
 .ws-timeline { position: relative; margin: 28px 0; }
 .ws-timeline-inner { position: relative; }
 .ws-timeline-inner::before { content: ''; position: absolute; left: 76px; top: 0; bottom: 0; width: 2px; background: var(--gray-200); border-radius: 2px; }
@@ -118,8 +102,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .tl-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
 .tl-legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; }
 .tl-legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-
-/* ── Actor table ── */
 .data-table-wrap { overflow-x: auto; margin: 28px 0; border-radius: var(--radius-lg); border: 1px solid var(--border); -webkit-overflow-scrolling: touch; }
 .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .data-table th { background: var(--gray-100); padding: 12px 14px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gray-400); border-bottom: 1px solid var(--border); white-space: nowrap; }
@@ -127,8 +109,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .data-table tr:last-child td { border-bottom: none; }
 .data-table td:first-child { color: var(--black); font-weight: 600; white-space: nowrap; }
 .data-table td strong { color: var(--black); font-weight: 600; }
-
-/* ── Actor mobile cards ── */
 .actor-cards { display: none; flex-direction: column; gap: 12px; margin: 28px 0; }
 .actor-card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 18px; background: var(--white); }
 .actor-card-name { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
@@ -136,8 +116,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .actor-card-row:last-child { margin-bottom: 0; }
 .actor-card-label { font-size: 10px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.07em; }
 .actor-card-val { font-size: 13px; color: var(--gray-600); line-height: 1.55; }
-
-/* ── FAQ / Debatten ── */
 .faq-box { background: var(--gray-100); border-radius: var(--radius-lg); padding: 28px; margin: 28px 0; }
 .faq-item { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
 .faq-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
@@ -146,14 +124,10 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .faq-q::after { content: '"'; color: var(--gray-400); }
 .faq-a { font-size: 13px; color: var(--gray-600); line-height: 1.7; }
 .faq-a strong { color: var(--black); }
-
-/* ── Verdict ── */
 .verdict-final { background: var(--black); color: var(--white); border-radius: var(--radius-lg); padding: 32px; margin: 48px 0; }
 .verdict-final h3 { font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 12px; }
 .verdict-final p { font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.8; }
 .verdict-final p + p { margin-top: 12px; }
-
-/* ── Sources ── */
 .sources-box { border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-top: 40px; }
 .sources-box h4 { font-size: 13px; font-weight: 700; margin-bottom: 16px; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.05em; }
 .sources-section { margin-bottom: 18px; }
@@ -161,15 +135,11 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .sources-list { display: flex; flex-wrap: wrap; gap: 8px; }
 a.source-pill { font-size: 12px; background: var(--gray-100); padding: 4px 12px; border-radius: 20px; color: var(--gray-600); text-decoration: none; border: 1px solid transparent; transition: all 0.15s; display: inline-block; }
 a.source-pill:hover { border-color: var(--black); color: var(--black); background: var(--white); }
-
-/* ── Nav pages ── */
 .nav-pages { display: flex; gap: 12px; margin-top: 48px; }
 .nav-page-btn { flex: 1; display: block; padding: 16px; border-radius: var(--radius); border: 1px solid var(--border); text-decoration: none; color: var(--black); transition: all 0.2s; }
 .nav-page-btn:hover { border-color: var(--black); }
 .nav-page-btn .dir { font-size: 11px; color: var(--gray-400); margin-bottom: 4px; }
 .nav-page-btn .ptitle { font-size: 14px; font-weight: 600; }
-
-/* ── Responsive ── */
 @media (max-width: 700px) {
   .page-hero { padding: 82px 16px 36px; }
   .content { padding: 0 16px 56px; }
@@ -178,13 +148,12 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
   .section-h2 { font-size: 21px; }
   .section-text { font-size: 14px; }
   .facts-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 20px 0; }
-  .fact-num { font-size: 22px; }
-  .entity-diagram-wrap { padding: 14px 12px; margin: 20px 0; }
+  .fact-num { font-size: 20px; }
+  .entity-diagram-wrap { padding: 14px 12px; }
   .info-box { padding: 16px 14px; margin: 18px 0; }
   .info-box p { font-size: 13px; }
   .grundregel-box { padding: 22px 18px; }
   .grundregel-box h3 { font-size: 17px; }
-  .grundregel-box ul li { font-size: 13px; }
   .claim-block { padding: 14px 16px; }
   .ws-tl-left { width: 44px; padding-right: 10px; }
   .ws-tl-year { font-size: 11px; }
@@ -223,19 +192,27 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
   <div class="facts-grid">
     <div class="fact-card">
       <span class="fact-num">1978</span>
-      <span class="fact-label">PKK-Gründung durch Abdullah Öcalan</span>
+      <span class="fact-label">PKK-Gründung; 1984 Beginn des bewaffneten Kampfes</span>
     </div>
     <div class="fact-card">
       <span class="fact-num">40.000+</span>
       <span class="fact-label">Todesopfer im Konflikt seit 1984 (Reuters)</span>
     </div>
     <div class="fact-card">
-      <span class="fact-num">4</span>
-      <span class="fact-label">Institutionen: USA, UK, EU-Kontext, Türkei – Terror-Einstufung</span>
+      <span class="fact-num">~35 Mio.</span>
+      <span class="fact-label">Kurden weltweit — größtes Volk ohne eigenen Staat (Britannica)</span>
+    </div>
+    <div class="fact-card">
+      <span class="fact-num">4 Staaten</span>
+      <span class="fact-label">Türkei, Irak, Syrien, Iran — kein einheitlicher Raum, keine einheitliche Linie</span>
+    </div>
+    <div class="fact-card">
+      <span class="fact-num">1596</span>
+      <span class="fact-label">Šarafnāma — älteste eigenständige kurdische Geschichtschronik</span>
     </div>
     <div class="fact-card">
       <span class="fact-num">2025</span>
-      <span class="fact-label">PKK kündigt Auflösung und Ende des bewaffneten Kampfes an</span>
+      <span class="fact-label">PKK kündigt Auflösung an; 2026 stagniert der Prozess</span>
     </div>
   </div>
 
@@ -243,86 +220,89 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
   <div class="entity-diagram-wrap">
     <p class="diag-title">PKK-Ökosystem · Akteure und Verbindungen</p>
     <svg class="entity-diagram-svg" viewBox="0 0 520 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Entitäts-Diagramm: PKK-Ökosystem mit Kurden als Ethnie, TAK, YPG/SDF und Terror-Einstufungen">
-
-      <!-- Background zones -->
-      <rect x="0" y="0" width="520" height="290" fill="none"/>
-
-      <!-- ── Kurden (Ethnie) ── green -->
+      <!-- Kurden (Ethnie) green -->
       <circle cx="82" cy="105" r="52" fill="#edf7f1" stroke="#1a7a4a" stroke-width="2"/>
       <text x="82" y="98" text-anchor="middle" font-size="12" font-weight="700" fill="#1a7a4a" font-family="Sora,sans-serif">Kurden</text>
       <text x="82" y="113" text-anchor="middle" font-size="10" fill="#1a7a4a" font-family="Sora,sans-serif">Ethnie / Volk</text>
-      <text x="82" y="127" text-anchor="middle" font-size="9" fill="#2e9b65" font-family="Sora,sans-serif">eigene Sprache</text>
-
-      <!-- ── PKK (center) ── red -->
+      <text x="82" y="127" text-anchor="middle" font-size="9" fill="#2e9b65" font-family="Sora,sans-serif">~35 Mio. weltweit</text>
+      <!-- PKK center red -->
       <circle cx="265" cy="145" r="56" fill="#fdf0ef" stroke="#c0392b" stroke-width="2.5"/>
       <text x="265" y="137" text-anchor="middle" font-size="15" font-weight="700" fill="#c0392b" font-family="Sora,sans-serif">PKK</text>
       <text x="265" y="153" text-anchor="middle" font-size="10" fill="#c0392b" font-family="Sora,sans-serif">gegr. 1978</text>
       <text x="265" y="167" text-anchor="middle" font-size="9" fill="#c0392b" font-family="Sora,sans-serif">bewaffnete Org.</text>
-
-      <!-- ── TAK (offshoot) ── lighter red, top right -->
+      <!-- TAK offshoot -->
       <circle cx="440" cy="68" r="38" fill="rgba(192,57,43,0.07)" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="3,2"/>
       <text x="440" y="62" text-anchor="middle" font-size="12" font-weight="700" fill="#c0392b" font-family="Sora,sans-serif">TAK</text>
       <text x="440" y="76" text-anchor="middle" font-size="9" fill="#c0392b" font-family="Sora,sans-serif">Abspaltung</text>
-
-      <!-- ── YPG/SDF (PKK-nah, umstritten) ── amber, bottom left -->
+      <!-- YPG/SDF amber -->
       <rect x="28" y="215" width="108" height="52" rx="10" fill="#fef6ee" stroke="#b7560a" stroke-width="1.5" stroke-dasharray="4,3"/>
       <text x="82" y="236" text-anchor="middle" font-size="12" font-weight="700" fill="#b7560a" font-family="Sora,sans-serif">YPG/SDF</text>
       <text x="82" y="251" text-anchor="middle" font-size="9" fill="#b7560a" font-family="Sora,sans-serif">Syrien · PKK-nah</text>
       <text x="82" y="262" text-anchor="middle" font-size="8.5" fill="#b7560a" font-family="Sora,sans-serif">(Beziehung umstritten)</text>
-
-      <!-- ── Terror-Einstufung box ── blue, bottom right -->
+      <!-- Terror-Einstufung blue -->
       <rect x="360" y="180" width="148" height="82" rx="10" fill="#eef4fd" stroke="#1a5fa8" stroke-width="1.5"/>
       <text x="434" y="201" text-anchor="middle" font-size="11" font-weight="700" fill="#1a5fa8" font-family="Sora,sans-serif">Einstufung als</text>
       <text x="434" y="216" text-anchor="middle" font-size="11" font-weight="700" fill="#1a5fa8" font-family="Sora,sans-serif">Terrororganisation</text>
       <text x="434" y="233" text-anchor="middle" font-size="10" fill="#1a5fa8" font-family="Sora,sans-serif">USA · UK · EU-Kontext</text>
       <text x="434" y="248" text-anchor="middle" font-size="10" fill="#1a5fa8" font-family="Sora,sans-serif">Türkei · DE-Verbot 1993</text>
-
-      <!-- ── CONNECTIONS ── -->
-
-      <!-- Kurden ←≠→ PKK: dashed gray -->
+      <!-- Connections -->
       <line x1="134" y1="112" x2="209" y2="133" stroke="#ccc" stroke-width="1.5" stroke-dasharray="5,4"/>
-      <!-- ≠ label -->
       <rect x="155" y="112" width="24" height="18" rx="4" fill="white"/>
       <text x="167" y="125" text-anchor="middle" font-size="13" font-weight="700" fill="#999" font-family="Sora,sans-serif">≠</text>
-
-      <!-- PKK → TAK: solid red arrow (Abspaltung) -->
       <line x1="314" y1="118" x2="403" y2="82" stroke="#c0392b" stroke-width="1.5"/>
       <polygon points="403,82 392,81 396,91" fill="#c0392b"/>
       <rect x="338" y="90" width="62" height="15" rx="3" fill="rgba(255,255,255,0.85)"/>
       <text x="369" y="101" text-anchor="middle" font-size="9" font-weight="600" fill="#c0392b" font-family="Sora,sans-serif">Abspaltung</text>
-
-      <!-- PKK → YPG/SDF: dashed amber (PKK-nah) -->
       <line x1="222" y1="194" x2="136" y2="218" stroke="#b7560a" stroke-width="1.5" stroke-dasharray="5,4"/>
       <polygon points="136,218 147,212 144,222" fill="#b7560a"/>
       <rect x="148" y="196" width="68" height="15" rx="3" fill="rgba(255,255,255,0.85)"/>
       <text x="182" y="207" text-anchor="middle" font-size="8.5" font-weight="600" fill="#b7560a" font-family="Sora,sans-serif">PKK-nah (umstr.)</text>
-
-      <!-- PKK → Terror-Einstufung: blue solid arrow -->
       <line x1="317" y1="168" x2="360" y2="213" stroke="#1a5fa8" stroke-width="1.5"/>
       <polygon points="360,213 350,205 358,200" fill="#1a5fa8"/>
       <rect x="308" y="178" width="54" height="14" rx="3" fill="rgba(255,255,255,0.85)"/>
       <text x="335" y="189" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1a5fa8" font-family="Sora,sans-serif">eingestuft als</text>
-
       <!-- Legend -->
-      <rect x="0" y="272" width="520" height="18" fill="none"/>
       <line x1="12" y1="281" x2="36" y2="281" stroke="#ccc" stroke-width="1.5" stroke-dasharray="4,3"/>
       <text x="40" y="285" font-size="9" fill="#999" font-family="Sora,sans-serif">≠ Nicht gleichzusetzen</text>
       <line x1="165" y1="281" x2="189" y2="281" stroke="#c0392b" stroke-width="1.5"/>
       <text x="193" y="285" font-size="9" fill="#c0392b" font-family="Sora,sans-serif">Abspaltung / Strukturverbindung</text>
       <line x1="355" y1="281" x2="379" y2="281" stroke="#b7560a" stroke-width="1.5" stroke-dasharray="4,3"/>
       <text x="383" y="285" font-size="9" fill="#b7560a" font-family="Sora,sans-serif">Umstrittene Nähe</text>
-
     </svg>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── HISTORISCHE IDENTITÄT ── -->
+  <p class="section-label">Historische Identität</p>
+  <h2 class="section-h2">Kurdische Sprache, Geschichte und die Grenzen der Abstammungserzählung</h2>
+
+  <p class="section-text">
+    Die Kurden sind <strong>keine Erfindung der Gegenwart</strong> — aber ihre Identität ist auch keine simple Geradlinigkeit von der Antike bis heute. Britannica beschreibt Kurdistan als historisch alte Berg- und Hochebenenregion; <strong>Kurdisch ist eine westiranische Sprache</strong>, nah verwandt mit Persisch und Paschtu. Xenophon erwähnt die <strong>Carduchi</strong> im nördlichen Zagros-Taurus-Gebiet; Strabo nennt <strong>Cyrtii</strong>. Diese Texte zeigen, dass der Raum schon in der Antike mit eigenständigen Bergbevölkerungen verbunden wurde — aber die direkte Gleichsetzung dieser Gruppen mit den heutigen Kurden ist in der seriösen Forschung <strong>suggestiv, nicht beweisend</strong>.
+  </p>
+
+  <div class="info-box">
+    <p class="info-box-label" style="color:var(--blue)">Primärquelle · 1596–99</p>
+    <h3>Die Šarafnāma — wichtigste vormoderne Quelle</h3>
+    <p>Die <em>Šarafnāma</em> von Šaraf Ḫān Bidlīsī (1596–99) ist nach Einschätzung der Österreichischen Akademie der Wissenschaften „ohne Zweifel" die wichtigste Quelle für die kurdische Geschichte vor der Moderne. Sie dokumentiert kurdische Dynastien, Herrschaftsräume und politische Formationen in der Frühen Neuzeit — und zeigt, dass eine eigenständige kurdische Geschichtsperspektive keine Erfindung des 19. oder 20. Jahrhunderts ist.</p>
+    <p>Für akademisch fundierte Einstiege sind besonders tragfähig: David McDowalls <em>A Modern History of the Kurds</em>, Martin van Bruinessens <em>Agha, Shaikh and State</em> (betont historische Fluidität und Grenzverschiebungen statt linearer Abstammung) und <em>The Cambridge History of the Kurds</em> als neuere Synthese.</p>
+  </div>
+
+  <div class="info-box">
+    <p class="info-box-label" style="color:var(--amber)">Methodische Einordnung</p>
+    <h3>Ethnogenese ist kein Stammbaum</h3>
+    <p>Der methodische Fehler vieler nationalistischer Geschichtsbilder — nicht nur kurdischer — besteht darin, jede antike oder mittelalterliche Regionalgruppe als direkten Vorfahren der heutigen Nation zu behandeln. Van Bruinessens Arbeiten betonen historische <strong>Fluidität, Mehrdeutigkeit und Grenzverschiebungen</strong>: Ethnogenese ist ein langer Prozess aus Sprache, Stammesbildung, Religion, dynastischer Herrschaft und moderner Nationalisierung — nicht die Fortsetzung eines einzigen antiken Stammesnamens.</p>
+    <p>Das gilt auch für gegenteilige Behauptungen: Wer sagt, „Kurden existierten erst seit 100 Jahren", macht denselben Kategorienfehler in umgekehrte Richtung. Belastbar ist: Das Kurdische ist eine alte Sprachgruppe; die moderne politische kurdische Identität verdichtete sich vor allem im späten Osmanischen Reich und nach dem Ersten Weltkrieg.</p>
   </div>
 
   <hr class="section-divider">
 
   <!-- ── GESCHICHTE & ZEITLEISTE ── -->
   <p class="section-label">Geschichte &amp; Konflikt</p>
-  <h2 class="section-h2">Entstehung, Eskalation und Auflösung</h2>
+  <h2 class="section-h2">Von der Gründung zur Auflösungsankündigung</h2>
 
   <p class="section-text">
-    Die PKK (Partiya Karkerên Kurdistanê / Kurdische Arbeiterpartei) wurde 1978 von <strong>Abdullah Öcalan</strong> gegründet und begann 1984 einen bewaffneten Aufstand gegen den türkischen Staat. Reuters beschreibt einen mehr als 40 Jahre dauernden Konflikt mit über 40.000 Todesopfern. Im Mai 2025 kündigte die PKK an, sich aufzulösen und den bewaffneten Kampf zu beenden — ein politisch wichtiger Wendepunkt, der die frühere Gewaltgeschichte und die internationalen Terror-Einstufungen jedoch nicht rückwirkend aufhebt.
+    Die PKK wurde 1978 als <strong>marxistisch-leninistische, separatistische</strong> Organisation gegründet und begann 1984 einen bewaffneten Aufstand gegen den türkischen Staat. Seit den 1990er/2000er Jahren verschob sie sich ideologisch in Richtung <strong>demokratischer Konföderalismus</strong> (Öcalans Konzept: kommunale Autonomie, Dezentralisierung, radikaldemokratische Rhetorik). Diese ideologische Wandlung hebt jedoch die frühere und teils fortdauernde Gewaltpraxis nicht auf. Reuters beschreibt einen mehr als 40 Jahre dauernden Konflikt mit über 40.000 Todesopfern.
   </p>
 
   <div style="background:var(--gray-100);border-radius:var(--radius-lg);padding:28px 24px;margin:28px 0;">
@@ -332,37 +312,37 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
         <div class="ws-tl-item era-founding">
           <div class="ws-tl-left"><span class="ws-tl-year">1978</span></div>
           <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
-          <div class="ws-tl-body"><p class="ws-tl-title">PKK-Gründung</p><p class="ws-tl-sub">Abdullah Öcalan gründet die Partiya Karkerên Kurdistanê in der Türkei</p></div>
+          <div class="ws-tl-body"><p class="ws-tl-title">PKK-Gründung</p><p class="ws-tl-sub">Abdullah Öcalan gründet die Partiya Karkerên Kurdistanê; anfangs marxistisch-leninistisch und separatistisch ausgerichtet</p></div>
         </div>
         <div class="ws-tl-item era-founding">
           <div class="ws-tl-left"><span class="ws-tl-year">1984</span></div>
           <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
-          <div class="ws-tl-body"><p class="ws-tl-title">Beginn des bewaffneten Kampfes</p><p class="ws-tl-sub">Angriffe auf staatliche Ziele in Südostanatolien; Beginn eines jahrzehntelangen Guerillakonflicts</p></div>
+          <div class="ws-tl-body"><p class="ws-tl-title">Beginn des bewaffneten Kampfes</p><p class="ws-tl-sub">Angriffe auf staatliche Ziele in Südostanatolien; Beginn eines jahrzehntelangen Guerillakonflicts mit mehr als 40.000 Toten (Reuters)</p></div>
         </div>
         <div class="ws-tl-item era-ban" style="margin-top:8px;">
           <div class="ws-tl-left"><span class="ws-tl-year">1993</span></div>
           <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
-          <div class="ws-tl-body"><p class="ws-tl-title">PKK-Verbot in Deutschland</p><p class="ws-tl-sub">Bundesinnenministerium verbietet PKK und Nebenorganisationen; Begründung: Gewalttaten und Druck auf kurdische Mitbürger</p></div>
+          <div class="ws-tl-body"><p class="ws-tl-title">PKK-Verbot in Deutschland</p><p class="ws-tl-sub">Bundesinnenministerium: PKK und Nebenorganisationen verboten wegen Gewalttaten und Druck auf kurdische Mitbürger</p></div>
         </div>
         <div class="ws-tl-item era-ban">
           <div class="ws-tl-left"><span class="ws-tl-year">1997</span></div>
           <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
-          <div class="ws-tl-body"><p class="ws-tl-title">US-Einstufung als Foreign Terrorist Organization</p><p class="ws-tl-sub">US-Außenministerium stuft PKK als FTO ein (Oktober); Bestätigung durch NCTC</p></div>
+          <div class="ws-tl-body"><p class="ws-tl-title">US-Einstufung als Foreign Terrorist Organization</p><p class="ws-tl-sub">US-Außenministerium stuft PKK als FTO ein (Oktober); bestätigt durch NCTC</p></div>
         </div>
         <div class="ws-tl-item era-ban">
           <div class="ws-tl-left"><span class="ws-tl-year">1999</span></div>
           <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
-          <div class="ws-tl-body"><p class="ws-tl-title">Öcalan-Verhaftung in Nairobi</p><p class="ws-tl-sub">PKK erklärt Waffenstillstand; Öcalan-Prozess vor türkischen Gerichten; Tod strafe später in lebenslange Haft umgewandelt</p></div>
+          <div class="ws-tl-body"><p class="ws-tl-title">Öcalan-Verhaftung in Nairobi</p><p class="ws-tl-sub">PKK erklärt Waffenstillstand; Öcalan entwickelt in Haft das Konzept des demokratischen Konföderalismus</p></div>
         </div>
         <div class="ws-tl-item era-ban">
           <div class="ws-tl-left"><span class="ws-tl-year">2001</span></div>
           <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
-          <div class="ws-tl-body"><p class="ws-tl-title">UK Proscription</p><p class="ws-tl-sub">Vereinigtes Königreich stuft PKK als proscribed terrorist organisation ein (März); 2020 auch TAK und HPG als alternative Namen gelistet</p></div>
+          <div class="ws-tl-body"><p class="ws-tl-title">UK Proscription</p><p class="ws-tl-sub">Vereinigtes Königreich stuft PKK als proscribed terrorist organisation ein; 2020 auch TAK und HPG als alternative Namen</p></div>
         </div>
         <div class="ws-tl-item era-conflict" style="margin-top:8px;">
           <div class="ws-tl-left"><span class="ws-tl-year">2015</span></div>
           <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
-          <div class="ws-tl-body"><p class="ws-tl-title">Zusammenbruch des Friedensprozesses</p><p class="ws-tl-sub">Dolmabahçe-Prozess (2013–2015) scheitert; Gewaltspirale in türkisch-kurdischen Städten; PKK nimmt bewaffneten Kampf wieder auf</p></div>
+          <div class="ws-tl-body"><p class="ws-tl-title">Zusammenbruch des Friedensprozesses</p><p class="ws-tl-sub">Dolmabahçe-Prozess (2013–2015) scheitert; PKK nimmt bewaffneten Kampf wieder auf; Gewaltspirale in türkisch-kurdischen Städten</p></div>
         </div>
         <div class="ws-tl-item era-conflict">
           <div class="ws-tl-left"><span class="ws-tl-year">2018–19</span></div>
@@ -372,12 +352,12 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
         <div class="ws-tl-item era-new" style="margin-top:8px;">
           <div class="ws-tl-left"><span class="ws-tl-year">2025</span></div>
           <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
-          <div class="ws-tl-body"><p class="ws-tl-title">PKK kündigt Auflösung an</p><p class="ws-tl-sub">PKK erklärt Ende des bewaffneten Kampfes; Reuters: mehr als 40 Jahre Konflikt mit über 40.000 Toten; Terror-Einstufungen formal noch in Kraft</p></div>
+          <div class="ws-tl-body"><p class="ws-tl-title">PKK kündigt Auflösung an</p><p class="ws-tl-sub">PKK erklärt Ende des bewaffneten Kampfes und symbolische Entwaffnungsschritte; über 40 Jahre Konflikt mit über 40.000 Toten (Reuters)</p></div>
         </div>
         <div class="ws-tl-item era-new">
           <div class="ws-tl-left"><span class="ws-tl-year">2026</span></div>
           <div class="ws-tl-dot-col"><div class="ws-tl-dot"></div></div>
-          <div class="ws-tl-body"><p class="ws-tl-title">Friedensprozess stagniert</p><p class="ws-tl-sub">Reuters (Mai 2026): Was steht auf dem Spiel bei der türkischen Initiative, den PKK-Konflikt zu beenden — Prozess ins Stocken geraten</p></div>
+          <div class="ws-tl-body"><p class="ws-tl-title">Friedensprozess stagniert</p><p class="ws-tl-sub">Reuters (Mai 2026): Sequenzfragen — Entwaffnung, Rechtsgarantien, Öcalans Rolle und regionale Kriegsdynamik — hemmen den Prozess</p></div>
         </div>
       </div>
     </div>
@@ -414,19 +394,19 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
     <div class="claim-block cb-false">
       <p class="cb-verdict">Falsch</p>
       <p class="cb-claim">„Kurden = PKK"</p>
-      <p class="cb-text">Kurden sind eine ethnische und sprachliche Gruppe in der Türkei, Iran, Irak und Syrien. Britannica beschreibt sie als eine der größten ethnischen Gruppen ohne modernen Nationalstaat. Die PKK ist eine konkrete bewaffnete Organisation, gegründet 1978, die seit 1984 bewaffneten Konflikt führte.</p>
+      <p class="cb-text">Kurden sind eine ethnische und sprachliche Gruppe in Türkei, Iran, Irak und Syrien — nach Britannica das größte Volk ohne modernen Nationalstaat. Die PKK ist eine konkrete bewaffnete Organisation, gegründet 1978, die seit 1984 bewaffneten Konflikt führte.</p>
       <p class="cb-formula">Kurden sind kein Synonym für PKK. Die PKK ist eine bewaffnete Organisation; Kurden sind eine vielfältige ethnische und sprachliche Gruppe mit sehr unterschiedlichen politischen Ansichten.</p>
     </div>
     <div class="claim-block cb-false">
       <p class="cb-verdict">Falsch / Propagandistisch</p>
       <p class="cb-claim">„Wer kurdische Rechte fordert, unterstützt automatisch die PKK"</p>
-      <p class="cb-text">Kurdische Sprach-, Kultur- und politische Rechte sind nicht automatisch Terrorunterstützung. Reuters berichtete 2024, dass kurdische Schüler in der Türkei trotz eingeführter Wahlkurse weiterhin Schwierigkeiten haben, Zugang zu kurdischem Sprachunterricht zu bekommen.</p>
-      <p class="cb-formula">PKK-Unterstützung beginnt dort, wo eine bewaffnete Organisation gerechtfertigt, unterstützt, finanziert oder organisatorisch gefördert wird — nicht bei jeder kurdischen Kulturforderung.</p>
+      <p class="cb-text">Kurdische Sprach-, Kultur- und politische Rechte sind nicht automatisch Terrorunterstützung. Reuters berichtete 2024, dass kurdische Schüler in der Türkei trotz eingeführter Wahlkurse Schwierigkeiten haben, Zugang zu kurdischem Sprachunterricht zu bekommen.</p>
+      <p class="cb-formula">PKK-Unterstützung beginnt dort, wo eine bewaffnete Organisation gerechtfertigt, finanziert oder organisatorisch gefördert wird — nicht bei jeder kurdischen Kulturforderung.</p>
     </div>
     <div class="claim-block cb-false">
       <p class="cb-verdict">Falsch</p>
       <p class="cb-claim">„Anti-PKK sein heißt anti-kurdisch sein"</p>
-      <p class="cb-text">Das Bundesinnenministerium begründete das PKK-Verbot 1993 ausdrücklich mit Gewalttaten, Druck auf kurdische Mitbürger und Angriffen in Deutschland — nicht mit kurdischer Identität. Der Text unterscheidet explizit zwischen PKK-Aktivisten und rechtstreuen Kurden und Türken in Deutschland.</p>
+      <p class="cb-text">Das Bundesinnenministerium begründete das PKK-Verbot 1993 ausdrücklich mit Gewalttaten und Druck auf kurdische Mitbürger — nicht mit kurdischer Identität. Der Text unterscheidet explizit zwischen PKK-Aktivisten und rechtstreuen Kurden in Deutschland.</p>
       <p class="cb-formula">Anti-PKK ist nur sauber, wenn kurdische Sprache, Kultur und legale politische Repräsentation respektiert werden. Wer Kurden pauschal als PKK-Verdächtige behandelt, übernimmt selbst schlechte Propaganda.</p>
     </div>
   </div>
@@ -438,19 +418,14 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
   <h2 class="section-h2">Einstufungen, Taktiken und der TAK-Komplex</h2>
 
   <p class="section-text">
-    Die PKK ist nicht nur von der Türkei als Terrororganisation eingestuft. US-Außenministerium (FTO seit 1997), britische Regierung (Proscription seit 2001) und die EU-Kontext-Behandlung belegen eine breite internationale Positionierung. Das schließt politische Debatten über die kurdische Frage nicht aus — aber es widerlegt die These, die Terror-Einstufung sei rein türkische Propaganda.
+    Die PKK ist nicht nur von der Türkei als Terrororganisation eingestuft. US-Außenministerium (FTO seit 1997), britische Regierung (Proscription seit 2001) und der EU-Kontext belegen eine breite internationale Positionierung. Das schließt politische Debatten über die kurdische Frage nicht aus — aber es widerlegt die These, die Terror-Einstufung sei rein türkische Propaganda.
   </p>
 
   <!-- Terror-Einstufungen Tabelle -->
   <div class="data-table-wrap actor-table-wrap">
     <table class="data-table">
       <thead>
-        <tr>
-          <th>Institution</th>
-          <th>Einstufung</th>
-          <th>Seit</th>
-          <th>Hinweis</th>
-        </tr>
+        <tr><th>Institution</th><th>Einstufung</th><th>Seit</th><th>Hinweis</th></tr>
       </thead>
       <tbody>
         <tr>
@@ -463,7 +438,7 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
           <td>Vereinigtes Königreich</td>
           <td>Proscribed terrorist organisation</td>
           <td><strong>März 2001</strong></td>
-          <td>GOV.UK: TAK und HPG 2020 als alternative Namen hinzugefügt</td>
+          <td>GOV.UK: TAK und HPG 2020 als alternative Namen ergänzt</td>
         </tr>
         <tr>
           <td>Deutschland</td>
@@ -487,58 +462,111 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
     </table>
   </div>
 
-  <!-- Mobile Karten -->
+  <!-- Mobile -->
   <div class="actor-cards">
-    <div class="actor-card">
-      <div class="actor-card-name" style="color:var(--blue)">USA (NCTC / State Dept.)</div>
-      <div class="actor-card-row"><span class="actor-card-label">Einstufung</span><span class="actor-card-val">Foreign Terrorist Organization (FTO) seit Oktober 1997</span></div>
-      <div class="actor-card-row"><span class="actor-card-label">Quelle</span><span class="actor-card-val">NCTC: militante kurdische Separatistengruppe</span></div>
-    </div>
-    <div class="actor-card">
-      <div class="actor-card-name" style="color:var(--blue)">Vereinigtes Königreich</div>
-      <div class="actor-card-row"><span class="actor-card-label">Einstufung</span><span class="actor-card-val">Proscribed terrorist organisation seit März 2001; TAK/HPG 2020 als alt. Namen ergänzt</span></div>
-    </div>
-    <div class="actor-card">
-      <div class="actor-card-name" style="color:var(--blue)">Deutschland</div>
-      <div class="actor-card-row"><span class="actor-card-label">Einstufung</span><span class="actor-card-val">Betätigungsverbot seit November 1993; PKK und Nebenorganisationen</span></div>
-    </div>
-    <div class="actor-card">
-      <div class="actor-card-name">Türkei · EU-Kontext</div>
-      <div class="actor-card-row"><span class="actor-card-label">Einstufung</span><span class="actor-card-val">Terrororganisation; Reuters 2026: USA, EU und Türkei einig in der Einstufung</span></div>
-    </div>
+    <div class="actor-card"><div class="actor-card-name" style="color:var(--blue)">USA (NCTC / State Dept.)</div><div class="actor-card-row"><span class="actor-card-label">Einstufung</span><span class="actor-card-val">Foreign Terrorist Organization (FTO) seit Oktober 1997</span></div></div>
+    <div class="actor-card"><div class="actor-card-name" style="color:var(--blue)">Vereinigtes Königreich</div><div class="actor-card-row"><span class="actor-card-label">Einstufung</span><span class="actor-card-val">Proscribed terrorist organisation seit März 2001; TAK/HPG 2020 ergänzt</span></div></div>
+    <div class="actor-card"><div class="actor-card-name" style="color:var(--blue)">Deutschland</div><div class="actor-card-row"><span class="actor-card-label">Einstufung</span><span class="actor-card-val">Betätigungsverbot seit November 1993; PKK und Nebenorganisationen</span></div></div>
+    <div class="actor-card"><div class="actor-card-name">Türkei · EU-Kontext</div><div class="actor-card-row"><span class="actor-card-label">Einstufung</span><span class="actor-card-val">Terrororganisation; Reuters 2026: USA, EU und Türkei einig in der Einstufung</span></div></div>
   </div>
 
   <div class="claim-grid">
     <div class="claim-block cb-partial">
       <p class="cb-verdict">Zu einseitig / widerlegt</p>
       <p class="cb-claim">„Die PKK ist keine Terrororganisation, sondern nur eine Freiheitsbewegung"</p>
-      <p class="cb-text">Die PKK nutzt Freiheitsrhetorik und hat auf reale Unterdrückung kurdischer Identität reagiert. Gleichzeitig ist sie von USA, UK, EU und Deutschland als Terrororganisation eingestuft und hat über Jahrzehnte Gewalt eingesetzt — darunter Taktiken, die Zivilisten trafen.</p>
+      <p class="cb-text">Die PKK nutzt Freiheitsrhetorik und hat auf reale Unterdrückung reagiert. Gleichzeitig ist sie von USA, UK, EU und Deutschland als Terrororganisation eingestuft und hat über Jahrzehnte Gewalt eingesetzt, darunter Taktiken die Zivilisten trafen.</p>
       <p class="cb-formula">Die PKK kann nicht seriös als bloße Bürgerrechtsbewegung beschrieben werden. Sie ist eine bewaffnete Organisation, die international breit als Terrororganisation eingestuft ist.</p>
     </div>
     <div class="claim-block cb-false">
       <p class="cb-verdict">Falsch</p>
       <p class="cb-claim">„Die PKK hat nie Zivilisten angegriffen"</p>
-      <p class="cb-text">NCTC listet als notable attacks Angriffe, bei denen Zivilisten starben: TAK-Anschläge in Istanbul (2016) und Ankara (2016), einen touristischen Angriff (2006), sowie den Angriff auf Turkish Aerospace Industries (2024).</p>
-      <p class="cb-formula">Die Behauptung, PKK/TAK-Gewalt habe nie Zivilisten getroffen, ist nicht haltbar. Das schließt nicht aus, dass staatliche Maßnahmen ebenfalls Menschenrechte verletzten — aber es widerlegt die Romantisierung der PKK als reine Verteidigungsbewegung.</p>
+      <p class="cb-text">NCTC listet als notable attacks Angriffe mit zivilen Opfern: TAK-Anschläge in Istanbul (2016) und Ankara (2016), einen touristischen Angriff (2006), den Angriff auf Turkish Aerospace Industries (2024).</p>
+      <p class="cb-formula">Die Behauptung, PKK/TAK-Gewalt habe nie Zivilisten getroffen, ist nicht haltbar. Das schließt nicht aus, dass staatliche Maßnahmen ebenfalls Menschenrechte verletzten.</p>
     </div>
     <div class="claim-block cb-false">
       <p class="cb-verdict">Falsch</p>
-      <p class="cb-claim">„Die Terror-Einstufung der PKK ist nur türkische Propaganda"</p>
-      <p class="cb-text">US FTO-Einstufung seit 1997, UK Proscription seit 2001, deutsches Betätigungsverbot seit 1993 — diese Entscheidungen wurden unabhängig von der Türkei getroffen und auf Basis eigener rechtlicher und sicherheitspolitischer Prüfungen.</p>
+      <p class="cb-claim">„Die Terror-Einstufung ist nur türkische Propaganda"</p>
+      <p class="cb-text">US FTO-Einstufung seit 1997, UK Proscription seit 2001, deutsches Betätigungsverbot seit 1993 — diese Entscheidungen wurden unabhängig von der Türkei getroffen, auf Basis eigener rechtlicher und sicherheitspolitischer Prüfungen.</p>
       <p class="cb-formula">Streitbar bleibt, wie man kurdische Rechte politisch bewertet — nicht aber, dass die PKK als bewaffnete Organisation international breit problematisiert wird.</p>
     </div>
     <div class="claim-block cb-complex">
       <p class="cb-verdict">Umstritten, aber als Entlastung schwach</p>
       <p class="cb-claim">„TAK ist komplett unabhängig von der PKK"</p>
-      <p class="cb-text">GOV.UK führt TAK und HPG seit 2020 als alternative Namen der bereits als PKK gelisteten Organisation. NCTC bezeichnet TAK als offshoot der PKK in den notable attacks-Einträgen. TAK selbst stellt sich teils als eigenständig dar.</p>
-      <p class="cb-formula">TAK kann nicht einfach als völlig fremde Organisation genutzt werden, um PKK-nahe Gewalt wegzuschieben. Westliche Behörden behandeln TAK als PKK-nah bzw. als PKK-Abspaltung.</p>
+      <p class="cb-text">GOV.UK führt TAK und HPG seit 2020 als alternative Namen der als PKK gelisteten Organisation. NCTC bezeichnet TAK als offshoot der PKK. TAK selbst stellt sich teils als eigenständig dar.</p>
+      <p class="cb-formula">TAK kann nicht einfach als völlig fremde Organisation genutzt werden, um PKK-nahe Gewalt wegzuschieben. Westliche Behörden behandeln TAK als PKK-nah oder PKK-Abspaltung.</p>
     </div>
     <div class="claim-block cb-false">
       <p class="cb-verdict">Falsch</p>
       <p class="cb-claim">„Die Auflösung 2025 beweist, dass die frühere Terror-Einstufung falsch war"</p>
-      <p class="cb-text">Eine spätere Auflösungs- oder Abrüstungserklärung macht die frühere Gewaltgeschichte nicht rückwirkend falsch. Reuters (Mai 2025): mehr als 40 Jahre Konflikt mit über 40.000 Toten; Reuters (2026): Friedensprozess ist ins Stocken geraten.</p>
-      <p class="cb-formula">Die Auflösungsankündigung 2025 ist politisch wichtig. Sie beweist aber nicht, dass die PKK früher keine bewaffnete oder terroristisch eingestufte Organisation war.</p>
+      <p class="cb-text">Eine Auflösungserklärung macht die frühere Gewaltgeschichte nicht rückwirkend falsch. Reuters (2025): mehr als 40 Jahre Konflikt mit über 40.000 Toten. Reuters (2026): Friedensprozess ins Stocken geraten wegen Entwaffnungs- und Garantiefragen.</p>
+      <p class="cb-formula">Die Auflösungsankündigung 2025 ist politisch wichtig. Die dauerhafte Demobilisierung hängt aber von institutionellen Garantien ab, nicht nur von ideologischen Erklärungen.</p>
     </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── VIER KURDISCHE RÄUME ── -->
+  <p class="section-label">Vier kurdische Räume</p>
+  <h2 class="section-h2">Türkei, Irak, Syrien, Iran — kein einheitliches Bild</h2>
+
+  <p class="section-text">
+    „Kurdistan" ist kein einheitlicher politischer Raum, sondern ein <strong>transnationales Mosaik</strong> aus vier sehr unterschiedlichen Regimen: verfassungsrechtlicher Regionalautonomie im Irak, konflikthaften Reform- und Repressionstrukturen in der Türkei, einer bis 2026 deutlich zurückgebauten de-facto-Autonomie in Syrien und repressiver Zentralisierung im Iran. Die wichtigste analytische Grundregel lautet: <strong>Es gibt keine einheitliche kurdische Linie.</strong>
+  </p>
+
+  <div class="data-table-wrap actor-table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Raum</th><th>Rechtsstatus</th><th>De-facto-Lage bis 2026</th><th>Kernanspruch</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Türkei / Bakur</td>
+          <td>Türkische Staatsbürgerschaft; keine ethnische Autonomie; Türkisch = Staatssprache; Kurdisch als Wahlfach ungleich umgesetzt</td>
+          <td>Friedens- und Reformprozess 2025/2026; fragil wegen mangelnder Garantien und regionaler Kriegsdynamik; HRW und AP: Bürgermeister abgesetzt</td>
+          <td><strong>Interne Selbstbestimmung:</strong> kommunale Selbstverwaltung, Sprachrechte, rechtsstaatliche Gleichbehandlung</td>
+        </tr>
+        <tr>
+          <td>Irak / Başûr</td>
+          <td>Irakische Staatsbürgerschaft; <strong>verfassungsrechtlich anerkannte föderale Region</strong>; Arabisch und Kurdisch = offizielle Sprachen; 2023: ~6,56 Mio. Einwohner (KRSO)</td>
+          <td>KDP gewann 2024 Regionalwahl (39 Sitze), PUK 23; Disputed territories (Kirkuk, Sinjar) ungelöst; Fiskalkrise wegen unterbrochener Ölexporte</td>
+          <td><strong>Stärkste institutionalisierte interne Selbstbestimmung</strong>; Sezessionsargument wurde nach 2003 eher schwächer als stärker</td>
+        </tr>
+        <tr>
+          <td>Syrien / Rojava bzw. Nordostsyrien</td>
+          <td>Syrische Staatsbürgerschaft; Dekret Nr. 13 (2026): kurdische Bürger- und Sprachrechte anerkannt; Zensus-Altlasten von 1962 sollen beendet werden</td>
+          <td>Nach Kämpfen Jan. 2026: SDF-Kontrolle vor allem in Qamishli/Hasaka/Kobane; Öl, Grenzübergänge und Arabergebiete weitgehend an Damaskus zurückgegangen</td>
+          <td><strong>Reintegration unter neuem syrischen Staat</strong> mit formalen Rechten; wie viel lokale Selbststeuerung real bleibt, ist unklar</td>
+        </tr>
+        <tr>
+          <td>Iran / Rojhilat</td>
+          <td>Iranische Staatsbürgerschaft; Verfassung Art. 15/19: regionale Sprachen und formale Gleichheit — in der Praxis begrenzt umgesetzt</td>
+          <td>Repression, Grenzmilitarisierung und Verhaftungen verschärften sich 2025/2026; bewaffnete Parteien (KDPI, Komala, PJAK) operieren überwiegend aus dem Nordirak</td>
+          <td><strong>Fehlende wirksame innere Selbstbestimmung</strong> unter repressiven Bedingungen; sicherheitsstaatliche Durchdringung dominiert</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Mobile vier Räume -->
+  <div class="actor-cards">
+    <div class="actor-card"><div class="actor-card-name" style="color:var(--accent)">Türkei / Bakur</div><div class="actor-card-row"><span class="actor-card-label">Status</span><span class="actor-card-val">Türkische Staatsbürgerschaft; keine ethnische Autonomie; Kurdisch als Wahlfach ungleich umgesetzt</span></div><div class="actor-card-row"><span class="actor-card-label">2026</span><span class="actor-card-val">Fragiler Reformprozess; Bürgermeister abgesetzt (AP/Reuters)</span></div></div>
+    <div class="actor-card"><div class="actor-card-name" style="color:var(--green)">Irak / Başûr</div><div class="actor-card-row"><span class="actor-card-label">Status</span><span class="actor-card-val">Verfassungsrechtlich anerkannte föderale Region; Kurdisch offizielle Sprache; ~6,56 Mio. (KRSO 2023)</span></div><div class="actor-card-row"><span class="actor-card-label">2026</span><span class="actor-card-val">KDP/PUK-Dominanz; Fiskalkrise; Disputed territories ungelöst</span></div></div>
+    <div class="actor-card"><div class="actor-card-name" style="color:var(--amber)">Syrien / Nordostsyrien</div><div class="actor-card-row"><span class="actor-card-label">Status</span><span class="actor-card-val">Dekret Nr. 13 (2026): Bürger- und Sprachrechte; Zensus-Altlasten beendet</span></div><div class="actor-card-row"><span class="actor-card-label">2026</span><span class="actor-card-val">SDF-Kontrolle eingeschränkt; Öl/Grenzen an Damaskus</span></div></div>
+    <div class="actor-card"><div class="actor-card-name" style="color:var(--blue)">Iran / Rojhilat</div><div class="actor-card-row"><span class="actor-card-label">Status</span><span class="actor-card-val">Formale Gleichheitsartikel in der Verfassung; Umsetzung begrenzt</span></div><div class="actor-card-row"><span class="actor-card-label">2026</span><span class="actor-card-val">Verschärfte Repression; Verhaftungen; Grenzregionen militarisiert</span></div></div>
+  </div>
+
+  <!-- Intra-kurdische Spaltungen -->
+  <div class="info-box">
+    <p class="info-box-label" style="color:var(--blue)">Analytische Grundregel</p>
+    <h3>Innerkurdische Spaltungen — es gibt keine einheitliche kurdische Linie</h3>
+    <p>Viele politische Fehlschlüsse entstehen, wo diese Unterschiede nivelliert werden:</p>
+    <ul>
+      <li><strong>Irak:</strong> KDP (Barzani-Familie, Erbil) vs. PUK (Sulaymaniyah) — langjährige Konkurrenz um Ressourcen, Patronage und Außenpolitik</li>
+      <li><strong>Türkei:</strong> Zivile parlamentarische Repräsentation (DEM-Partei) vs. bewaffnetes PKK-Milieu — keine automatische Einheit</li>
+      <li><strong>Syrien:</strong> PYD/SDF vs. rivalisierende kurdische Kräfte innerhalb Nordostsyriens; zudem Spannungen mit arabischen Bevölkerungsgruppen</li>
+      <li><strong>Iran:</strong> KDPI (PDKI), Komala und PJAK sind organisatorisch getrennt und haben unterschiedliche Strategien</li>
+    </ul>
+    <p>Wer „die Kurden" als einheitlichen Akteur behandelt, übersieht grundlegende politische Realitäten — sowohl bei Pro-kurdischer Vereinnahmung als auch bei pauschaler Kritik.</p>
   </div>
 
   <hr class="section-divider">
@@ -552,10 +580,16 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
   </p>
 
   <div class="info-box">
+    <p class="info-box-label" style="color:var(--amber)">Wirtschaftsdaten Südosttürkei</p>
+    <h3>Entwicklungsrückstand ist dokumentiert</h3>
+    <p>Laut TurkStat lag Şanlıurfa 2023 mit einem Pro-Kopf-BIP von rund 4.971 US-Dollar deutlich unter dem türkischen Landesdurchschnitt von 13.243 US-Dollar (Reuters). Ankara legte Ende 2024 deshalb einen Entwicklungsplan über rund 14 Milliarden US-Dollar für den überwiegend kurdischen Südosten auf. Der Entwicklungsrückstand allein erklärt nicht die PKK und ist kein PKK-Argument — aber er zeigt, dass die strukturelle Dimension der kurdischen Frage in der Türkei real ist und nicht auf Sicherheitsfragen reduziert werden kann.</p>
+  </div>
+
+  <div class="info-box">
     <p class="info-box-label" style="color:var(--amber)">Methodische Einordnung</p>
     <h3>Sicherheitsinteresse ≠ Freifahrtschein</h3>
     <p>Terrorbekämpfung kann legitim sein. Sie braucht aber Rechtsstaatlichkeit, Beweise, Verhältnismäßigkeit und Schutz von Zivilisten. AP berichtete 2024 über abgesetzte pro-kurdische Bürgermeister; die türkische Regierung begründet solche Schritte mit Terrorverbindungen, während Opposition und Menschenrechtsgruppen sie als politisch motiviert kritisieren.</p>
-    <p>HRW dokumentiert 2024 willkürliche Festnahmen, Folter, sexuelle Gewalt und Plünderungen in türkisch kontrollierten oder besetzten Gebieten Nordsyriens. AP berichtet über die türkische Zurückweisung dieser Vorwürfe.</p>
+    <p>HRW dokumentiert 2024 willkürliche Festnahmen, Folter, sexuelle Gewalt und Plünderungen in türkisch kontrollierten Gebieten Nordsyriens. AP berichtet über die türkische Zurückweisung dieser Vorwürfe.</p>
   </div>
 
   <div class="claim-grid">
@@ -563,20 +597,33 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
       <p class="cb-verdict">Falsch / zu grob</p>
       <p class="cb-claim">„Die kurdische Frage ist nur Terrorismus"</p>
       <p class="cb-text">Die PKK-Frage ist ein Sicherheitsproblem. Die kurdische Frage ist zusätzlich eine politische, sprachliche, kulturelle und historische Frage. Britannica beschreibt Kurden als eine der größten ethnischen Gruppen ohne modernen Nationalstaat, mit eigener Sprache und Siedlungsgebieten in mehreren Ländern.</p>
-      <p class="cb-formula">Die PKK ist ein Sicherheitsproblem. Die kurdische Frage ist breiter: Sprache, Kultur, Repräsentation, lokale Politik und historische Assimilationspolitik überlagern sich.</p>
+      <p class="cb-formula">Die PKK ist ein Sicherheitsproblem. Die kurdische Frage ist breiter: Sprache, Kultur, Repräsentation, lokale Politik, historische Assimilationspolitik und strukturelle Entwicklungsunterschiede überlagern sich.</p>
     </div>
     <div class="claim-block cb-false">
       <p class="cb-verdict">Falsch</p>
       <p class="cb-claim">„Die Türkei hat kurdische Identität nie unterdrückt"</p>
-      <p class="cb-text">Britannica beschreibt türkische Politik, die kurdische Identität zu entziehen versuchte: Kurden wurden als „Mountain Turks" bezeichnet, die kurdische Sprache wurde verboten oder als Dialekt des Türkischen dargestellt. Spätere Reformen legalisierten bestimmte Formen kurdischer Sprache, Broadcasting und Bildung — aber die Geschichte der Unterdrückung ist dokumentiert.</p>
-      <p class="cb-formula">Wer die PKK kritisiert, muss nicht die historische Unterdrückung kurdischer Identität leugnen. Eine seriöse Linie erkennt beides an: reale Repression und reale PKK-Gewalt.</p>
+      <p class="cb-text">Britannica beschreibt türkische Politik, die kurdische Identität zu entziehen versuchte: Kurden wurden als „Mountain Turks" bezeichnet, die kurdische Sprache wurde verboten oder als Dialekt des Türkischen dargestellt. Spätere Reformen legalisierten bestimmte Formen kurdischer Sprache — aber die Geschichte der Unterdrückung ist dokumentiert.</p>
+      <p class="cb-formula">Eine seriöse Linie erkennt beides an: reale Repression und reale PKK-Gewalt. Wer die PKK kritisiert, muss nicht die historische Unterdrückung kurdischer Identität leugnen.</p>
     </div>
     <div class="claim-block cb-partial">
       <p class="cb-verdict">Zu stark / teilweise falsch</p>
       <p class="cb-claim">„Kurdisch ist heute in der Türkei vollständig verboten"</p>
-      <p class="cb-text">Historisch gab es starke Einschränkungen und Assimilationsdruck. Heute gibt es gewisse legale Möglichkeiten für kurdische Sprache und Kurse. Reuters berichtete 2024 jedoch, dass kurdische Schüler trotz Wahlkurs-Möglichkeit oft keinen Zugang bekommen — wegen Lehrermangel, mangelnder Information und Angst vor Stigmatisierung.</p>
+      <p class="cb-text">Historisch gab es starke Einschränkungen. Heute gibt es gewisse legale Möglichkeiten für kurdische Sprache. Reuters berichtete 2024 aber, dass kurdische Schüler trotz Wahlkurs-Möglichkeit oft keinen Zugang bekommen — wegen Lehrermangel, mangelnder Information und Angst vor Stigmatisierung.</p>
       <p class="cb-formula">Kurdisch ist heute nicht in jeder Form total verboten. Aber Zugang, Bildung, politische Atmosphäre und institutionelle Umsetzung bleiben problematisch und umkämpft.</p>
     </div>
+  </div>
+
+  <!-- Prominente Kurden in der Türkei -->
+  <div class="info-box">
+    <p class="info-box-label" style="color:var(--green)">Gegen Totalbehauptungen</p>
+    <h3>Prominente Kurden in der Türkei — kein Widerspruch zur Diskriminierungsfrage</h3>
+    <p>Die Existenz prominenter Kurden in der türkischen Öffentlichkeit <strong>widerlegt keine systematische Diskriminierung</strong>, zeigt aber, dass die kurdische Frage nicht auf ein simples Schema totaler Exklusion reduziert werden kann. Gut belegte Beispiele:</p>
+    <ul>
+      <li><strong>Yaşar Kemal</strong> — Britannica beschreibt ihn als türkischen Romancier kurdischer Herkunft; eines der bekanntesten literarischen Werke der modernen Türkei</li>
+      <li><strong>Yılmaz Güney</strong> — Regisseur; sein Werk gilt als Schlüssel zur kurdischen Sichtbarkeit im türkischen Kino</li>
+      <li><strong>Hamdi Ulukaya</strong> — Unternehmer (Chobani); illustriert, dass kurdische Herkunft in Wirtschaft und Kultur mit erheblicher Reichweite verbunden sein kann — oft aber unter Bedingungen harter Politisierung oder im Exil</li>
+    </ul>
+    <p>Individuelle Erfolgsbiografien erklären keine Strukturfragen. Aber sie widerlegen die Behauptung, Kurden seien in der Türkei vollständig und systematisch ausgeschlossen.</p>
   </div>
 
   <hr class="section-divider">
@@ -586,27 +633,27 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
   <h2 class="section-h2">Der schwierigste Akteur: nicht PKK, nicht unabhängig</h2>
 
   <p class="section-text">
-    YPG und SDF sind der am stärksten umstrittene Punkt. Die Türkei betrachtet YPG als PKK-Ableger — und hat dafür Argumente (ideologische und personelle Verflechtungen, Öcalan-Rhetorik). Die USA unterstützten die SDF als wichtigste Anti-ISIS-Kraft in Nordostsyrien. Reuters berichtete 2024, dass SDF-Kommandeur Mazloum Abdi PKK-Präsenz in Syrien einräumte, aber organisatorische Unterordnung bestritt. Beides gleichzeitig abzuleugnen ist nicht seriös.
+    YPG und SDF sind der am stärksten umstrittene Punkt. Die Türkei betrachtet YPG als PKK-Ableger (ideologische und personelle Verflechtungen, Öcalan-Rhetorik). Die USA unterstützten die SDF als wichtigste Anti-ISIS-Kraft in Nordostsyrien. Reuters berichtete 2024, dass SDF-Kommandeur Mazloum Abdi PKK-Präsenz in Syrien einräumte, aber organisatorische Unterordnung bestritt. Seit 2026 wurde die SDF-Autonomie durch Vereinbarungen mit Damaskus deutlich eingeschränkt — Öl, Grenzübergänge und arabische Bevölkerungsgebiete gingen weitgehend an Damaskus zurück.
   </p>
 
   <div class="claim-grid">
     <div class="claim-block cb-partial">
       <p class="cb-verdict">Zu absolut</p>
       <p class="cb-claim">„YPG/SDF sind eindeutig exakt dasselbe wie die PKK"</p>
-      <p class="cb-text">Die Türkei betrachtet YPG/SDF als PKK-nahe bzw. als PKK-Ableger. Die USA behandelten SDF als Anti-ISIS-Partner, während die PKK selbst in den USA als FTO eingestuft bleibt — ein Widerspruch, den Washington selbst nie vollständig auflöste.</p>
-      <p class="cb-formula">Nicht exakt gleichsetzen, aber Verbindung nicht wegreden. Belastbar ist: ideologische/personelle Nähe und Sicherheitsrisiko sind prüfbar; die Anti-ISIS-Rolle der SDF ist real.</p>
+      <p class="cb-text">Die Türkei betrachtet YPG/SDF als PKK-nah. Die USA behandelten SDF als Anti-ISIS-Partner, während die PKK selbst in den USA als FTO eingestuft bleibt — ein Widerspruch, den Washington selbst nie vollständig auflöste.</p>
+      <p class="cb-formula">Nicht exakt gleichsetzen, aber Verbindung nicht wegreden. Ideologische/personelle Nähe und Sicherheitsrisiko sind prüfbar; die Anti-ISIS-Rolle der SDF ist real.</p>
     </div>
     <div class="claim-block cb-partial">
       <p class="cb-verdict">Zu naiv</p>
       <p class="cb-claim">„YPG/SDF sind völlig unschuldige Demokraten ohne problematische Verbindungen"</p>
-      <p class="cb-text">Die SDF spielten eine wichtige Rolle im Kampf gegen ISIS. Gleichzeitig sind Beziehungen zu PKK-nahen Strukturen, bewaffnete Machtstellung, Zwangsrekrutierungsvorwürfe und regionale Machtpolitik umstritten. Mazloum Abdi räumte PKK-Präsenz in Syrien ein.</p>
-      <p class="cb-formula">SDF/YPG waren wichtige Anti-ISIS-Akteure, sind aber kein unpolitischer Menschenrechtsverein. PKK-Nähe, bewaffnete Machtstellung und Syriens Territorialkonflikt bleiben umstritten.</p>
+      <p class="cb-text">Die SDF spielten eine wichtige Rolle im Kampf gegen ISIS. Gleichzeitig sind Beziehungen zu PKK-nahen Strukturen, bewaffnete Machtstellung und Zwangsrekrutierungsvorwürfe umstritten. Mazloum Abdi räumte PKK-Präsenz in Syrien ein.</p>
+      <p class="cb-formula">SDF/YPG waren wichtige Anti-ISIS-Akteure, sind aber kein unpolitischer Menschenrechtsverein. PKK-Nähe und Syriens Territorialkonflikt bleiben umstritten.</p>
     </div>
     <div class="claim-block cb-false">
       <p class="cb-verdict">Falsch / zu grob</p>
-      <p class="cb-claim">„Türkiye nutzt YPG nur als Vorwand; es gibt keinerlei Sicherheitsproblem"</p>
+      <p class="cb-claim">„Türkiyes Sicherheitsbedenken gegenüber YPG sind reine Propaganda"</p>
       <p class="cb-text">Die Türkei hat reale Sicherheitsbedenken gegenüber PKK/YPG-nahen bewaffneten Strukturen an ihrer Grenze. HRW dokumentiert zugleich schwere Missbrauchsvorwürfe in türkisch kontrollierten Gebieten Nordsyriens — beides muss gleichzeitig wahr sein können.</p>
-      <p class="cb-formula">Türkiyes Sicherheitsbedenken sind nicht erfunden. Aber Sicherheitsbedenken entbinden Türkiye und verbündete Kräfte nicht von Menschenrechts- und Kriegsrechtsstandards.</p>
+      <p class="cb-formula">Sicherheitsbedenken sind nicht erfunden. Aber sie entbinden Türkiye und verbündete Kräfte nicht von Menschenrechts- und Kriegsrechtsstandards.</p>
     </div>
   </div>
 
@@ -617,29 +664,105 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
   <h2 class="section-h2">Sèvres, Lausanne und das Staatsargument</h2>
 
   <p class="section-text">
-    Es gab kurdische Dynastien, Emirate, Aufstände und kurzlebige autonome Projekte. Britannica schreibt, der Treaty of Sèvres (1920) habe eine Autonomie-/Kurdistan-Option vorgesehen — sei aber nie ratifiziert worden. Der Treaty of Lausanne (1923) ersetzte Sèvres und erwähnte Kurdistan/Kurden nicht. Das ist ein historischer Kern, aber kein automatisch durchsetzbarer heutiger Staatstitel.
+    Es gab kurdische Dynastien, Emirate, Aufstände und kurzlebige autonome Projekte — aber keinen durchgehend anerkannten modernen kurdischen Nationalstaat. Britannica schreibt, der Treaty of Sèvres (1920) habe eine Autonomie-/Kurdistan-Option vorgesehen — sei aber nie ratifiziert worden. Der Treaty of Lausanne (1923) ersetzte Sèvres und erwähnte Kurdistan/Kurden nicht. Das ist ein historischer Kern, aber kein automatisch durchsetzbarer heutiger Staatstitel.
   </p>
 
   <div class="claim-grid">
     <div class="claim-block cb-partial">
       <p class="cb-verdict">Historisch zu grob</p>
       <p class="cb-claim">„Es gab immer einen modernen kurdischen Staat, der der Türkei weggenommen wurde"</p>
-      <p class="cb-text">Es gab kurdische Herrschaftsräume und politische Projekte, aber keinen durchgehend anerkannten modernen kurdischen Nationalstaat. Sèvres 1920 sah Autonomie vor, wurde nicht ratifiziert. Lausanne 1923 erwähnte Kurdistan nicht.</p>
+      <p class="cb-text">Sèvres 1920 sah Autonomie vor, wurde nicht ratifiziert. Lausanne 1923 erwähnte Kurdistan nicht. Der moderne kurdische Separatismus ist vor allem ein Produkt des späten Osmanischen Reiches, der post-osmanischen Grenzziehungen und der Nationalstaatsbildung des 20. Jahrhunderts — kein uraltes Kontinuum.</p>
       <p class="cb-formula">Kurdische Staatlichkeit ist historisch komplex. Das Sèvres-Argument ist ein historisches Argument, kein heute automatisch durchsetzbarer Rechtstitel.</p>
     </div>
     <div class="claim-block cb-false">
       <p class="cb-verdict">Falsch</p>
       <p class="cb-claim">„Kurden haben kein eigenes Volk, keine eigene Sprache, keine eigene Geschichte"</p>
-      <p class="cb-text">Kurdisch ist eine westiranische Sprache innerhalb der indoiranischen/indoeuropäischen Sprachfamilie. Britannica beschreibt Kurden als ethnische und sprachliche Gruppe mit historischen Siedlungsräumen in mehreren Staaten.</p>
-      <p class="cb-formula">Kurden als Volk, Sprache und Kultur zu leugnen ist historisch und sprachwissenschaftlich nicht haltbar. Das widerlegt aber nicht automatisch Kritik an der PKK.</p>
+      <p class="cb-text">Kurdisch ist eine westiranische Sprache. Britannica beschreibt Kurden als ethnische und sprachliche Gruppe mit historischen Siedlungsräumen in mehreren Staaten. Die Šarafnāma (1596-99) belegt eigenständige kurdische Geschichtsnarrative seit der Frühen Neuzeit.</p>
+      <p class="cb-formula">Kurden als Volk, Sprache und Kultur zu leugnen ist historisch und sprachwissenschaftlich nicht haltbar. Das widerlegt aber nicht Kritik an der PKK.</p>
     </div>
   </div>
 
   <hr class="section-divider">
 
+  <!-- ── VÖLKERRECHT & SELBSTBESTIMMUNG ── -->
+  <p class="section-label">Völkerrecht</p>
+  <h2 class="section-h2">Selbstbestimmung, Minderheitenrechte und das Sezessionsproblem</h2>
+
+  <p class="section-text">
+    Im geltenden Völkerrecht sind <strong>Minderheitenrechte</strong> und ein <strong>Recht auf einseitige Sezession</strong> nicht dasselbe. Minderheitenrechte schützen vor allem Sprache, Kultur, Religion, politische Teilhabe und Gleichbehandlung — als individuelle und gruppenbezogene Schutzrechte <em>innerhalb</em> bestehender Staaten. Das allgemeine Selbstbestimmungsrecht aller Völker ist zwar fest verankert, aber die äußere Selbstbestimmung durch Abspaltung wird im Mainstream des Völkerrechts im Wesentlichen auf koloniale Kontexte und extreme Grenzfälle bezogen.
+  </p>
+
+  <div class="data-table-wrap actor-table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Ebene</th><th>Was gilt</th><th>Wo liegt der starke Boden?</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Minderheitenrechte</td>
+          <td>Art. 27 ICCPR schützt Minderheiten beim Genuss ihrer Kultur, Religion und Sprache; UN-Menschenrechtsausschuss: „distinct from, and additional to" anderen Rechten</td>
+          <td><strong>Solider Boden:</strong> Sprachrechte, Bildungsrechte, kulturelle Teilhabe, politische Repräsentation</td>
+        </tr>
+        <tr>
+          <td>Selbstbestimmung (intern)</td>
+          <td>Art. 1 ICCPR: Alle Völker haben das Recht, ihren politischen Status frei zu bestimmen. Friendly-Relations-Deklaration (1970): gedacht mit territorialer Integrität bestehender Staaten</td>
+          <td><strong>Solider Boden:</strong> kommunale Selbstverwaltung, föderale Strukturen, politische Repräsentation innerhalb des Staates</td>
+        </tr>
+        <tr>
+          <td>Sezession (extern)</td>
+          <td>Nach herrschender Auffassung: kein allgemeines positives Recht auf einseitige Sezession. Maximal umstritten: „remedial secession" bei extremer, systematischer Unterdrückung ohne Alternativen</td>
+          <td><strong>Schwieriger Boden:</strong> Nur in kolonialen Kontexten und allenfalls bei massiver, dauerhafter Unterdrückung ohne interne Alternativen rechtlich diskutierbar</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="actor-cards">
+    <div class="actor-card"><div class="actor-card-name" style="color:var(--green)">Minderheitenrechte (Art. 27 ICCPR)</div><div class="actor-card-row"><span class="actor-card-label">Inhalt</span><span class="actor-card-val">Schutz von Sprache, Kultur, Religion als Gruppen- und Individualrechte innerhalb bestehender Staaten</span></div><div class="actor-card-row"><span class="actor-card-label">Boden</span><span class="actor-card-val">Solider Rechtsrahmen — starkes Argument für kurdische Kultur- und Sprachrechte</span></div></div>
+    <div class="actor-card"><div class="actor-card-name" style="color:var(--blue)">Selbstbestimmung (Art. 1 ICCPR)</div><div class="actor-card-row"><span class="actor-card-label">Inhalt</span><span class="actor-card-val">Völker können ihren politischen Status frei bestimmen — gedacht mit territorialer Integrität bestehender Staaten zusammen</span></div><div class="actor-card-row"><span class="actor-card-label">Boden</span><span class="actor-card-val">Interne Selbstbestimmung solide; externe Abspaltung die rechtliche Ausnahme</span></div></div>
+    <div class="actor-card"><div class="actor-card-name" style="color:var(--amber)">Sezession</div><div class="actor-card-row"><span class="actor-card-label">Inhalt</span><span class="actor-card-val">Kein allgemeines positives Recht; maximal diskutiert als Heilmittel bei extremer Unterdrückung ohne interne Alternativen</span></div><div class="actor-card-row"><span class="actor-card-label">Boden</span><span class="actor-card-val">Rechtlich schwacher Boden außerhalb kolonialer Kontexte</span></div></div>
+  </div>
+
+  <div class="info-box">
+    <p class="info-box-label" style="color:var(--blue)">Zwei Leitfälle</p>
+    <h3>Kosovo-Gutachten und Québec-Referenzfall — oft falsch zitiert</h3>
+    <p><strong>Kosovo (IGH 2010):</strong> Der Gerichtshof erklärte <em>nicht</em>, dass ein allgemeines Recht auf Sezession bestehe. Er stellte nur fest, dass die konkrete Unabhängigkeitserklärung Kosovos nicht gegen internationales Recht verstieß. Das ist eine Negativformulierung, kein universelles Sezessionsrecht.</p>
+    <p><strong>Québec-Referenzfall (Kanada):</strong> Verneint ein einseitiges Sezessionsrecht außerhalb von Kolonisation, Fremdherrschaft oder massiver Unterdrückung. Betont stattdessen interne Selbstbestimmung und Verhandlungspflichten. Kein Völkerrechtsurteil, aber hoch einflussreich für das Mainstream-Denken.</p>
+    <p>Für die kurdische Frage folgt daraus: Starke rechtliche Argumente bestehen für <strong>interne Selbstbestimmung</strong>. Ein klares, allgemeines völkerrechtliches Recht auf einseitige Sezession lässt sich daraus nicht ableiten.</p>
+  </div>
+
+  <div class="claim-grid">
+    <div class="claim-block cb-false">
+      <p class="cb-verdict">Falsch / zu weit</p>
+      <p class="cb-claim">„Das Kosovo-Urteil beweist ein allgemeines Sezessionsrecht der Kurden"</p>
+      <p class="cb-text">Der IGH erklärte 2010 nur, dass die konkrete Kosovo-Erklärung nicht gegen internationales Recht verstieß. Er sprach ausdrücklich kein allgemeines Recht auf Sezession aus — und verwies auf die besonderen Umstände des Kosovo-Falls.</p>
+      <p class="cb-formula">Kosovo ist kein universeller Freifahrtschein. Die seriöse Frage lautet: Liegt eine mit Kosovo vergleichbare Situation vor — mit ähnlichem Ausmaß an Unterdrückung, internationalem Prozess und Alternativen-Erschöpfung?</p>
+    </div>
+    <div class="claim-block cb-false">
+      <p class="cb-verdict">Falsch / zu weit</p>
+      <p class="cb-claim">„Das Selbstbestimmungsrecht aller Völker bedeutet automatisch das Recht auf eigenen Staat"</p>
+      <p class="cb-text">Art. 1 ICCPR ist real. Aber die Friendly-Relations-Deklaration (1970) verknüpft Selbstbestimmung mit territorialer Integrität bestehender Staaten. Die herrschende Auslegung versteht Selbstbestimmung primär als interne Selbstbestimmung: Kultur, Sprache, Repräsentation, Autonomie.</p>
+      <p class="cb-formula">Selbstbestimmungsrecht ist stark und real. Aber es bedeutet primär interne Selbstbestimmung — nicht automatisch einseitige Staatsgründung außerhalb kolonialer Kontexte.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── YEZIDEN ── -->
+  <div class="info-box">
+    <p class="info-box-label" style="color:var(--accent)">Minderheit in der Minderheit</p>
+    <h3>Yeziden — ein Prüfstein für jede Kurdistan-Debatte</h3>
+    <p>Die Yeziden sind für jede kurdische Sezessions- oder Autonomiedebatte ein Prüfstein: Sie sind zugleich <strong>kurdischsprachig, religiös eigenständig</strong> (weder Muslim noch Christ) und politisch intern gespalten. Ein Teil versteht sich als kurdisch, ein anderer als eigene ethnoreligiöse Gemeinschaft. UNITAD hat die Verbrechen des Islamischen Staates an den Yeziden ausdrücklich als <strong>Genozid</strong> aufgearbeitet.</p>
+    <p>Sinjar zeigt zugleich, wie gefährlich „Minderheit in der Minderheit"-Konstellationen sind: Zwischen PKK-nahen Strukturen, irakischen PMF, Bagdad und der KRG geriet die Region in einen Mehrfachkonflikt, der Rückkehr und Wiederaufbau bis 2025/2026 massiv hemmte. Wer eine einfache Pro-Kurdistan-Erzählung konstruiert, muss erklären, welchen Schutz sie für die Yeziden bietet — nicht nur theoretisch, sondern institutionell und real.</p>
+  </div>
+
   <!-- ── F+G: DIASPORA & GEOPOLITIK ── -->
-  <p class="section-label">F &amp; G · Diaspora &amp; Geopolitik</p>
-  <h2 class="section-h2">Europa, USA und geopolitische Vereinnahmung</h2>
+  <p class="section-label">F &amp; G · Diaspora, Israel &amp; Geopolitik</p>
+  <h2 class="section-h2">Europa, Israel-Verbindungen und das Werkzeug-Argument</h2>
+
+  <p class="section-text">
+    Zwei Behauptungen kursieren besonders häufig in geopolitischen Debatten: dass Kurden in Europa als PKK-Front operieren, und dass Kurden grundsätzlich israelische oder westliche Proxy-Akteure seien. Beide Behauptungen sind in ihrer starken Form falsch — haben aber eine schwache Form, die partial richtig ist und sauber getrennt werden muss.
+  </p>
 
   <div class="info-box">
     <p class="info-box-label" style="color:var(--blue)">Europa · PKK-Aktivismus</p>
@@ -647,9 +770,24 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
     <p>Kurdische Kulturarbeit in Europa ist legitim. PKK-nahe Organisation, Finanzierung, Druck auf politische Gegner oder Unterstützung einer verbotenen Organisation ist etwas anderes. GOV.UK erklärt, dass Mitgliedschaft, Einladungen zur Unterstützung und öffentliches Zeigen von Unterstützungszeichen für proscribed organisations strafbar sein kann. Das Bundesinnenministerium begründete das 1993er-Verbot mit Gewalttaten und Druck auf kurdische Mitbürger in Deutschland.</p>
   </div>
 
+  <div class="claim-grid">
+    <div class="claim-block cb-complex">
+      <p class="cb-verdict">Differenziert — starke Form falsch, schwache Form teilweise richtig</p>
+      <p class="cb-claim">„Israel unterstützt Kurden — also sind Kurden grundsätzlich pro-israelische Proxys"</p>
+      <p class="cb-text">Für <strong>irakisch-kurdische Akteure</strong> (insbesondere KDP) sind historische Verbindungen zu Israel in den 1960er/70er Jahren und erneut 2017 (Referendum) gut belegt. Ofra Bengios Forschung zeigt: iranische und israelische Unterstützung für die irakischen Kurden war in regionale Machtkämpfe eingebettet; das Ziel dieser Allianzen war nicht primär die Ermächtigung der Kurden. Für PKK, PYD/SDF, türkische Kurdenparteien oder iranisch-kurdische Parteien gilt keine einfache Einheitsbehauptung.</p>
+      <p class="cb-formula">Geopolitische Kontakte einzelner Akteure (KDP, Nordirak) sind historisch real und prüfbar. Eine ganze Ethnie als Proxy Israels darzustellen ist Propaganda, kein Faktencheck. Das Muster ist: externe Mächte nutzen selektiv einzelne kurdische Akteure, wenn es ihren Interessen dient — und lassen sie oft ebenso rasch fallen.</p>
+    </div>
+    <div class="claim-block cb-complex">
+      <p class="cb-verdict">Differenziert — starke Form falsch, schwache Form partial richtig</p>
+      <p class="cb-claim">„Kurden sind nur ein Werkzeug fremder Mächte, ohne eigene Agenda"</p>
+      <p class="cb-text">Richtig ist: Externe Mächte haben kurdische Akteure wiederholt als Hebel genutzt — Großbritannien im Mandatskontext, die Sowjetunion im Kontext von Mahabad 1946, Iran/Israel/USA im irakisch-kurdischen Krieg der 1970er, die USA mit den SDF gegen den IS. Falsch ist: Daraus folgt nicht, dass kurdische Politik bloß fremdbestimmt wäre.</p>
+      <p class="cb-formula">Kurdische Agency und externe Instrumentalisierung sind gleichzeitig wahr. Kurdische Parteien haben immer eigene Ziele verfolgt, sich Patronen taktisch gesucht und oft den Preis bezahlt, wenn diese Patronage endete. Die Formel vom „bloßen Werkzeug" unterschätzt kurdische Eigeninteressen.</p>
+    </div>
+  </div>
+
   <div class="alert-box">
     <strong>Geopolitischer Vereinnahmungsversuch</strong>
-    Behauptung: „Die USA unterstützen Kurden, also sind Kurden ein westliches/zionistisches Projekt." — Das ist Verschwörungslogik. Die USA unterstützten die SDF im Kampf gegen ISIS. Daraus folgt nicht, dass alle Kurden oder alle kurdischen Bewegungen ein westliches Projekt sind. Gleichzeitig ist die PKK in den USA als FTO eingestuft — US-Politik unterscheidet klar zwischen PKK und SDF/YPG-Kontext. Eine ganze Ethnie als Proxy Israels oder des Westens darzustellen ist Propaganda, kein Faktencheck.
+    Behauptung: „Die USA unterstützen Kurden, also sind Kurden ein westliches/zionistisches Projekt." — Das ist Verschwörungslogik. Die USA unterstützten die SDF im Kampf gegen ISIS. Gleichzeitig ist die PKK in den USA als FTO eingestuft — US-Politik unterscheidet klar zwischen PKK und SDF/YPG-Kontext. Eine ganze Ethnie als Proxy Israels oder des Westens darzustellen ist Propaganda, kein Faktencheck.
   </div>
 
   <hr class="section-divider">
@@ -657,7 +795,6 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
   <!-- ── H: DEBATTEN-KONTER ── -->
   <p class="section-label">H · Debatten-Konter</p>
   <h2 class="section-h2">Typische Sätze und sichere Antworten</h2>
-  <p class="section-text">Für Diskussionen auf TikTok, in Kommentarsektionen oder persönlichen Gesprächen — direkte Konter zu den häufigsten Behauptungen.</p>
 
   <div class="faq-box">
     <div class="faq-item">
@@ -674,19 +811,31 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
     </div>
     <div class="faq-item">
       <p class="faq-q">Alle pro-kurdischen Parteien sind PKK.</p>
-      <p class="faq-a">Zu pauschal. Es kann staatliche Vorwürfe und Einzelfälle geben, aber legale kurdische Politik darf nicht automatisch mit PKK gleichgesetzt werden. Demokratische Repräsentation zu kriminalisieren ist selbst ein Rechtsstaatsproblem. AP berichtete über abgesetzte pro-kurdische Bürgermeister — die Berechtigung jedes Schritts muss einzeln geprüft werden.</p>
+      <p class="faq-a">Zu pauschal. Es kann staatliche Vorwürfe und Einzelfälle geben, aber legale kurdische Politik darf nicht automatisch mit PKK gleichgesetzt werden. AP berichtete über abgesetzte pro-kurdische Bürgermeister — die Berechtigung jedes Schritts muss einzeln geprüft werden.</p>
     </div>
     <div class="faq-item">
       <p class="faq-q">YPG ist komplett unabhängig von PKK.</p>
-      <p class="faq-a">Zu sauber getrennt. Selbst SDF-Kommandeur Mazloum Abdi räumte PKK-Präsenz in Syrien ein und bestritt nur die organisatorische Unterordnung. Die USA behandelten SDF als Anti-ISIS-Partner, ohne die PKK-Verbindungsdebatte aufzulösen. <strong>Nicht exakt gleichsetzen, aber Verbindung nicht wegreden.</strong></p>
+      <p class="faq-a">Zu sauber getrennt. SDF-Kommandeur Mazloum Abdi räumte PKK-Präsenz in Syrien ein. Die USA behandelten SDF als Anti-ISIS-Partner, ohne die PKK-Verbindungsdebatte aufzulösen. <strong>Nicht exakt gleichsetzen, aber Verbindung nicht wegreden.</strong></p>
     </div>
     <div class="faq-item">
       <p class="faq-q">Sèvres beweist, dass die Türkei heute illegal kurdisches Land hält.</p>
-      <p class="faq-a">Sèvres sah 1920 eine Autonomie-/Kurdistan-Option vor, wurde aber nie ratifiziert. Lausanne 1923 ersetzte Sèvres und erwähnte Kurdistan/Kurden nicht. Das ist ein historisches Argument — aber kein automatisch durchsetzbarer heutiger Staatstitel.</p>
+      <p class="faq-a">Sèvres sah 1920 eine Autonomieoption vor, wurde aber nie ratifiziert. Lausanne 1923 ersetzte Sèvres und erwähnte Kurdistan nicht. Das ist ein historisches Argument — aber kein automatisch durchsetzbarer heutiger Rechtsstitel.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Kurdistan existiert erst seit 100 Jahren — Kurden haben keine eigene Geschichte.</p>
+      <p class="faq-a">Falsch. Kurdisch ist eine westiranische Sprache; Kurdisches Siedlungsgebiet ist seit der Antike dokumentiert (Xenophon: Carduchi). Die Šarafnāma (1596–99) ist eine eigenständige kurdische Geschichtschronik. <strong>Moderne politische Identität und historische Sprachgruppe sind nicht dasselbe.</strong></p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Das Kosovo-Urteil gibt Kurden ein Recht auf Unabhängigkeit.</p>
+      <p class="faq-a">Der IGH 2010 stellte nur fest, dass die konkrete Kosovo-Erklärung nicht gegen Völkerrecht verstieß — er sprach kein allgemeines Sezessionsrecht aus. Der Québec-Referenzfall verneint ein einseitiges Sezessionsrecht außerhalb von Kolonisation oder massiver Unterdrückung. Für Kurden gilt: Starker Boden bei internen Rechten, schwacher bei externem Sezessionsanspruch.</p>
     </div>
     <div class="faq-item">
       <p class="faq-q">Türkei kann jede kurdische Struktur militärisch beseitigen, weil PKK.</p>
       <p class="faq-a">Sicherheitsinteresse ja, Blankoscheck nein. Auch gegen bewaffnete Gruppen gelten humanitäres Völkerrecht, Zivilschutz, Verhältnismäßigkeit und Rechenschaft. HRW 2024 dokumentiert schwere Missbrauchsvorwürfe in türkisch kontrollierten Gebieten Nordsyriens.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Weil Israel und die USA Kurden unterstützen, kann man den Kurden nicht trauen.</p>
+      <p class="faq-a">Das ist ethnischer Generalverdacht. Externe Mächte haben selektiv einzelne kurdische Akteure genutzt — das macht Kurden nicht zu Proxys. Kurdische Parteien haben eigene Ziele verfolgt und externe Patronage oft teuer bezahlt. Die Prüfmethode ist: konkrete Organisation, konkreten Zeitraum und konkrete Handlung prüfen — keine ethnische Pauschalisierung.</p>
     </div>
   </div>
 
@@ -694,9 +843,11 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
 
   <!-- ── FAZIT ── -->
   <div class="verdict-final">
-    <h3>Fazit: Die doppelte Buchführung</h3>
-    <p>Die saubere Linie ist nicht, eine Seite zu wählen. Sie ist, beide Tatsachen gleichzeitig zu halten: Die PKK ist eine bewaffnete Organisation, die über Jahrzehnte Gewalt eingesetzt hat und international breit als Terrororganisation eingestuft ist. Gleichzeitig gibt es reale kurdische Sprach-, Kultur- und Repräsentationsfragen, eine dokumentierte Geschichte der Unterdrückung kurdischer Identität, und Menschenrechtsfragen bei türkischen Sicherheitsoperationen.</p>
-    <p>Wer Kurden pauschal mit PKK gleichsetzt, übernimmt Propaganda. Wer PKK-Gewalt als reine Freiheitsbewegung romantisiert, blendet Anschläge, zivile Opfer und internationale Einstufungen aus. <strong>Nur die Trennung dieser Ebenen erlaubt eine methodisch saubere Position.</strong></p>
+    <h3>Fazit: Vier Trennungen, die jede saubere Position braucht</h3>
+    <p>Erstens: <strong>PKK ≠ Kurden.</strong> Die PKK ist eine bewaffnete, international als Terrororganisation eingestufte Organisation. Kurden sind eine ~35 Millionen große ethnische und sprachliche Gruppe mit heterogenen politischen Ansichten in vier Staaten.</p>
+    <p>Zweitens: <strong>Terrorbekämpfung ≠ Freifahrtschein.</strong> Reale Sicherheitsinteressen gegenüber der PKK sind legitim. Sie rechtfertigen nicht pauschal jede Maßnahme gegen kurdische Zivilgesellschaft, Kulturrechte oder politische Repräsentation.</p>
+    <p>Drittens: <strong>Interne ≠ externe Selbstbestimmung.</strong> Der starke völkerrechtliche Boden für Kurden liegt bei Minderheitenrechten, Sprachrechten und interner Selbstbestimmung — nicht bei einem allgemeinen Sezessionsrecht. Das gilt besonders dort, wo interne Alternativen (wie in der irakischen Kurdistan Region) bereits institutionell bestehen.</p>
+    <p>Viertens: <strong>Es gibt keine einheitliche kurdische Linie.</strong> Türkei, Irak, Syrien und Iran sind vier grundverschiedene Konstellationen. KDP, PKK, PYD und KDPI sind vier verschiedene Akteure mit verschiedenen Strategien. Wer „die Kurden" als Einheit behandelt, verfehlt die empirische Struktur des Problems.</p>
   </div>
 
   <!-- ── QUELLENQUALITÄT ── -->
@@ -704,7 +855,8 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
     <span style="font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.08em;align-self:center;">Quellenqualität</span>
     <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--green-light);color:var(--green);font-weight:600;">Primärquellen: NCTC, GOV.UK, Bundesregierung</span>
     <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--blue-light);color:var(--blue);font-weight:600;">Reuters/AP für Aktualität</span>
-    <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--amber-light);color:var(--amber);font-weight:600;">HRW für Menschenrechtslage Syrien</span>
+    <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--amber-light);color:var(--amber);font-weight:600;">HRW für Menschenrechtslage</span>
+    <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:600;">Standardwerke für Geschichte</span>
   </div>
 
   <!-- ── QUELLEN ── -->
@@ -743,10 +895,22 @@ a.source-pill:hover { border-color: var(--black); color: var(--black); backgroun
     </div>
 
     <div class="sources-section">
-      <h5>Hintergrund &amp; Geschichte</h5>
+      <h5>Geschichte, Sprache &amp; Identität</h5>
       <div class="sources-list">
         <a class="source-pill" href="https://www.britannica.com/topic/Kurd" target="_blank" rel="noreferrer">Britannica – Kurd</a>
         <a class="source-pill" href="https://www.britannica.com/event/Treaty-of-Sevres" target="_blank" rel="noreferrer">Britannica – Treaty of Sèvres</a>
+        <a class="source-pill" href="https://www.britannica.com/biography/Yashar-Kemal" target="_blank" rel="noreferrer">Britannica – Yaşar Kemal</a>
+      </div>
+    </div>
+
+    <div class="sources-section">
+      <h5>Standardwerke (zur Vertiefung)</h5>
+      <div class="sources-list">
+        <span class="source-pill">David McDowall – A Modern History of the Kurds</span>
+        <span class="source-pill">Martin van Bruinessen – Agha, Shaikh and State</span>
+        <span class="source-pill">The Cambridge History of the Kurds</span>
+        <span class="source-pill">Ofra Bengio – Kurds and Israelis (Israel-Verbindungen)</span>
+        <span class="source-pill">Šarafnāma von Šaraf Ḫān Bidlīsī, 1596–99</span>
       </div>
     </div>
   </div>
