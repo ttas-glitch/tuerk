@@ -77,7 +77,7 @@ a.source-pill:hover,.source-link:hover{color:var(--black);}
 .nav-page-btn .ptitle{font-size:14px;font-weight:600;}
 .nav-page-btn.next{text-align:right;}
 
-@media(max-width:600px){.trade-timeline{grid-template-columns:1fr 1fr;}.claim-audit{grid-template-columns:1fr;}}
+@media(max-width:600px){.trade-timeline{grid-template-columns:1fr 1fr;}.claim-audit{grid-template-columns:1fr;}.trennsaetze-grid{grid-template-columns:1fr!important;}}
 .claim-audit{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:32px 0;}
 .ca-item{background:var(--gray-100);border-radius:var(--radius);padding:18px;}
 .ca-item h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray-400);margin-bottom:8px;}
@@ -200,6 +200,29 @@ a.source-pill:hover,.source-link:hover{color:var(--black);}
     </div>
   </div>
 
+  <div class="trennsaetze-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:28px 0;">
+    <div style="background:var(--green-light);border-radius:var(--radius);padding:16px;border:1px solid rgba(26,122,74,0.12);text-align:center;">
+      <div style="font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Belastbar</div>
+      <div style="font-size:13px;font-weight:700;color:var(--green);line-height:1.4;">Direkter bilateraler Handel = gestoppt</div>
+    </div>
+    <div style="background:var(--amber-light);border-radius:var(--radius);padding:16px;border:1px solid rgba(183,86,10,0.12);text-align:center;">
+      <div style="font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Komplizierter</div>
+      <div style="font-size:13px;font-weight:700;color:var(--amber);line-height:1.4;">Indirekte Lieferketten ≠ direkter Handel</div>
+    </div>
+    <div style="background:var(--accent-light);border-radius:var(--radius);padding:16px;border:1px solid rgba(192,57,43,0.12);text-align:center;">
+      <div style="font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Nicht overclaimen</div>
+      <div style="font-size:13px;font-weight:700;color:var(--accent);line-height:1.4;">BTC/Ceyhan ≠ türkische Ölkooperation mit Israel</div>
+    </div>
+  </div>
+
+  <div class="heuchelei-box" style="border-left:4px solid var(--amber);background:var(--amber-light);border-radius:0 var(--radius-lg) var(--radius-lg) 0;">
+    <p class="heuchelei-label" style="color:var(--amber);">Lieferketten-Vorsicht</p>
+    <h3>Direkter bilateraler Handel ≠ jede indirekte Drittstaaten-Lieferkette</h3>
+    <p>Der staatliche Stopp des direkten Warenhandels am 2. Mai 2024 ist belegt und stark. Er bedeutet nicht automatisch, dass jede globale Lieferkettenberührung sofort auf null fiel. Transitwege über Drittstaaten, Reimporte und indirekte Verbindungen sind strukturell schwer zu verfolgen und öffentlich nicht vollständig dokumentiert. Wer daraus schlussfolgert, Ankara habe „alle wirtschaftlichen Verbindungen sofort vollständig gekappt", macht eine Behauptung, die die Quellenlage nicht trägt — und die leicht angreifbar ist.</p>
+    <br>
+    <p><strong>Die sichere Formulierung:</strong> Der staatliche Stopp des direkten bilateralen Warenhandels ist belegt. Energie- und Transitfragen, insbesondere BTC/Ceyhan, sind strukturell komplizierter und müssen getrennt bewertet werden.</p>
+  </div>
+
   <div class="heuchelei-box">
     <p class="heuchelei-label">Praktische Durchsetzung</p>
     <h3>2025 wurden die Hafenkontrollen offenbar faktisch nachgeschärft</h3>
@@ -245,12 +268,12 @@ a.source-pill:hover,.source-link:hover{color:var(--black);}
   <div class="sources-box">
     <h4>Verwendete Quellen</h4>
     <div class="sources-list">
-      <a class="source-pill" href="https://www.investing.com/news/world-news/turkey-halts-all-trade-with-israel-cites-worsening-palestinian-situation-3415911" target="_blank" rel="noreferrer">Reuters - Handelsstopp 02.05.2024</a>
-      <a class="source-pill" href="https://www.investing.com/news/economy/turkey-imposes-export-restrictions-on-israel-until-gaza-ceasefire-3370571" target="_blank" rel="noreferrer">Reuters - Exportbeschränkungen 09.04.2024</a>
-      <a class="source-pill" href="https://www.investing.com/news/world-news/turkey-says-it-bars-israeli-ships-from-its-ports-restricting-airspace-4216903" target="_blank" rel="noreferrer">Reuters - Häfen & Luft 29.08.2025</a>
+      <a class="source-pill" href="https://www.investing.com/news/world-news/turkey-halts-all-trade-with-israel-cites-worsening-palestinian-situation-3415911" target="_blank" rel="noreferrer">Reuters via Investing.com – Handelsstopp 02.05.2024</a>
+      <a class="source-pill" href="https://www.investing.com/news/economy/turkey-imposes-export-restrictions-on-israel-until-gaza-ceasefire-3370571" target="_blank" rel="noreferrer">Reuters via Investing.com – Exportbeschränkungen 09.04.2024</a>
+      <a class="source-pill" href="https://www.investing.com/news/world-news/turkey-says-it-bars-israeli-ships-from-its-ports-restricting-airspace-4216903" target="_blank" rel="noreferrer">Reuters via Investing.com – Häfen & Luft 29.08.2025</a>
       <a class="source-pill" href="https://www.aa.com.tr/en/middle-east/turkiye-denies-claims-of-oil-shipments-to-israel/3390601" target="_blank" rel="noreferrer">AA - Dementi Ceyhan 11.11.2024</a>
-      <a class="source-pill" href="https://www.tradingview.com/news/reuters.com%2C2025%3Anewsml_L2N3V40CE%3A0-kazakhstan-resumes-oil-exports-via-baku-tbilisi-ceyhan-pipeline/" target="_blank" rel="noreferrer">Reuters - Kasachstan via BTC 17.09.2025</a>
-      <a class="source-pill" href="https://www.tradingview.com/news/reuters.com%2C2025%3Anewsml_L5N3VV0KM%3A0-azerbaijan-kazakhstan-consider-raising-oil-transit-via-btc-to-7-million-tons-by-2027-minister-says/" target="_blank" rel="noreferrer">Reuters - Aserbaidschan/Kasachstan via BTC 15.10.2025</a>
+      <a class="source-pill" href="https://www.tradingview.com/news/reuters.com%2C2025%3Anewsml_L2N3V40CE%3A0-kazakhstan-resumes-oil-exports-via-baku-tbilisi-ceyhan-pipeline/" target="_blank" rel="noreferrer">Reuters via TradingView – Kasachstan via BTC 17.09.2025</a>
+      <a class="source-pill" href="https://www.tradingview.com/news/reuters.com%2C2025%3Anewsml_L5N3VV0KM%3A0-azerbaijan-kazakhstan-consider-raising-oil-transit-via-btc-to-7-million-tons-by-2027-minister-says/" target="_blank" rel="noreferrer">Reuters via TradingView – Aserbaidschan/Kasachstan via BTC 15.10.2025</a>
     </div>
   </div>
 
