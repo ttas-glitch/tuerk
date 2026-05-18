@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<script src="/auth.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Methodik - NahostFakten</title>
+<meta name="description" content="Wie NahostFakten arbeitet: Quellenhierarchie, Bewertungslogik, Sprachregeln und Korrekturpolitik.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--white:#fafafa;--gray-100:#f4f4f4;--gray-400:#999;--gray-600:#555;--border:#e2e2e2;--accent:#c0392b;--accent-light:#fdf0ef;--blue:#1a5fa8;--blue-light:#eef4fd;--green:#1a7a4a;--green-light:#edf7f1;--amber:#b7560a;--amber-light:#fef6ee;--radius:12px;--radius-lg:20px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Sora',sans-serif;background:var(--white);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,250,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-size:15px;font-weight:700;color:var(--black);text-decoration:none;}
+.nav-logo span{color:var(--accent);}
+.nav-back{font-size:13px;color:var(--gray-600);text-decoration:none;padding:6px 12px;border-radius:8px;border:1px solid var(--border);}
+.nav-back:hover{border-color:var(--black);color:var(--black);}
+.page-hero{padding:100px 24px 56px;max-width:820px;margin:0 auto;}
+.breadcrumb{font-size:12px;color:var(--gray-400);margin-bottom:16px;}
+.breadcrumb a{color:inherit;text-decoration:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:20px;background:var(--blue-light);color:var(--blue);border:1px solid rgba(26,95,168,0.18);}
+h1{font-family:'Fraunces',serif;font-size:clamp(30px,5vw,52px);line-height:1.1;margin-bottom:16px;}
+.summary{font-size:17px;color:var(--gray-600);font-weight:300;}
+.content{max-width:820px;margin:0 auto;padding:0 24px 80px;}
+hr{border:none;border-top:1px solid var(--border);margin:48px 0;}
+.section-label{font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;}
+.section-h2{font-family:'Fraunces',serif;font-size:26px;margin-bottom:10px;}
+.section-text{font-size:15px;color:var(--gray-600);line-height:1.75;margin-bottom:20px;}
+.info-box{background:var(--gray-100);border-radius:var(--radius-lg);padding:24px;margin:24px 0;}
+.info-box h3{font-size:16px;font-weight:700;margin-bottom:10px;}
+.info-box p{font-size:14px;color:var(--gray-600);line-height:1.7;}
+.tier-grid{display:grid;gap:12px;margin:20px 0;}
+.tier-item{border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start;}
+.tier-num{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--gray-400);}
+.tier-body h4{font-size:14px;font-weight:700;margin-bottom:4px;}
+.tier-body p{font-size:13px;color:var(--gray-600);line-height:1.6;}
+.verdict-legend{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0;}
+.vl-item{border-radius:var(--radius);padding:14px 16px;}
+.vl-item h4{font-size:13px;font-weight:700;margin-bottom:4px;}
+.vl-item p{font-size:12px;line-height:1.5;}
+.vl-false{background:var(--accent-light);color:var(--accent);}
+.vl-partial{background:var(--amber-light);color:var(--amber);}
+.vl-true{background:var(--green-light);color:var(--green);}
+.vl-unclear{background:var(--blue-light);color:var(--blue);}
+.rule-list{display:grid;gap:10px;margin:16px 0;}
+.rule-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;}
+.rule-item strong{display:block;font-size:14px;margin-bottom:3px;}
+.rule-item p{font-size:13px;color:var(--gray-600);margin:0;}
+.alert-box{background:var(--amber-light);border-left:4px solid var(--amber);border-radius:0 var(--radius) var(--radius) 0;padding:14px 18px;font-size:14px;color:var(--amber);margin:20px 0;}
+.alert-box strong{display:block;margin-bottom:4px;}
+footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center;}
+.footer-inner{max-width:820px;margin:0 auto;}
+footer p{font-size:13px;color:var(--gray-400);margin-bottom:8px;}
+footer a{color:var(--gray-600);text-decoration:none;}
+footer a:hover{color:var(--black);}
+@media(max-width:700px){
+  .page-hero{padding:82px 16px 36px;}
+  .content{padding:0 16px 56px;}
+  .verdict-legend{grid-template-columns:1fr;}
+  .tier-item{grid-template-columns:32px 1fr;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Nahost<span>Fakten</span></a>
+  <a class="nav-back" href="index.html">&larr; Zurück</a>
+</nav>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="index.html">NahostFakten</a> · Methodik</p>
+  <div class="badge">Transparenz</div>
+  <h1>Methodik</h1>
+  <p class="summary">Wie diese Seite arbeitet: welche Quellen zählen, wie Aussagen bewertet werden, welche Sprache erlaubt ist und wie Korrekturen gehandhabt werden.</p>
+</div>
+
+<div class="content">
+
+  <div class="info-box">
+    <h3>Warum diese Seite existiert</h3>
+    <p>NahostFakten ist kein allgemeiner Nahost-Blog. Die Seite prüft einen konkreten viralen Post mit vier Behauptungen über Türkei und Israel. Der Anspruch: was ist durch belastbare Quellen gedeckt, was ist Übertreibung, was ist falsch datiert? Kein mehr, kein weniger.</p>
+  </div>
+
+  <hr>
+
+  <p class="section-label">Quellen</p>
+  <h2 class="section-h2">Quellenhierarchie</h2>
+  <p class="section-text">Nicht alle Quellen sind gleich belastbar. Diese Hierarchie legt fest, wie stark eine Quelle eine Aussage trägt.</p>
+
+  <div class="tier-grid">
+    <div class="tier-item">
+      <div class="tier-num">1</div>
+      <div class="tier-body">
+        <h4>Primärquellen — stärkste Grundlage</h4>
+        <p>Offizielle Stellen (UN-Dokumente, MFA-Pressemitteilungen, ICJ/ICC-Entscheidungen), Vertragsregister (SIPRI), Parlamentsprotokolle. Diese Quellen belegen, was offiziell erklärt oder entschieden wurde.</p>
+      </div>
+    </div>
+    <div class="tier-item">
+      <div class="tier-num">2</div>
+      <div class="tier-body">
+        <h4>Nachrichtenagenturen — zweite Ebene</h4>
+        <p>Reuters, AP, AFP für aktuelle Ereignisse. Hier gilt: mehrere unabhängige Meldungen stärken die Aussage. Einzelberichte ohne Bestätigung werden als solche gekennzeichnet.</p>
+      </div>
+    </div>
+    <div class="tier-item">
+      <div class="tier-num">3</div>
+      <div class="tier-body">
+        <h4>Fachanalysen — Einordnung und Kontext</h4>
+        <p>Think-Tanks (SIPRI, Jamestown, ICG), akademische Quellen, Fachmedien mit nachvollziehbarer Methodik. Werden genutzt für Kontext, nicht als Ersatz für Primärquellen.</p>
+      </div>
+    </div>
+    <div class="tier-item">
+      <div class="tier-num">4</div>
+      <div class="tier-body">
+        <h4>Medien und Sekundärquellen — mit Vorsicht</h4>
+        <p>Regionale Medien, Einzelberichte, Hintergrundstücke. Nur verwendet, wenn Primär- oder Agenturquellen nicht verfügbar sind, und dann als solche kenntlich gemacht.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <p class="section-label">Bewertungen</p>
+  <h2 class="section-h2">Bewertungslegende</h2>
+  <p class="section-text">Jede Hauptaussage bekommt eine der vier Bewertungen. Die Kriterien sind fest definiert.</p>
+
+  <div class="verdict-legend">
+    <div class="vl-item vl-false">
+      <h4>Falsch datiert / Falsch</h4>
+      <p>Die Aussage ist sachlich falsch oder in einem entscheidenden Punkt so falsch eingeordnet, dass sie irreführend ist. Beispiel: "Militärallianz seit 1949" — der Kern stimmt nicht.</p>
+    </div>
+    <div class="vl-item vl-partial">
+      <h4>Teilweise richtig</h4>
+      <p>Ein historisch echter Kern, aber entscheidend vereinfacht, veraltet oder ohne nötige Einschränkung präsentiert. Beispiel: Rüstungskooperation — real, aber alter Bestand ≠ neue Militärnähe.</p>
+    </div>
+    <div class="vl-item vl-true">
+      <h4>Belastbar</h4>
+      <p>Die Aussage ist durch Primär- und Agenturquellen gestützt und nicht durch neuere Daten widerlegt. Einschränkungen werden genannt.</p>
+    </div>
+    <div class="vl-item vl-unclear">
+      <h4>Unklar / schwach belegt</h4>
+      <p>Die Quellenlage ist zu dünn, widersprüchlich oder nicht öffentlich nachprüfbar, um eine zuverlässige Bewertung zu geben. Die Unsicherheit wird explizit gemacht.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <p class="section-label">Sprache</p>
+  <h2 class="section-h2">Sprachregeln</h2>
+  <p class="section-text">Klare Regeln für Formulierungen sorgen dafür, dass die Seite nicht mehr behauptet als die Quellen tragen.</p>
+
+  <div class="rule-list">
+    <div class="rule-item">
+      <strong>Keine Totalbehauptungen ohne vollständige Belegkette</strong>
+      <p>Statt „bewiesen keine Kooperation": „Öffentlich liegt keine belastbare Belegkette vor." Die Quellen belegen, was öffentlich sichtbar ist — nicht was hinter geschlossenen Türen passiert.</p>
+    </div>
+    <div class="rule-item">
+      <strong>Behauptung, Kontext und Bewertung getrennt halten</strong>
+      <p>Erst kommt die geprüfte Behauptung, dann der Kontext aus Primärquellen, dann das Urteil. Kein Vermischen von Faktenebene und Deutungsebene.</p>
+    </div>
+    <div class="rule-item">
+      <strong>Unsicherheiten explizit benennen</strong>
+      <p>Wenn etwas schwach belegt ist, steht das im Text. „Nicht öffentlich bestätigt", „nur aus einer Quelle", „umstrittene Einschätzung" — diese Formulierungen sind keine Schwäche, sondern methodische Ehrlichkeit.</p>
+    </div>
+    <div class="rule-item">
+      <strong>Veraltete Daten kennzeichnen</strong>
+      <p>Informationen, die aus der Zeit vor 2020 stammen und seitdem keine aktualisierten Belege haben, werden mit Jahr und Kontext versehen. Kein Vermischen von historischen und aktuellen Lagen.</p>
+    </div>
+    <div class="rule-item">
+      <strong>Kein nationalistisches Overclaiming</strong>
+      <p>Die Seite zeigt, wo Behauptungen über die Türkei falsch oder übertrieben sind. Sie macht daraus keine Gegenpropaganda. Fehler werden in alle Richtungen gleich bewertet.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <p class="section-label">Korrekturen</p>
+  <h2 class="section-h2">Korrekturpolitik</h2>
+  <p class="section-text">Fehler passieren. Der Umgang damit ist entscheidend für die Glaubwürdigkeit der Seite.</p>
+
+  <div class="info-box">
+    <h3>Was als Korrektur zählt</h3>
+    <p>Eine Korrektur ist nötig, wenn eine Aussage sachlich falsch ist und sich das durch neue oder bisher übersehene belastbare Quellen belegen lässt. Eine andere Interpretation derselben Fakten ist keine Korrektur. Auch: politische Gegenargumente, die keine neuen Quellen bringen, ändern die Bewertung nicht.</p>
+  </div>
+
+  <div class="info-box">
+    <h3>Wie Korrekturen gehandhabt werden</h3>
+    <p>Korrekturen werden direkt im betroffenen Abschnitt vorgenommen, nicht als separate Errata-Seite. Die korrigierte Passage wird mit einem kurzen Hinweis versehen ("Aktualisiert: [Monat Jahr] nach Hinweis auf …"). Falsche Aussagen werden nicht einfach gelöscht, sondern durch die korrekte Aussage ersetzt und die Änderung kenntlich gemacht.</p>
+  </div>
+
+  <div class="alert-box">
+    <strong>Korrekturhinweis einreichen</strong>
+    Wenn du einen konkreten Fehler mit belastbarer Quelle gefunden hast: <a href="mailto:korrektur@nahostfakten.de" style="color:inherit;text-decoration:underline;">korrektur@nahostfakten.de</a>. Bitte Quelle, betroffene Stelle und die korrekte Information nennen.
+  </div>
+
+  <hr>
+
+  <p class="section-label">Transparenz</p>
+  <h2 class="section-h2">Was diese Seite nicht ist</h2>
+  <p class="section-text">Klare Abgrenzung, um Missverständnisse zu vermeiden.</p>
+
+  <div class="rule-list">
+    <div class="rule-item">
+      <strong>Keine offizielle oder staatlich geförderte Quelle</strong>
+      <p>NahostFakten hat keine institutionelle Verbindung zu einem Staat, einer Partei oder einer Interessengruppe. Die Seite ist privat betrieben.</p>
+    </div>
+    <div class="rule-item">
+      <strong>Kein Anspruch auf vollständige Darstellung des Konflikts</strong>
+      <p>Die Seite prüft einen konkreten Post mit vier Behauptungen. Sie ist kein Überblick über den gesamten israelisch-palästinensischen Konflikt und erhebt diesen Anspruch auch nicht.</p>
+    </div>
+    <div class="rule-item">
+      <strong>Kein Ersatz für eigenständige Recherche</strong>
+      <p>Alle Quellen sind direkt verlinkt. Die Seite soll zum eigenständigen Nachprüfen einladen, nicht zur unkritischen Übernahme ihrer Bewertungen.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>NahostFakten · Faktencheck zu Türkei, Israel und Palästina</p>
+    <p>Letzte Aktualisierung: Mai 2026 · <a href="index.html">Startseite</a> · <a href="debatten-guide.html">Debatten-Guide</a> · <a href="zusatzinfos.html">Zusatzinfos</a></p>
+  </div>
+</footer>
+</body>
+</html>

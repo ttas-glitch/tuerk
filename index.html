@@ -4,7 +4,11 @@
 <meta charset="UTF-8">
 <script src="/auth.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nahost Faktencheck - Die ganze Wahrheit</title>
+<title>NahostFakten · Faktencheck zu Türkei, Israel und Palästina</title>
+<meta name="description" content="Faktencheck des viralen Sharepics über Türkei und Israel: vier Behauptungen, geprüft mit Reuters, AP, UN, SIPRI und offiziellen Quellen.">
+<meta property="og:title" content="NahostFakten · Faktencheck zu Türkei, Israel und Palästina">
+<meta property="og:description" content="Vier Behauptungen, vier Faktenchecks — belegt mit Reuters, AP, UN, SIPRI und offiziellen Quellen.">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
@@ -88,6 +92,35 @@ nav {
 .nav-links a:hover {
   background: var(--gray-100);
   color: var(--black);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 6px 8px;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--black);
+  border-radius: 2px;
+  transition: all 0.2s;
 }
 
 .lang-switch {
@@ -577,6 +610,76 @@ footer a:hover {
   color: var(--black);
 }
 
+.trust-box {
+  max-width: 900px;
+  margin: 0 auto 64px;
+  padding: 0 24px;
+}
+
+.trust-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.trust-col {
+  padding: 24px;
+}
+
+.trust-col.is {
+  background: var(--green-light);
+  border-right: 1px solid var(--border);
+}
+
+.trust-col.not {
+  background: var(--accent-light);
+}
+
+.trust-col h4 {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+
+.trust-col.is h4 { color: var(--green); }
+.trust-col.not h4 { color: var(--accent); }
+
+.trust-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.trust-col li {
+  font-size: 13px;
+  color: var(--gray-600);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.trust-col.is li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+}
+
+.trust-col.not li::before {
+  content: '✗';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
 .fade-up {
   opacity: 0;
   transform: translateY(20px);
@@ -601,9 +704,47 @@ footer a:hover {
   .viral-card { grid-template-columns: 1fr; }
   .stats-inner { grid-template-columns: repeat(2, 1fr); }
   .method-card { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
   .quickcheck-table th:nth-child(3),
   .quickcheck-table td:nth-child(3) { display: none; }
+
+  .nav-hamburger { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(250,250,250,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    padding: 12px 16px 16px;
+    gap: 4px;
+    z-index: 99;
+    list-style: none;
+  }
+
+  nav.nav-open .nav-links {
+    display: flex;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    display: block;
+  }
+
+  .hero { padding: 90px 16px 56px; }
+  .hero h1 { font-size: clamp(30px, 8vw, 48px); }
+  .hero p { font-size: 15px; }
+
+  .viral-section, .quickcheck, .topics, .method { padding: 0 16px; }
+
+  .trust-box { padding: 0 16px; }
+  .trust-inner { grid-template-columns: 1fr; }
+  .trust-col.is { border-right: none; border-bottom: 1px solid var(--border); }
 }
 </style>
 </head>
@@ -621,20 +762,48 @@ footer a:hover {
     <li><a href="upload.html" style="background:var(--black);color:var(--white);border-radius:8px;padding:6px 14px;font-weight:600;transition:background 0.15s;" onmouseover="this.style.background='var(--accent)'" onmouseout="this.style.background='var(--black)'">↑ Upload</a></li>
     <li><a href="files.html">Dateien</a></li>
   </ul>
-  <div class="lang-switch">
-    <button class="lang-btn active" onclick="setLang('de', this)">DE</button>
-    <button class="lang-btn" onclick="setLang('tr', this)">TR</button>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('de', this)">DE</button>
+      <button class="lang-btn" onclick="setLang('tr', this)">TR</button>
+    </div>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menü öffnen" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <section class="hero">
   <div class="hero-badge">Türkei-Fokus · 4 Faktenchecks</div>
   <h1 class="fade-up">Was die Türkei<br>tatsächlich <em>getan</em> hat</h1>
-  <p class="fade-up">Diese Website ist kein allgemeiner Nahost-Blog, sondern ein Faktencheck für Türken, die ständig mit pauschalen Israel-Vergleichen konfrontiert werden. Der Kern bleibt das virale Sharepic mit seinen vier Behauptungen. Der Maßstab ist aber: Welche Schritte hat Ankara real unternommen, und wo sind die Vergleiche zu grob, zu alt oder schlicht falsch.</p>
+  <p class="fade-up">Ein Faktencheck des viralen Sharepics über Türkei und Israel. Der Kern: vier Behauptungen, einzeln geprüft, belegt mit Reuters, AP, UN, SIPRI und offiziellen Quellen. Kein allgemeiner Nahost-Blog, sondern: Was hat Ankara real unternommen — und wo sind die Vergleiche zu grob, zu alt oder schlicht falsch?</p>
   <div class="hero-actions fade-up">
     <a href="#hauptlinie" class="btn-primary">Zur Hauptlinie &rarr;</a>
     <a href="debatten-guide.html" class="btn-secondary">Zum Guide</a>
     <a href="upload.html" class="btn-secondary">↑ Datei hochladen</a>
+  </div>
+</section>
+
+<section class="trust-box">
+  <div class="trust-inner">
+    <div class="trust-col is">
+      <h4>Diese Seite ist</h4>
+      <ul>
+        <li>Ein Faktencheck eines konkreten viralen Posts</li>
+        <li>Belegt mit Reuters, AP, UN, SIPRI, offiziellen Stellen</li>
+        <li>Transparent über Unsicherheiten und schwache Beleglagen</li>
+        <li>Offen für Korrekturen bei neuen belegten Informationen</li>
+      </ul>
+    </div>
+    <div class="trust-col not">
+      <h4>Diese Seite ist nicht</h4>
+      <ul>
+        <li>Keine politische Agenda oder Propagandasite</li>
+        <li>Kein Anspruch auf vollständige Darstellung des Konflikts</li>
+        <li>Keine offizielle oder staatlich geförderte Quelle</li>
+        <li>Kein Ersatz für eigenständige Recherche</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -763,19 +932,37 @@ footer a:hover {
           <p>Eine kompakte Hilfsseite bündelt sichere Formulierungen, riskante Behauptungen und die stärksten Konter. <a class="quickcheck-link" href="debatten-guide.html">Zum Guide</a></p>
         </div>
       </div>
+      <div class="method-point">
+        <div class="method-icon">M</div>
+        <div class="method-point-text">
+          <h4>Vollständige Methodik</h4>
+          <p>Quellenhierarchie, Bewertungslogik, Sprachregeln und Korrekturpolitik ausführlich erklärt. <a class="quickcheck-link" href="methodik.html">Zur Methodik</a></p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="footer-inner">
-    <p>NahostFakten.de · Priorisierte Analyse zu Palästina, Besatzung und regionaler Politik</p>
+    <p>NahostFakten · Faktencheck zu Türkei, Israel und Palästina</p>
     <p>Quellen: ICC · ICJ · UN · Reuters · AP · GOV.UK · TİKA · MFA Türkiye · Peace Now · Britannica · weitere Primär- und Fachquellen</p>
-    <p><a class="quickcheck-link" href="zusatzinfos.html">Zu den Zusatzinfos</a></p>
+    <p>Letzte Aktualisierung: Mai 2026 · <a class="quickcheck-link" href="methodik.html">Methodik</a> · <a class="quickcheck-link" href="zusatzinfos.html">Zusatzinfos</a> · <a class="quickcheck-link" href="mailto:korrektur@nahostfakten.de">Korrekturhinweis</a></p>
   </div>
 </footer>
 
 <script>
+function toggleNav() {
+  document.querySelector('nav').classList.toggle('nav-open');
+}
+
+document.addEventListener('click', function(e) {
+  const nav = document.querySelector('nav');
+  if (nav.classList.contains('nav-open') && !nav.contains(e.target)) {
+    nav.classList.remove('nav-open');
+  }
+});
+
 function setLang(lang, button) {
   document.querySelectorAll('.lang-btn').forEach((btn) => btn.classList.remove('active'));
   if (button) {
