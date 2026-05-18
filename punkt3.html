@@ -4,7 +4,11 @@
 <meta charset="UTF-8">
 <script src="/auth.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Punkt 3: Handel & Energie - NahostFakten</title>
+<title>Punkt 3: Handel & Energie – Faktencheck – NahostFakten</title>
+<meta name="description" content="Faktencheck: Türkei stoppte direkten Warenhandel mit Israel am 2. Mai 2024. Was zum BTC/Ceyhan-Korridor stimmt und was vereinfacht ist.">
+<meta property="og:title" content="Punkt 3: Handel & Energie – Faktencheck Türkei–Israel">
+<meta property="og:description" content="Handelsstopp Mai 2024 belegt. Ceyhan/BTC ist komplizierter als normaler Handel – Einordnung mit Reuters, AP, offiziellen Quellen.">
+<meta property="og:type" content="article">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
@@ -73,7 +77,14 @@ a.source-pill:hover,.source-link:hover{color:var(--black);}
 .nav-page-btn .ptitle{font-size:14px;font-weight:600;}
 .nav-page-btn.next{text-align:right;}
 
-@media(max-width:600px){.trade-timeline{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.trade-timeline{grid-template-columns:1fr 1fr;}.claim-audit{grid-template-columns:1fr;}}
+.claim-audit{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:32px 0;}
+.ca-item{background:var(--gray-100);border-radius:var(--radius);padding:18px;}
+.ca-item h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray-400);margin-bottom:8px;}
+.ca-item p{font-size:13px;color:var(--gray-600);line-height:1.65;}
+.ca-verdict{background:var(--black)!important;}
+.ca-verdict h3{color:rgba(255,255,255,0.5)!important;}
+.ca-verdict p{color:var(--white)!important;}
 </style>
 </head>
 <body>
@@ -91,6 +102,25 @@ a.source-pill:hover,.source-link:hover{color:var(--black);}
 </div>
 
 <div class="content">
+
+  <div class="claim-audit">
+    <div class="ca-item ca-verdict">
+      <h3>Kurzurteil</h3>
+      <p>Kern stimmt. Der staatliche Stopp des direkten bilateralen Warenhandels am 2. Mai 2024 ist belegt. Energie- und Transitfragen sind komplizierter und müssen getrennt bewertet werden.</p>
+    </div>
+    <div class="ca-item">
+      <h3>Was stimmt?</h3>
+      <p>Exportbeschränkungen ab 9. April 2024 belegt (Reuters). Vollständiger Stopp des direkten Warenhandels ab 2. Mai 2024 belegt (Reuters). Seit 2025 auch Hafen- und Luftrestriktionen.</p>
+    </div>
+    <div class="ca-item">
+      <h3>Was ist falsch oder zu grob?</h3>
+      <p>Direkter Handel ≠ jede indirekte Drittstaaten-Lieferkette. BTC/Ceyhan ist ein internationaler Transitkorridor (Aserbaidschan/Kasachstan Öl), nicht eine direkte türkisch-israelische Kooperation. Offiziellen Vorwürfen stehen staatliche Dementis gegenüber.</p>
+    </div>
+    <div class="ca-item">
+      <h3>Was bleibt offen?</h3>
+      <p>Genaue Drittstaaten-Lieferketten nach dem Stopp öffentlich nicht vollständig nachvollziehbar. Wie lange und wie strikt die Restriktionen angehalten haben, ist eine laufende Entwicklung.</p>
+    </div>
+  </div>
 
   <div class="trade-timeline">
     <div class="trade-point"><p class="year">2023</p><p class="vol">6,8 Mrd. $</p><p class="ctx">Bilateraler Handel vor dem Stopp</p></div>
@@ -230,5 +260,12 @@ a.source-pill:hover,.source-link:hover{color:var(--black);}
   </div>
 
 </div>
+
+<footer style="border-top:1px solid var(--border);padding:28px 24px;text-align:center;margin-top:0;">
+  <div style="max-width:800px;margin:0 auto;">
+    <p style="font-size:13px;color:var(--gray-400);margin-bottom:8px;">NahostFakten · Faktencheck zu Türkei, Israel und Palästina</p>
+    <p style="font-size:13px;color:var(--gray-400);">Letzte Aktualisierung: Mai 2026 · <a href="methodik.html" style="color:var(--gray-600);text-decoration:none;">Methodik</a> · <a href="index.html" style="color:var(--gray-600);text-decoration:none;">Startseite</a> · <a href="mailto:korrektur@nahostfakten.de" style="color:var(--gray-600);text-decoration:none;">Korrekturhinweis</a></p>
+  </div>
+</footer>
 </body>
 </html>

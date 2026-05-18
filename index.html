@@ -745,6 +745,7 @@ footer a:hover {
   .trust-box { padding: 0 16px; }
   .trust-inner { grid-template-columns: 1fr; }
   .trust-col.is { border-right: none; border-bottom: 1px solid var(--border); }
+  .bewertung-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
 </style>
 </head>
@@ -835,6 +836,28 @@ footer a:hover {
           <div class="verdict-copy"><strong>Karte 4</strong><span>Öffentlich schwach belegt, eher Bruch als Nähe.</span></div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="viral-section" style="margin-bottom:40px;">
+  <p class="section-label">Bewertungslegende</p>
+  <div class="bewertung-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+    <div style="background:var(--accent-light);border-radius:var(--radius);padding:14px;border:1px solid rgba(192,57,43,0.12);">
+      <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:4px;">Falsch datiert</div>
+      <div style="font-size:12px;color:var(--gray-600);">Historischer Kern existiert, aber zeitlich falsch eingeordnet oder inhaltlich irreführend.</div>
+    </div>
+    <div style="background:var(--amber-light);border-radius:var(--radius);padding:14px;border:1px solid rgba(183,86,10,0.12);">
+      <div style="font-size:12px;font-weight:700;color:var(--amber);margin-bottom:4px;">Teilweise richtig</div>
+      <div style="font-size:12px;color:var(--gray-600);">Echter Kern, aber vereinfacht, veraltet oder ohne notwendige Einschränkung präsentiert.</div>
+    </div>
+    <div style="background:var(--green-light);border-radius:var(--radius);padding:14px;border:1px solid rgba(26,122,74,0.12);">
+      <div style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:4px;">Belastbar</div>
+      <div style="font-size:12px;color:var(--gray-600);">Durch Primär- und Agenturquellen gestützt. Einschränkungen werden genannt.</div>
+    </div>
+    <div style="background:var(--blue-light);border-radius:var(--radius);padding:14px;border:1px solid rgba(26,95,168,0.12);">
+      <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:4px;">Unklar / schwach belegt</div>
+      <div style="font-size:12px;color:var(--gray-600);">Quellenlage zu dünn oder widersprüchlich für eine zuverlässige Bewertung.</div>
     </div>
   </div>
 </section>
